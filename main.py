@@ -129,7 +129,7 @@ def t_STRINGV(t):
 
 #SANDY{
 def t_IDENTIFIER(t):
-    r'[A-Z][a-zA-Z0-9]*'
+    r'^[A-Z][a-zA-Z0-9]*$'
     t.type = reserved.get(t.value, 'IDENTIFIER')
     return t
 
@@ -139,15 +139,15 @@ def t_IDLOCAL(t):
     t.type = reserved.get(t.value, 'IDLOCAL')
     return t
 def t_IDINSTANCE(t):
-    r'[@][a-zA-Z0-9_]*$'
+    r'^[@][a-zA-Z0-9_]*$'
     t.type = reserved.get(t.value, 'IDINSTANCE')
     return t
 def t_IDCLASS(t):
-    r'([@][@][a-zA-Z0-9_]*)$'
+    r'([@]{2})[a-zA-Z0-9_]+'
     t.type = reserved.get(t.value, 'IDCLASS')
     return t
 def t_IDGLOBAL(t):
-    r'([\$][a-zA-Z0-9_]*)'
+    r'\s*[\$][a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, 'IDGLOBAL')
     return t
 #-SANDY}
@@ -160,6 +160,12 @@ def t_NUMBER(t):
 def t_COMMENT(t):
     r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
     pass
+
+#Sandy {
+def t_error(t):
+    print("Componente lexico no reconocido '%s' " % t.value[0])
+    t.lexer.skip(1)
+#SANDY}
 
 t_ignore = " \t" # Qué tipo de caracteres debe ignorar Ruby?
 

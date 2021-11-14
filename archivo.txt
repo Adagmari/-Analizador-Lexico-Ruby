@@ -7,4 +7,5 @@ soyVariabletoo
 @@Clase
 $Global
 soyVariable += otraVariable
-$hj -= @@otravar
+$Hj -= @@otravar
+@@@HOLA
