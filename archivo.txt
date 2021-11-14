@@ -6,3 +6,5 @@ soyVariabletoo
 @Variableinstancia
 @@Clase
 $Global
+soyVariable += otraVariable
+$hj -= @@otravar

@@ -60,6 +60,8 @@ tokens = (
     'RPARENTHESIS',
     'LPARENTHESIS',
     'ASSING',
+    'ASSINGPLUS',
+    'ASSINGMIN',
     'POINT',
     'COMMA',
     'SEMICOLON',
@@ -97,6 +99,12 @@ t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
 t_ASSING = r'='
+
+#-SANDY{
+t_ASSINGPLUS = r'\+='
+t_ASSINGMIN = r'\-='
+#}
+
 t_POINT = r'\.'
 t_COMMA = r','
 t_SEMICOLON = r';'
@@ -135,11 +143,11 @@ def t_IDINSTANCE(t):
     t.type = reserved.get(t.value, 'IDINSTANCE')
     return t
 def t_IDCLASS(t):
-    r'^([@][@][a-zA-Z0-9_]*)$'
+    r'([@][@][a-zA-Z0-9_]*)$'
     t.type = reserved.get(t.value, 'IDCLASS')
     return t
 def t_IDGLOBAL(t):
-    r'^([$][a-zA-Z0-9_]*)$'
+    r'([\$][a-zA-Z0-9_]*)'
     t.type = reserved.get(t.value, 'IDGLOBAL')
     return t
 #-SANDY}
