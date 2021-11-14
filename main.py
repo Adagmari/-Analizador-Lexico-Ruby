@@ -121,6 +121,10 @@ def t_IDENTIFIER(t):
     t.type = reserved.get(t.value, 'IDENTIFIER')
     return t
     
+def t_NUMBER(t):
+     r'[-]?\d+(\.\d+)?'
+     return t
+
 
 def t_COMMENT(t):
     r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
