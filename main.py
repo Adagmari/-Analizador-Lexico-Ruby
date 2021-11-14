@@ -1,42 +1,6 @@
 import ply.lex as lex
 
 
-
-tokens = [
-    'NUMBER',
-    'STRINGV',
-    'IDENTIFIER',
-    'COMPARE',
-    'MINUS',
-    'PLUS',
-    'DIVISION',
-    'MOD',
-    'MULT',
-    'EXP',
-    'LESS',
-    'GREATER',
-    'RPARENTHESIS',
-    'LPARENTHESIS',
-    'ASSING',
-    'POINT',
-    'COMMA',
-    'SEMICOLON',
-    'LSQBRACKET',
-    'RSQBRACKET',
-    'LBRACKET',
-    'RBRACKET',
-    'NOTS',
-    'ANDS',
-    'ORS',
-    'GREQUAL',
-    'LSEQUAL',
-    'NOTEQUAL',
-    'COMIS',
-    'COMID'
-]
-
-
-
 reserved = {
     'class':'CLASS',
     'and':'AND',
@@ -76,9 +40,48 @@ reserved = {
     'String':'STRING',
     'new':'NEW'
 }
+tokens = (
+    'NUMBER',
+    'STRINGV',
+    'IDLOCAL',
+    'IDINSTANCE',
+    'IDCLASS',
+    'IDGLOBAL',
+    'IDENTIFIER',
+    'COMPARE',
+    'MINUS',
+    'PLUS',
+    'DIVISION',
+    'MOD',
+    'MULT',
+    'EXP',
+    'LESS',
+    'GREATER',
+    'RPARENTHESIS',
+    'LPARENTHESIS',
+    'ASSING',
+    'POINT',
+    'COMMA',
+    'SEMICOLON',
+    'LSQBRACKET',
+    'RSQBRACKET',
+    'LBRACKET',
+    'RBRACKET',
+    'NOTS',
+    'ANDS',
+    'ORS',
+    'GREQUAL',
+    'LSEQUAL',
+    'NOTEQUAL',
+    'COMIS',
+    'COMID'
+) + tuple(reserved.values())
 
 
-tokens += list(reserved.values())
+
+
+
+#tokens += list(reserved.values())
 
 
 #t_STRINGV = r'((\'[\w\W\s][^\']*\')|(\"[\w\W\s][^\"]*\"))'
@@ -116,11 +119,28 @@ def t_STRINGV(t):
 
 #def t_NUMBER():
 
+#SANDY{
 def t_IDENTIFIER(t):
-    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    r'[A-Z][a-zA-Z0-9]*'
     t.type = reserved.get(t.value, 'IDENTIFIER')
     return t
-    
+def t_IDLOCAL(t):
+    r'([a-z][a-zA-Z0-9_]*|[_][a-zA-Z0-9_]*)'
+    t.type = reserved.get(t.value, 'IDLOCAL')
+    return t
+def t_IDINSTANCE(t):
+    r'[@][a-zA-Z0-9_]*$'
+    t.type = reserved.get(t.value, 'IDINSTANCE')
+    return t
+def t_IDCLASS(t):
+    r'^([@][@][a-zA-Z0-9_]*)$'
+    t.type = reserved.get(t.value, 'IDCLASS')
+    return t
+def t_IDGLOBAL(t):
+    r'^([$][a-zA-Z0-9_]*)$'
+    t.type = reserved.get(t.value, 'IDGLOBAL')
+    return t
+#-SANDY}
 
 def t_COMMENT(t):
     r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
