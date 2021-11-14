@@ -32,3 +32,21 @@ $Global
 soyVariable += otraVariable
 $Hj -= @@otravar
 @@@HOLA
+
+
+#Jeremy Ramírez
+Horas=2.5 
+Distancia=180_000_000
+
+Verdad=true
+Falso=false
+Vacio=nil
+
+print "hola" 
+puts "hola" 
+putc "hola"
+
+hola = hola + palabra
+puts (15 < 10)
+puts (15 > 10)
+puts (15 === 10)

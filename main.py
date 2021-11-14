@@ -82,7 +82,8 @@ tokens = [
     'COMIS',
     'COMID',
     'BSLASH',
-    #'Array'
+    'NUML'
+    
 
     
 ] + list(reserved.values())
@@ -161,9 +162,17 @@ def t_IDENTIFIER(t):
 #-SANDY}
 
 #Jeremy Ramírez{
+
+def t_NUML(t):
+     r'([0-9]{3}_?)+'
+     return t
+       
 def t_NUMBER(t):
      r'[-]?\d+(\.\d+)?'
      return t
+
+
+
 #Jeremy Ramírez}
 
 #Diana Ramírez{
