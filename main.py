@@ -124,6 +124,8 @@ def t_IDENTIFIER(t):
     r'[A-Z][a-zA-Z0-9]*'
     t.type = reserved.get(t.value, 'IDENTIFIER')
     return t
+
+
 def t_IDLOCAL(t):
     r'([a-z][a-zA-Z0-9_]*|[_][a-zA-Z0-9_]*)'
     t.type = reserved.get(t.value, 'IDLOCAL')
@@ -141,6 +143,11 @@ def t_IDGLOBAL(t):
     t.type = reserved.get(t.value, 'IDGLOBAL')
     return t
 #-SANDY}
+
+def t_NUMBER(t):
+     r'[-]?\d+(\.\d+)?'
+     return t
+
 
 def t_COMMENT(t):
     r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
