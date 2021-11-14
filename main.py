@@ -1,6 +1,6 @@
 import ply.lex as lex
 
-
+#Jeremy Ramírez{
 reserved = {
     'class':'CLASS',
     'and':'AND',
@@ -35,14 +35,18 @@ reserved = {
     'gets':'GETS',
     'print':'PRINT',
     'putc':'PUTC',
-    'Array':'ARRAY',
     'Hash':'HASH',
+    'Array':'ARRAY',
     'String':'STRING',
     'new':'NEW'
 }
-tokens = (
+#Jeremy Ramírez}
+
+#Diana Ramírez{
+tokens = [
     'NUMBER',
     'STRINGV',
+    'COMENTARIO',
     'IDLOCAL',
     'IDINSTANCE',
     'IDCLASS',
@@ -76,17 +80,19 @@ tokens = (
     'LSEQUAL',
     'NOTEQUAL',
     'COMIS',
-    'COMID'
-) + tuple(reserved.values())
+    'COMID',
+    'BSLASH',
+    #'Array'
 
+    
+] + list(reserved.values())
 
+#Diana Ramírez}
 
-
-
-#tokens += list(reserved.values())
 
 
 #t_STRINGV = r'((\'[\w\W\s][^\']*\')|(\"[\w\W\s][^\"]*\"))'
+#Jeremy Ramírez{
 t_COMPARE = r'==='
 t_MINUS = r'-'
 t_PLUS = r'\+'
@@ -99,12 +105,14 @@ t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
 t_ASSING = r'='
+#Jeremy Ramírez}
 
 #-SANDY{
 t_ASSINGPLUS = r'\+='
 t_ASSINGMIN = r'\-='
-#}
+#-SANDY}
 
+#Diana Ramírez{
 t_POINT = r'\.'
 t_COMMA = r','
 t_SEMICOLON = r';'
@@ -118,22 +126,18 @@ t_ORS = r'\|\|'
 t_GREQUAL = r'>='
 t_LSEQUAL = r'<='
 t_NOTEQUAL = r'!='
+t_BSLASH = r'\\'
+t_COMIS = r'\''
+t_COMID = r'\"'
 
 
 def t_STRINGV(t):
     r'((\'[\w\W\s][^\']*\')|(\"[\w\W\s][^\"]*\"))'
     t.value= str(t.value)
     return t
-
-#def t_NUMBER():
+#Diana Ramírez}
 
 #SANDY{
-def t_IDENTIFIER(t):
-    r'^[A-Z][a-zA-Z0-9]*$'
-    t.type = reserved.get(t.value, 'IDENTIFIER')
-    return t
-
-
 def t_IDLOCAL(t):
     r'([a-z][a-zA-Z0-9_]*|[_][a-zA-Z0-9_]*)'
     t.type = reserved.get(t.value, 'IDLOCAL')
@@ -150,19 +154,25 @@ def t_IDGLOBAL(t):
     r'\s*[\$][a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, 'IDGLOBAL')
     return t
+def t_IDENTIFIER(t):
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    t.type = reserved.get(t.value, 'IDENTIFIER')
+    return t
 #-SANDY}
 
+#Jeremy Ramírez{
 def t_NUMBER(t):
      r'[-]?\d+(\.\d+)?'
      return t
+#Jeremy Ramírez}
 
-
+#Diana Ramírez{
 def t_COMMENT(t):
-    r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
+    r'\#.*'
     pass
+#Diana Ramírez}
 
-
-
+#Jeremy Ramírez{
 t_ignore = " \t" # Qué tipo de caracteres debe ignorar Ruby?
 
 def t_NEWLINE(t):
@@ -172,10 +182,11 @@ def t_NEWLINE(t):
 def t_error(t):
      print("Illegal character '%s'" % t.value[0])
      t.lexer.skip(1)
+#Jeremy Ramírez}
 
 
+#Diana Ramírez{
 lexer = lex.lex()
-
 
 def inputLex(s):
     lexer.input(s)
@@ -185,7 +196,9 @@ def inputLex(s):
             break
         print(tok)
 
-file = open("archivo.txt", encoding="utf8")  
 
+file = open("archivo.txt", encoding="utf8")  
 for line in file:
     inputLex(line)
+    
+#Diana Ramírez}

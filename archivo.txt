@@ -1,6 +1,29 @@
-,
-'cadena'= String.new
-mystring3 = String    ("Esta también es una cadena") 
+#Diana Ramírez
+
+String
+cadena= String.new
+mystring3 = String ("Esta también es una cadena")
+array = Array.new
+hash1 = {
+ "clave1" => "valor1",
+ "clave2" => "valor2",
+ "clave3" => "valor3"
+}
+
+puts 4 ** 4
+puts 2 + 4
+puts 3 - 4
+puts 5 % 2
+puts 7 / 3
+puts 4 * 4
+
+for i in 1..10 do
+ print i, " "
+ break if i == 2
+End
+
+#Sandy Intriago
+
 _soyVariable
 soyVariabletoo
 @Variableinstancia
