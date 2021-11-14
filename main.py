@@ -161,11 +161,7 @@ def t_COMMENT(t):
     r'((?!.*\n)\#.*)|(\=begin(\n|.)*\=end)'
     pass
 
-#Sandy {
-def t_error(t):
-    print("Componente lexico no reconocido '%s' " % t.value[0])
-    t.lexer.skip(1)
-#SANDY}
+
 
 t_ignore = " \t" # Qué tipo de caracteres debe ignorar Ruby?
 
