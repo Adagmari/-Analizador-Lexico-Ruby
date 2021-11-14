@@ -1,0 +1,3 @@
+,
+'cadena'= String.new
+mystring3 = String    ("Esta también es una cadena") 
