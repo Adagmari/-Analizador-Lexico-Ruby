@@ -2,7 +2,6 @@ import ply.yacc as yacc
 from main import tokens
 
 #INSTRUCCIÓN PRINCIPAL
-
 def p_instrucciones(p):
     '''instrucciones : expression 
                         | cadena
@@ -15,7 +14,9 @@ def p_instrucciones(p):
                         | oputs 
                         | putss
                         | putsenx 
-                        | sentenIF '''
+                        | sentenIF
+                        | comparador
+                        | sentenWHILE '''
 
 
 
@@ -47,16 +48,19 @@ def p_puts_String(p):
 
 def p_puts_expression(p):
     ''' putsenx : PUTS expression
-                | PRINT expression'''
+                | PRINT expression '''
     p[0]= str(p[2])
 
 
 # IF
-
-
 def p_if(p):
     ''' sentenIF : IF comparador term '''
     p[0]= p[1] + p[2] + str(p[3])
+
+#while
+def p_sentenwhile(p):
+    ''' sentenWHILE : WHILE comparador term END '''
+    p[0] = p[1] + p[2] + str(p[3])
 
 def p_comparador(p):
     ''' comparador : COMPARE
@@ -83,15 +87,20 @@ def p_variables(p):
 def p_assigns(p):
     '''assigns : variables ASSIGN expression
                 | variables ASSIGN variables
+                | variables ASSIGN boolean
                 '''
+
 def p_assigns_plus(p):
     '''assigns : variables ASSIGNPLUS expression
                     | variables ASSIGNPLUS variables
+
                     '''
+
 def p_assigns_min(p):
     '''assigns : variables ASSIGNMIN expression
                     | variables ASSIGNMIN variables
                     '''
+
 #NÚMEROS Y OPERACIONES 
 
 def p_expression_plus(p):
@@ -132,6 +141,10 @@ def p_expression_mult(p):
     'expression : expression MULT term'
     p[0] = p[1] * p[3]
 
+def p_expression_exp(p):
+    'expression : expression EXP term'
+    p[0] = p[1] ** p[3]
+
 #CADENAS
 
 def p_string_str(p):
@@ -150,8 +163,8 @@ def p_cadena_forma3(p):
     'cadena : type LPARENTHESIS string RPARENTHESIS'
     p[0] = p[1] + p[2] + p[3] + p[4]
 
-'''def p_functionStr_empty(p):
-    'functionStr : type POINT ' '''
+#'''def p_functionStr_empty(p):
+#   'functionStr : type POINT ' '''
 
 #ARREGLOS
 
