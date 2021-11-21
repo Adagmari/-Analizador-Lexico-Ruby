@@ -4,19 +4,24 @@ from main import tokens
 #INSTRUCCIÓN PRINCIPAL
 def p_instrucciones(p):
     '''instrucciones : expression 
-                        | cadena
-                        | arreglo
                         | string
+                        | cadena
+                        | metodocadena
+                        | arreglo
+                        | metodosarreglo
                         | hash
-                        | boolean
+                        | estructurasControl
+                        | boolean 
                         | variables
                         | assigns
                         | oputs 
                         | putss
                         | putsenx 
+
                         | sentenIF
                         | comparador
                         | sentenWHILE '''
+
 
 
 
@@ -52,6 +57,7 @@ def p_puts_expression(p):
     p[0]= str(p[2])
 
 
+
 # IF
 def p_if(p):
     ''' sentenIF : IF comparador term '''
@@ -70,6 +76,7 @@ def p_comparador(p):
                    | LESS
                    | GREATER '''
     p[0]= p[1]
+
 #OPERADORES
 
 
@@ -152,33 +159,57 @@ def p_string_str(p):
     p[0] = p[1]
 
 def p_cadena_forma1(p):
-    'cadena : type POINT type'
+    'cadena : STRING POINT NEW'
     p[0] = p[1] + p[2] + p[3]  
 
 def p_cadena_forma2(p):
-    'cadena : type POINT type LPARENTHESIS string RPARENTHESIS'
+    'cadena : STRING POINT NEW LPARENTHESIS string RPARENTHESIS'
     p[0] = p[1] + p[2] + p[3] + p[4] + p[5] + p[6]  
 
 def p_cadena_forma3(p):
-    'cadena : type LPARENTHESIS string RPARENTHESIS'
+    'cadena : STRING LPARENTHESIS string RPARENTHESIS'
     p[0] = p[1] + p[2] + p[3] + p[4]
+
 
 #'''def p_functionStr_empty(p):
 #   'functionStr : type POINT ' '''
 
+
+#CADENAS MÉTODOS 
+
+def p_metodocadena_empty(p):
+    '''metodocadena : cadena POINT EMPTY INTERROGATIVE
+                    | string POINT EMPTY INTERROGATIVE'''
+    p[0] = p[1] + p[2] + p[3] + p[4]
+
+def p_metodocadena_length(p):
+    '''metodocadena : cadena POINT LENGTH
+                    | string POINT LENGTH'''
+    p[0] = p[1] + p[2] + p[3]
+
+
+
 #ARREGLOS
 
+def p_arreglo_tipo4(p):
+    'arreglo : ARRAY POINT NEW'
+    p[0] = p[1] + p[2] + p[3]  
+
 def p_arreglo_tipo1(p):
-    'arreglo : type POINT type LPARENTHESIS factor RPARENTHESIS'
+    'arreglo : ARRAY POINT NEW LPARENTHESIS factor RPARENTHESIS'
     p[0] = p[1] + p[2] + p[3] + p[4] + str(p[5]) + p[6]
 
 def p_arreglo_tipo2(p):
-    'arreglo : type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS'
+    'arreglo : ARRAY POINT NEW LPARENTHESIS factor COMMA arraycontent RPARENTHESIS'
     p[0] = p[1] + p[2] + p[3] + p[4] + str(p[5]) + p[6] + p[7] + p[8]
 
 def p_arreglo_tipo3(p):
-    'arreglo : type LSQBRACKET arraycontent RSQBRACKET'
+    'arreglo : ARRAY LSQBRACKET arraycontent RSQBRACKET'
     p[0] = p[1] + p[2] + p[3] + p[4]
+
+def p_arreglo_tipo5(p):
+    'arreglo : LSQBRACKET arraycontent RSQBRACKET'
+    p[0] = p[1] + p[2] + p[3]
 
 def p_arraycontent_var1(p):
     '''arraycontent : factor
@@ -190,15 +221,25 @@ def p_arraycontent_var2(p):
                     | string COMMA arraycontent'''
     p[0] = str(p[1]) + p[2] + p[3]
 
-#CADENAS MÉTODOS 
+#METODOS ARREGLOS
 
-#def p_metodocadena_empty
+def p_metodosarreglo_index(p):
+    'metodosarreglo : arreglo POINT INDEX LPARENTHESIS arraycontent RPARENTHESIS'
+    p[0] = p[1] + p[2] + p[3] + p[4] + p[5] + p[6] 
+
+def p_metodosarreglo_num(p):
+    'metodosarreglo : arreglo LSQBRACKET factor RSQBRACKET'
+    p[0] = p[1] + p[2] + str(p[3]) + p[4]
 
 #HASH
 
 def p_hash_tipo1(p):
     'hash : LBRACKET hashcontent RBRACKET'
     p[0] = p[1] + p[2] + p[3] 
+
+def p_hash_tipo2(p):
+    'hash : HASH POINT NEW'
+    p[0] = p[1] + p[2] + p[3]  
 
 def p_hashcontent_var1(p):
     'hashcontent : string ASSIGN GREATER hashcontentvalue'
@@ -213,23 +254,37 @@ def p_hashcontentvalue_var(p):
                         | string'''
     p[0] = str(p[1])
 
-#TIPOS - PALABRAS RESERVADAS
+#METODOS HASH
 
-def p_type_String(p):
-    'type : STRING'
-    p[0] = p[1]
-
-def p_type_Array(p):
-    'type : ARRAY'
-    p[0] = p[1]
-
-def p_type_new(p):
-    'type : NEW'
-    p[0] = p[1]
+#cuando estén listas las variables
 
 
+#ESTRUCTURAS DE CONTROL
 
+# IF
 
+def p_if(p):
+    ''' sentenIF : IF comparador term '''
+    p[0]= p[1] + p[2] + str(p[3])
+
+def p_comparador(p):
+    ''' comparador : COMPARE
+                   | GREQUAL 
+                   | LSEQUAL
+                   | NOTEQUAL
+                   | LESS
+                   | GREATER '''
+    p[0]= p[1]
+    
+
+#FOR
+def p_estructurasControl_for1(p):
+    '''estructurasControl : FOR factor IN factor POINT POINT factor DO BREAK IF END'''
+    p[0] = p[1] + str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] + p[10] + p[11]
+
+def p_estructurasControl_for2(p):
+    '''estructurasControl : FOR factor IN factor POINT POINT factor DO END'''
+    p[0] = p[1] +str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] 
 
 
 parser = yacc.yacc()
