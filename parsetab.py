@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND ANDS ARRAY ASSIGN ASSIGNMIN ASSIGNPLUS BREAK BSLASH CASE CLASS COMENTARIO COMID COMIS COMMA COMPARE DEF DEFINED DIVISION DO ELSE ELSIF END ENSURE EXP FALSE FLOAT FOR GETS GREATER GREQUAL HASH IDCLASS IDENTIFIER IDGLOBAL IDINSTANCE IDLOCAL IF IN LBRACKET LESS LPARENTHESIS LSEQUAL LSQBRACKET MINUS MOD MODULE MULT NEW NEXT NIL NOT NOTEQUAL NOTS NUMBER NUML OR ORS PLUS POINT PRINT PUTC PUTS RBRACKET REDO RESCUE RETURN RPARENTHESIS RSQBRACKET SELF SEMICOLON STRING STRINGV TRUE UNDEF UNTIL WHEN WHILEinstrucciones : expression \n                        | cadena\n                        | arreglo\n                        | string\n                        | hash\n                        | boolean boolean :  TRUE \n                | FALSE\n                | NIL expression : expression PLUS termexpression : expression MINUS termexpression : termterm : factorfactor : NUMBER\n              | FLOATfactor : MINUS NUMBER\n              | MINUS FLOATstring : STRINGVcadena : type POINT typecadena : type POINT type LPARENTHESIS string RPARENTHESIScadena : type LPARENTHESIS string RPARENTHESISarreglo : type POINT type LPARENTHESIS factor RPARENTHESISarreglo : type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESISarreglo : type LSQBRACKET arraycontent RSQBRACKETarraycontent : factor\n                    | stringarraycontent : factor COMMA arraycontent\n                    | string COMMA arraycontenthash : LBRACKET hashcontent RBRACKEThashcontent : string ASSIGN GREATER hashcontentvaluehashcontent : string ASSIGN GREATER hashcontentvalue COMMA hashcontenthashcontentvalue : factor\n                        | stringtype : STRINGtype : ARRAYtype : NEW'
+_lr_signature = 'AND ANDS ARRAY ASSIGN ASSIGNMIN ASSIGNPLUS BREAK BSLASH CASE CLASS COMENTARIO COMID COMIS COMMA COMPARE DEF DEFINED DIVISION DO ELSE ELSIF END ENSURE EXP FALSE FLOAT FOR GETS GREATER GREQUAL HASH IDCLASS IDENTIFIER IDGLOBAL IDINSTANCE IDLOCAL IF IN LBRACKET LESS LPARENTHESIS LSEQUAL LSQBRACKET MINUS MOD MODULE MULT NEW NEXT NIL NOT NOTEQUAL NOTS NUMBER NUML OR ORS PLUS POINT PRINT PUTC PUTS RBRACKET REDO RESCUE RETURN RPARENTHESIS RSQBRACKET SELF SEMICOLON STRING STRINGV TRUE UNDEF UNTIL WHEN WHILEinstrucciones : expression \n                        | cadena\n                        | arreglo\n                        | string\n                        | hash\n                        | boolean \n                        | oputs \n                        | putss\n                        | putsenx \n                        | sentenIF boolean :  TRUE \n                | FALSE\n                | NIL oputs : PUTS   putss : PUTS string\n              | PUTS cadena\n              | PRINT string\n              | PRINT cadena\n             putsenx : PUTS expression\n                | PRINT expression sentenIF : IF comparador term  comparador : COMPARE\n                   | GREQUAL \n                   | LSEQUAL\n                   | NOTEQUAL\n                   | LESS\n                   | GREATER expression : expression PLUS termexpression : expression MINUS termexpression : termterm : factorfactor : NUMBER\n              | FLOATfactor : MINUS NUMBER\n              | MINUS FLOATstring : STRINGVcadena : type POINT typecadena : type POINT type LPARENTHESIS string RPARENTHESIScadena : type LPARENTHESIS string RPARENTHESISarreglo : type POINT type LPARENTHESIS factor RPARENTHESISarreglo : type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESISarreglo : type LSQBRACKET arraycontent RSQBRACKETarraycontent : factor\n                    | stringarraycontent : factor COMMA arraycontent\n                    | string COMMA arraycontenthash : LBRACKET hashcontent RBRACKEThashcontent : string ASSIGN GREATER hashcontentvaluehashcontent : string ASSIGN GREATER hashcontentvalue COMMA hashcontenthashcontentvalue : factor\n                        | stringtype : STRINGtype : ARRAYtype : NEW'
     
-_lr_action_items = {'STRINGV':([0,13,27,28,40,43,44,45,55,56,],[12,12,12,12,12,12,12,12,12,12,]),'LBRACKET':([0,],[13,]),'TRUE':([0,],[14,]),'FALSE':([0,],[15,]),'NIL':([0,],[16,]),'STRING':([0,26,],[17,17,]),'ARRAY':([0,26,],[18,18,]),'NEW':([0,26,],[19,19,]),'NUMBER':([0,9,22,23,28,40,43,44,45,55,],[20,24,20,20,20,20,20,20,20,20,]),'FLOAT':([0,9,22,23,28,40,43,44,45,55,],[21,25,21,21,21,21,21,21,21,21,]),'MINUS':([0,2,8,11,20,21,22,23,24,25,28,31,32,40,43,44,45,55,],[9,23,-12,-13,-14,-15,9,9,-16,-17,9,-10,-11,9,9,9,9,9,]),'$end':([1,2,3,4,5,6,7,8,11,12,14,15,16,17,18,19,20,21,24,25,31,32,33,38,41,42,53,54,59,],[0,-1,-2,-3,-4,-5,-6,-12,-13,-18,-7,-8,-9,-34,-35,-36,-14,-15,-16,-17,-10,-11,-19,-29,-21,-24,-20,-22,-23,]),'PLUS':([2,8,11,20,21,24,25,31,32,],[22,-12,-13,-14,-15,-16,-17,-10,-11,]),'POINT':([10,17,18,19,],[26,-34,-35,-36,]),'LPARENTHESIS':([10,17,18,19,33,],[27,-34,-35,-36,40,]),'LSQBRACKET':([10,17,18,19,],[28,-34,-35,-36,]),'ASSIGN':([12,30,],[-18,39,]),'RPARENTHESIS':([12,20,21,24,25,34,36,37,46,47,48,49,57,],[-18,-14,-15,-16,-17,41,-25,-26,53,54,-27,-28,59,]),'COMMA':([12,20,21,24,25,36,37,47,50,51,52,],[-18,-14,-15,-16,-17,43,44,55,-33,56,-32,]),'RSQBRACKET':([12,20,21,24,25,35,36,37,48,49,],[-18,-14,-15,-16,-17,42,-25,-26,-27,-28,]),'RBRACKET':([12,20,21,24,25,29,50,51,52,58,],[-18,-14,-15,-16,-17,38,-33,-30,-32,-31,]),'GREATER':([39,],[45,]),}
+_lr_action_items = {'STRINGV':([0,17,21,22,34,35,63,66,67,68,77,80,81,],[16,16,16,16,16,16,16,16,16,16,16,16,16,]),'LBRACKET':([0,],[17,]),'TRUE':([0,],[18,]),'FALSE':([0,],[19,]),'NIL':([0,],[20,]),'PUTS':([0,],[21,]),'PRINT':([0,],[22,]),'IF':([0,],[23,]),'STRING':([0,21,22,33,61,],[24,24,24,24,24,]),'ARRAY':([0,21,22,33,61,],[25,25,25,25,25,]),'NEW':([0,21,22,33,61,],[26,26,26,26,26,]),'NUMBER':([0,13,21,22,29,30,35,45,46,47,48,49,50,51,63,66,67,68,80,],[27,31,27,27,27,27,27,27,-22,-23,-24,-25,-26,-27,27,27,27,27,27,]),'FLOAT':([0,13,21,22,29,30,35,45,46,47,48,49,50,51,63,66,67,68,80,],[28,32,28,28,28,28,28,28,-22,-23,-24,-25,-26,-27,28,28,28,28,28,]),'MINUS':([0,2,12,15,21,22,27,28,29,30,31,32,35,40,44,45,46,47,48,49,50,51,52,53,63,66,67,68,80,],[13,30,-30,-31,13,13,-32,-33,13,13,-34,-35,13,30,30,13,-22,-23,-24,-25,-26,-27,-28,-29,13,13,13,13,13,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,15,16,18,19,20,21,24,25,26,27,28,31,32,38,39,40,42,43,44,52,53,54,59,62,64,65,69,78,79,84,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-30,-31,-36,-11,-12,-13,-14,-52,-53,-54,-32,-33,-34,-35,-15,-16,-19,-17,-18,-20,-28,-29,-37,-47,-21,-39,-42,-37,-38,-40,-41,]),'PLUS':([2,12,15,27,28,31,32,40,44,52,53,],[29,-30,-31,-32,-33,-34,-35,29,29,-28,-29,]),'POINT':([14,24,25,26,41,],[33,-52,-53,-54,61,]),'LPARENTHESIS':([14,24,25,26,41,54,69,],[34,-52,-53,-54,34,63,77,]),'LSQBRACKET':([14,24,25,26,],[35,-52,-53,-54,]),'ASSIGN':([16,37,],[-36,60,]),'RPARENTHESIS':([16,27,28,31,32,55,57,58,70,71,72,73,82,],[-36,-32,-33,-34,-35,64,-43,-44,78,79,-45,-46,84,]),'COMMA':([16,27,28,31,32,57,58,71,74,75,76,],[-36,-32,-33,-34,-35,66,67,80,-51,81,-50,]),'RSQBRACKET':([16,27,28,31,32,56,57,58,72,73,],[-36,-32,-33,-34,-35,65,-43,-44,-45,-46,]),'RBRACKET':([16,27,28,31,32,36,74,75,76,83,],[-36,-32,-33,-34,-35,59,-51,-48,-50,-49,]),'COMPARE':([23,],[46,]),'GREQUAL':([23,],[47,]),'LSEQUAL':([23,],[48,]),'NOTEQUAL':([23,],[49,]),'LESS':([23,],[50,]),'GREATER':([23,60,],[51,68,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'instrucciones':([0,],[1,]),'expression':([0,],[2,]),'cadena':([0,],[3,]),'arreglo':([0,],[4,]),'string':([0,13,27,28,40,43,44,45,55,56,],[5,30,34,37,46,37,37,50,37,30,]),'hash':([0,],[6,]),'boolean':([0,],[7,]),'term':([0,22,23,],[8,31,32,]),'type':([0,26,],[10,33,]),'factor':([0,22,23,28,40,43,44,45,55,],[11,11,11,36,47,36,36,52,36,]),'hashcontent':([13,56,],[29,58,]),'arraycontent':([28,43,44,55,],[35,48,49,57,]),'hashcontentvalue':([45,],[51,]),}
+_lr_goto_items = {'instrucciones':([0,],[1,]),'expression':([0,21,22,],[2,40,44,]),'cadena':([0,21,22,],[3,39,43,]),'arreglo':([0,],[4,]),'string':([0,17,21,22,34,35,63,66,67,68,77,80,81,],[5,37,38,42,55,58,70,58,58,74,70,58,37,]),'hash':([0,],[6,]),'boolean':([0,],[7,]),'oputs':([0,],[8,]),'putss':([0,],[9,]),'putsenx':([0,],[10,]),'sentenIF':([0,],[11,]),'term':([0,21,22,29,30,45,],[12,12,12,52,53,62,]),'type':([0,21,22,33,61,],[14,41,41,54,69,]),'factor':([0,21,22,29,30,35,45,63,66,67,68,80,],[15,15,15,15,15,57,15,71,57,57,76,57,]),'hashcontent':([17,81,],[36,83,]),'comparador':([23,],[45,]),'arraycontent':([35,66,67,80,],[56,72,73,82,]),'hashcontentvalue':([68,],[75,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -33,34 +33,52 @@ _lr_productions = [
   ('instrucciones -> string','instrucciones',1,'p_instrucciones','sintactic.py',10),
   ('instrucciones -> hash','instrucciones',1,'p_instrucciones','sintactic.py',11),
   ('instrucciones -> boolean','instrucciones',1,'p_instrucciones','sintactic.py',12),
-  ('boolean -> TRUE','boolean',1,'p_boolean','sintactic.py',19),
-  ('boolean -> FALSE','boolean',1,'p_boolean','sintactic.py',20),
-  ('boolean -> NIL','boolean',1,'p_boolean','sintactic.py',21),
-  ('expression -> expression PLUS term','expression',3,'p_expression_plus','sintactic.py',29),
-  ('expression -> expression MINUS term','expression',3,'p_expression_minus','sintactic.py',33),
-  ('expression -> term','expression',1,'p_expression_term','sintactic.py',37),
-  ('term -> factor','term',1,'p_term_factor','sintactic.py',41),
-  ('factor -> NUMBER','factor',1,'p_factor_num','sintactic.py',45),
-  ('factor -> FLOAT','factor',1,'p_factor_num','sintactic.py',46),
-  ('factor -> MINUS NUMBER','factor',2,'p_factor_numnegative','sintactic.py',50),
-  ('factor -> MINUS FLOAT','factor',2,'p_factor_numnegative','sintactic.py',51),
-  ('string -> STRINGV','string',1,'p_string_str','sintactic.py',57),
-  ('cadena -> type POINT type','cadena',3,'p_cadena_forma1','sintactic.py',61),
-  ('cadena -> type POINT type LPARENTHESIS string RPARENTHESIS','cadena',6,'p_cadena_forma2','sintactic.py',65),
-  ('cadena -> type LPARENTHESIS string RPARENTHESIS','cadena',4,'p_cadena_forma3','sintactic.py',69),
-  ('arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS','arreglo',6,'p_arreglo_tipo1','sintactic.py',78),
-  ('arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS','arreglo',8,'p_arreglo_tipo2','sintactic.py',82),
-  ('arreglo -> type LSQBRACKET arraycontent RSQBRACKET','arreglo',4,'p_arreglo_tipo3','sintactic.py',86),
-  ('arraycontent -> factor','arraycontent',1,'p_arraycontent_var1','sintactic.py',90),
-  ('arraycontent -> string','arraycontent',1,'p_arraycontent_var1','sintactic.py',91),
-  ('arraycontent -> factor COMMA arraycontent','arraycontent',3,'p_arraycontent_var2','sintactic.py',95),
-  ('arraycontent -> string COMMA arraycontent','arraycontent',3,'p_arraycontent_var2','sintactic.py',96),
-  ('hash -> LBRACKET hashcontent RBRACKET','hash',3,'p_hash_tipo1','sintactic.py',106),
-  ('hashcontent -> string ASSIGN GREATER hashcontentvalue','hashcontent',4,'p_hashcontent_var1','sintactic.py',110),
-  ('hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent','hashcontent',6,'p_hashcontent_var2','sintactic.py',114),
-  ('hashcontentvalue -> factor','hashcontentvalue',1,'p_hashcontentvalue_var','sintactic.py',118),
-  ('hashcontentvalue -> string','hashcontentvalue',1,'p_hashcontentvalue_var','sintactic.py',119),
-  ('type -> STRING','type',1,'p_type_String','sintactic.py',125),
-  ('type -> ARRAY','type',1,'p_type_Array','sintactic.py',129),
-  ('type -> NEW','type',1,'p_type_new','sintactic.py',133),
+  ('instrucciones -> oputs','instrucciones',1,'p_instrucciones','sintactic.py',13),
+  ('instrucciones -> putss','instrucciones',1,'p_instrucciones','sintactic.py',14),
+  ('instrucciones -> putsenx','instrucciones',1,'p_instrucciones','sintactic.py',15),
+  ('instrucciones -> sentenIF','instrucciones',1,'p_instrucciones','sintactic.py',16),
+  ('boolean -> TRUE','boolean',1,'p_boolean','sintactic.py',23),
+  ('boolean -> FALSE','boolean',1,'p_boolean','sintactic.py',24),
+  ('boolean -> NIL','boolean',1,'p_boolean','sintactic.py',25),
+  ('oputs -> PUTS','oputs',1,'p_oputs','sintactic.py',31),
+  ('putss -> PUTS string','putss',2,'p_puts_String','sintactic.py',35),
+  ('putss -> PUTS cadena','putss',2,'p_puts_String','sintactic.py',36),
+  ('putss -> PRINT string','putss',2,'p_puts_String','sintactic.py',37),
+  ('putss -> PRINT cadena','putss',2,'p_puts_String','sintactic.py',38),
+  ('putsenx -> PUTS expression','putsenx',2,'p_puts_expression','sintactic.py',47),
+  ('putsenx -> PRINT expression','putsenx',2,'p_puts_expression','sintactic.py',48),
+  ('sentenIF -> IF comparador term','sentenIF',3,'p_if','sintactic.py',63),
+  ('comparador -> COMPARE','comparador',1,'p_comparador','sintactic.py',67),
+  ('comparador -> GREQUAL','comparador',1,'p_comparador','sintactic.py',68),
+  ('comparador -> LSEQUAL','comparador',1,'p_comparador','sintactic.py',69),
+  ('comparador -> NOTEQUAL','comparador',1,'p_comparador','sintactic.py',70),
+  ('comparador -> LESS','comparador',1,'p_comparador','sintactic.py',71),
+  ('comparador -> GREATER','comparador',1,'p_comparador','sintactic.py',72),
+  ('expression -> expression PLUS term','expression',3,'p_expression_plus','sintactic.py',81),
+  ('expression -> expression MINUS term','expression',3,'p_expression_minus','sintactic.py',85),
+  ('expression -> term','expression',1,'p_expression_term','sintactic.py',89),
+  ('term -> factor','term',1,'p_term_factor','sintactic.py',93),
+  ('factor -> NUMBER','factor',1,'p_factor_num','sintactic.py',97),
+  ('factor -> FLOAT','factor',1,'p_factor_num','sintactic.py',98),
+  ('factor -> MINUS NUMBER','factor',2,'p_factor_numnegative','sintactic.py',102),
+  ('factor -> MINUS FLOAT','factor',2,'p_factor_numnegative','sintactic.py',103),
+  ('string -> STRINGV','string',1,'p_string_str','sintactic.py',109),
+  ('cadena -> type POINT type','cadena',3,'p_cadena_forma1','sintactic.py',113),
+  ('cadena -> type POINT type LPARENTHESIS string RPARENTHESIS','cadena',6,'p_cadena_forma2','sintactic.py',117),
+  ('cadena -> type LPARENTHESIS string RPARENTHESIS','cadena',4,'p_cadena_forma3','sintactic.py',121),
+  ('arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS','arreglo',6,'p_arreglo_tipo1','sintactic.py',130),
+  ('arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS','arreglo',8,'p_arreglo_tipo2','sintactic.py',134),
+  ('arreglo -> type LSQBRACKET arraycontent RSQBRACKET','arreglo',4,'p_arreglo_tipo3','sintactic.py',138),
+  ('arraycontent -> factor','arraycontent',1,'p_arraycontent_var1','sintactic.py',142),
+  ('arraycontent -> string','arraycontent',1,'p_arraycontent_var1','sintactic.py',143),
+  ('arraycontent -> factor COMMA arraycontent','arraycontent',3,'p_arraycontent_var2','sintactic.py',147),
+  ('arraycontent -> string COMMA arraycontent','arraycontent',3,'p_arraycontent_var2','sintactic.py',148),
+  ('hash -> LBRACKET hashcontent RBRACKET','hash',3,'p_hash_tipo1','sintactic.py',158),
+  ('hashcontent -> string ASSIGN GREATER hashcontentvalue','hashcontent',4,'p_hashcontent_var1','sintactic.py',162),
+  ('hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent','hashcontent',6,'p_hashcontent_var2','sintactic.py',166),
+  ('hashcontentvalue -> factor','hashcontentvalue',1,'p_hashcontentvalue_var','sintactic.py',170),
+  ('hashcontentvalue -> string','hashcontentvalue',1,'p_hashcontentvalue_var','sintactic.py',171),
+  ('type -> STRING','type',1,'p_type_String','sintactic.py',177),
+  ('type -> ARRAY','type',1,'p_type_Array','sintactic.py',181),
+  ('type -> NEW','type',1,'p_type_new','sintactic.py',185),
 ]
