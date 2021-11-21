@@ -212,7 +212,7 @@ def inputLex(s):
         print(tok)
 
 
-file = open("-Analizador-Lexico-Ruby/archivo.txt", encoding="utf8")  
+file = open("archivo.txt", encoding="utf8")
 for line in file:
     inputLex(line)
     

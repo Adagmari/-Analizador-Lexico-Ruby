@@ -9,7 +9,9 @@ def p_instrucciones(p):
                         | arreglo
                         | string
                         | hash
-                        | boolean '''
+                        | boolean
+                        | variables
+                        | assigns'''
     p[0] = p[1]
 
 
@@ -22,7 +24,29 @@ def p_boolean(p):
     p[0] = p[1]
                 
 
+#VARIABLES
+def p_variables(p):
+   '''variables : IDLOCAL
+                | IDINSTANCE
+                | IDCLASS
+                | IDGLOBAL
+                '''
+   p[0] = p[1]
 
+#ASIGNACIONES
+
+def p_assigns(p):
+    '''assigns : variables ASSIGN expression
+                | variables ASSIGN variables
+                '''
+def p_assigns_plus(p):
+    '''assigns : variables ASSIGNPLUS expression
+                    | variables ASSIGNPLUS variables
+                    '''
+def p_assigns_min(p):
+    '''assigns : variables ASSIGNMIN expression
+                    | variables ASSIGNMIN variables
+                    '''
 #NÚMEROS Y OPERACIONES 
 
 def p_expression_plus(p):
@@ -50,6 +74,18 @@ def p_factor_numnegative(p):
     '''factor : MINUS NUMBER
               | MINUS FLOAT'''
     p[0] = p[1] + str(p[2])
+
+def p_expression_division(p):
+    'expression : expression DIVISION term'
+    p[0] = p[1] / p[3]
+
+def p_expression_mod(p):
+    'expression : expression MOD term'
+    p[0] = p[1] % p[3]
+
+def p_expression_mult(p):
+    'expression : expression MULT term'
+    p[0] = p[1] * p[3]
 
 #CADENAS
 
