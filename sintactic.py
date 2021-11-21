@@ -11,8 +11,12 @@ def p_instrucciones(p):
                         | hash
                         | boolean
                         | variables
-                        | assigns'''
-    p[0] = p[1]
+                        | assigns
+                        | oputs 
+                        | putss
+                        | putsenx 
+                        | sentenIF ''''''
+
 
 
 #BOOLEANOS
@@ -22,7 +26,48 @@ def p_boolean(p):
                 | FALSE
                 | NIL '''
     p[0] = p[1]
-                
+
+#IMPRESION      
+          
+def p_oputs(p):
+    '''oputs : PUTS  '''
+    p[0] = ''
+
+def p_puts_String(p):
+
+    ''' putss : PUTS string
+              | PUTS cadena
+              | PRINT string
+              | PRINT cadena
+            '''
+
+    p[0] = p[1] + '' + p[2]
+
+
+
+def p_puts_expression(p):
+    ''' putsenx : PUTS expression
+                | PRINT expression'''
+    p[0]= str(p[2])
+
+
+# IF
+
+
+def p_if(p):
+    ''' sentenIF : IF comparador term '''
+    p[0]= p[1] + p[2] + str(p[3])
+
+def p_comparador(p):
+    ''' comparador : COMPARE
+                   | GREQUAL 
+                   | LSEQUAL
+                   | NOTEQUAL
+                   | LESS
+                   | GREATER '''
+    p[0]= p[1]
+#OPERADORES
+
 
 #VARIABLES
 def p_variables(p):
