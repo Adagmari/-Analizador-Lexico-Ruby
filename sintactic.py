@@ -8,8 +8,19 @@ def p_instrucciones(p):
                         | cadena
                         | arreglo
                         | string
-                        | hash'''
+                        | hash
+                        | boolean '''
     p[0] = p[1]
+
+
+#BOOLEANOS
+
+def p_boolean(p):
+    '''boolean :  TRUE 
+                | FALSE '''
+    p[0] = p[1]
+                
+
 
 #NÚMEROS Y OPERACIONES 
 
@@ -120,6 +131,11 @@ def p_type_Array(p):
 def p_type_new(p):
     'type : NEW'
     p[0] = p[1]
+
+
+
+
+
 
 parser = yacc.yacc()
  
