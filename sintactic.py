@@ -16,8 +16,7 @@ def p_instrucciones(p):
                         | assigns
                         | oputs 
                         | putss
-                        | putsenx 
-
+                        | putsenx
                         | sentenIF
                         | comparador
                         | sentenWHILE '''
@@ -58,10 +57,6 @@ def p_puts_expression(p):
 
 
 
-# IF
-def p_if(p):
-    ''' sentenIF : IF comparador term '''
-    p[0]= p[1] + p[2] + str(p[3])
 
 #while
 def p_sentenwhile(p):
