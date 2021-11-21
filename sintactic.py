@@ -3,25 +3,33 @@ from main import tokens
 
 #INSTRUCCIÓN PRINCIPAL
 def p_instrucciones(p):
-    '''instrucciones : expression 
-                        | string
-                        | cadena
-                        | metodocadena
-                        | arreglo
-                        | metodosarreglo
-                        | hash
-                        | estructurasControl
-                        | boolean 
-                        | variables
-                        | assigns
-                        | oputs 
-                        | putss
-                        | putsenx
-                        | sentenIF
-                        | comparador
-                        | sentenWHILE '''
+    '''instrucciones : asignar
+                        | noasignar
+                         '''
+    p[0] = p[1]
+                        
+def p_asignar(p):
+    '''asignar : expression 
+                | string
+                | cadena
+                | metodocadena
+                | arreglo
+                | metodosarreglo
+                | hash
+                | metodohash
+                | boolean 
+                | variables
+                | assigns'''
+    p[0] = p[1]
 
 
+def p_noasignar(p):
+    '''noasignar : estructurasControl
+                    | oputs 
+                    | putss
+                    | putsenx 
+                    | sentenIF'''
+    p[0] = p[1]
 
 
 #BOOLEANOS
@@ -107,18 +115,22 @@ def p_assigns(p):
     '''assigns : variables ASSIGN expression
                 | variables ASSIGN variables
                 | variables ASSIGN boolean
+                | variables ASSIGN asignar
                 '''
+    p[0] = p[1] + p[2] + str(p[3])
 
 def p_assigns_plus(p):
     '''assigns : variables ASSIGNPLUS expression
                     | variables ASSIGNPLUS variables
 
                     '''
+    p[0] = p[1] + p[2] + str(p[3])
 
 def p_assigns_min(p):
     '''assigns : variables ASSIGNMIN expression
                     | variables ASSIGNMIN variables
                     '''
+    p[0] = p[1] + p[2] + str(p[3])
 
 #NÚMEROS Y OPERACIONES 
 
@@ -268,7 +280,14 @@ def p_hashcontentvalue_var(p):
 
 #METODOS HASH
 
-#cuando estén listas las variables
+def p_metodohash_length(p):
+    '''metodohash : variables ASSIGN hash POINT LENGTH'''
+    p[0] = p[1] + p[2] + p[3] + p[4] + p[5]
+
+
+def p_metodohash_length2(p):
+    '''metodohash : variables POINT LENGTH'''
+    p[0] = p[1] + p[2] + p[3]
 
 
 #ESTRUCTURAS DE CONTROL
@@ -291,11 +310,11 @@ def p_comparador(p):
 
 #FOR
 def p_estructurasControl_for1(p):
-    '''estructurasControl : FOR factor IN factor POINT POINT factor DO BREAK IF END'''
+    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO BREAK IF END'''
     p[0] = p[1] + str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] + p[10] + p[11]
 
 def p_estructurasControl_for2(p):
-    '''estructurasControl : FOR factor IN factor POINT POINT factor DO END'''
+    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO END'''
     p[0] = p[1] +str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] 
 
 
