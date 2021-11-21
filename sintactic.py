@@ -57,10 +57,27 @@ def p_puts_expression(p):
 
 
 
+#algoritmo
+def p_algoritmo(p):
+    '''algoritmo : expression
+                | metodocadena
+                | arreglo
+                | metodosarreglo
+                | hash
+                | estructurasControl
+                | boolean
+                | assigns
+                | sentenIF
+                | sentenWHILE '''
+
+
 
 #while
 def p_sentenwhile(p):
-    ''' sentenWHILE : WHILE comparador term END '''
+    ''' sentenWHILE : WHILE variables comparador  variables  algoritmo END
+                    | WHILE variables comparador  expression  algoritmo END
+                    | WHILE boolean  algoritmo END
+                    | WHILE variables algoritmo   END'''
     p[0] = p[1] + p[2] + str(p[3])
 
 def p_comparador(p):
