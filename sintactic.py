@@ -17,7 +17,8 @@ def p_instrucciones(p):
 
 def p_boolean(p):
     '''boolean :  TRUE 
-                | FALSE '''
+                | FALSE
+                | NIL '''
     p[0] = p[1]
                 
 
