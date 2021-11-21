@@ -45,6 +45,7 @@ reserved = {
 #Diana Ramírez{
 tokens = [
     'NUMBER',
+    'FLOAT',
     'STRINGV',
     'COMENTARIO',
     'IDLOCAL',
@@ -63,9 +64,9 @@ tokens = [
     'GREATER',
     'RPARENTHESIS',
     'LPARENTHESIS',
-    'ASSING',
-    'ASSINGPLUS',
-    'ASSINGMIN',
+    'ASSIGN',
+    'ASSIGNPLUS',
+    'ASSIGNMIN',
     'POINT',
     'COMMA',
     'SEMICOLON',
@@ -105,12 +106,12 @@ t_LESS = r'<'
 t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
-t_ASSING = r'='
+t_ASSIGN = r'='
 #Jeremy Ramírez}
 
 #-SANDY{
-t_ASSINGPLUS = r'\+='
-t_ASSINGMIN = r'\-='
+t_ASSIGNPLUS = r'\+='
+t_ASSIGNMIN = r'\-='
 #-SANDY}
 
 #Diana Ramírez{
@@ -168,9 +169,14 @@ def t_NUML(t):
      return t
        
 def t_NUMBER(t):
-     r'[-]?\d+(\.\d+)?'
+     r'\d+'
+     t.value= int(t.value)
      return t
 
+def t_FLOAT(t):
+     r'\d+(\.\d+)?'
+     t.value= float(t.value)
+     return t
 
 
 #Jeremy Ramírez}
