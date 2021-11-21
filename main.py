@@ -38,7 +38,10 @@ reserved = {
     'Hash':'HASH',
     'Array':'ARRAY',
     'String':'STRING',
-    'new':'NEW'
+    'new':'NEW',
+    'empty':'EMPTY',
+    'length':'LENGTH',
+    'index':'INDEX',
 }
 #Jeremy Ramírez}
 
@@ -83,7 +86,8 @@ tokens = [
     'COMIS',
     'COMID',
     'BSLASH',
-    'NUML'
+    'NUML',
+    'INTERROGATIVE'
     
 
     
@@ -131,10 +135,11 @@ t_NOTEQUAL = r'!='
 t_BSLASH = r'\\'
 t_COMIS = r'\''
 t_COMID = r'\"'
+t_INTERROGATIVE = r'\?'
 
 
 def t_STRINGV(t):
-    r'((\'[\w\W\s][^\']*\')|(\"[\w\W\s][^\"]*\"))'
+    r'((\'[\w\W\s]?[^\']*\')|(\"[\w\W\s]?[^\"]*\"))'
     t.value= str(t.value)
     return t
 #Diana Ramírez}
@@ -212,7 +217,7 @@ def inputLex(s):
         print(tok)
 
 
-file = open("-Analizador-Lexico-Ruby/archivo.txt", encoding="utf8")  
+file = open("archivo.txt", encoding="utf8")  
 for line in file:
     inputLex(line)
     
