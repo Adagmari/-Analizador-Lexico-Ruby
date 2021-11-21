@@ -11,7 +11,6 @@ Unused terminals:
     COMENTARIO
     COMID
     COMIS
-    COMPARE
     DEF
     DEFINED
     DO
@@ -22,24 +21,17 @@ Unused terminals:
     EXP
     FOR
     GETS
-    GREQUAL
     HASH
     IDENTIFIER
-    IF
     IN
-    LESS
-    LSEQUAL
     MODULE
     NEXT
     NOT
-    NOTEQUAL
     NOTS
     NUML
     OR
     ORS
-    PRINT
     PUTC
-    PUTS
     REDO
     RESCUE
     RETURN
@@ -61,58 +53,76 @@ Rule 5     instrucciones -> hash
 Rule 6     instrucciones -> boolean
 Rule 7     instrucciones -> variables
 Rule 8     instrucciones -> assigns
-Rule 9     boolean -> TRUE
-Rule 10    boolean -> FALSE
-Rule 11    boolean -> NIL
-Rule 12    variables -> IDLOCAL
-Rule 13    variables -> IDINSTANCE
-Rule 14    variables -> IDCLASS
-Rule 15    variables -> IDGLOBAL
-Rule 16    assigns -> variables ASSIGN expression
-Rule 17    assigns -> variables ASSIGN variables
-Rule 18    assigns -> variables ASSIGNPLUS expression
-Rule 19    assigns -> variables ASSIGNPLUS variables
-Rule 20    assigns -> variables ASSIGNMIN expression
-Rule 21    assigns -> variables ASSIGNMIN variables
-Rule 22    expression -> expression PLUS term
-Rule 23    expression -> expression MINUS term
-Rule 24    expression -> term
-Rule 25    term -> factor
-Rule 26    factor -> NUMBER
-Rule 27    factor -> FLOAT
-Rule 28    factor -> MINUS NUMBER
-Rule 29    factor -> MINUS FLOAT
-Rule 30    expression -> expression DIVISION term
-Rule 31    expression -> expression MOD term
-Rule 32    expression -> expression MULT term
-Rule 33    string -> STRINGV
-Rule 34    cadena -> type POINT type
-Rule 35    cadena -> type POINT type LPARENTHESIS string RPARENTHESIS
-Rule 36    cadena -> type LPARENTHESIS string RPARENTHESIS
-Rule 37    arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS
-Rule 38    arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
-Rule 39    arreglo -> type LSQBRACKET arraycontent RSQBRACKET
-Rule 40    arraycontent -> factor
-Rule 41    arraycontent -> string
-Rule 42    arraycontent -> factor COMMA arraycontent
-Rule 43    arraycontent -> string COMMA arraycontent
-Rule 44    hash -> LBRACKET hashcontent RBRACKET
-Rule 45    hashcontent -> string ASSIGN GREATER hashcontentvalue
-Rule 46    hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent
-Rule 47    hashcontentvalue -> factor
-Rule 48    hashcontentvalue -> string
-Rule 49    type -> STRING
-Rule 50    type -> ARRAY
-Rule 51    type -> NEW
+Rule 9     instrucciones -> oputs
+Rule 10    instrucciones -> putss
+Rule 11    instrucciones -> putsenx
+Rule 12    instrucciones -> sentenIF
+Rule 13    boolean -> TRUE
+Rule 14    boolean -> FALSE
+Rule 15    boolean -> NIL
+Rule 16    oputs -> PUTS
+Rule 17    putss -> PUTS string
+Rule 18    putss -> PUTS cadena
+Rule 19    putss -> PRINT string
+Rule 20    putss -> PRINT cadena
+Rule 21    putsenx -> PUTS expression
+Rule 22    putsenx -> PRINT expression
+Rule 23    sentenIF -> IF comparador term
+Rule 24    comparador -> COMPARE
+Rule 25    comparador -> GREQUAL
+Rule 26    comparador -> LSEQUAL
+Rule 27    comparador -> NOTEQUAL
+Rule 28    comparador -> LESS
+Rule 29    comparador -> GREATER
+Rule 30    variables -> IDLOCAL
+Rule 31    variables -> IDINSTANCE
+Rule 32    variables -> IDCLASS
+Rule 33    variables -> IDGLOBAL
+Rule 34    assigns -> variables ASSIGN expression
+Rule 35    assigns -> variables ASSIGN variables
+Rule 36    assigns -> variables ASSIGNPLUS expression
+Rule 37    assigns -> variables ASSIGNPLUS variables
+Rule 38    assigns -> variables ASSIGNMIN expression
+Rule 39    assigns -> variables ASSIGNMIN variables
+Rule 40    expression -> expression PLUS term
+Rule 41    expression -> expression MINUS term
+Rule 42    expression -> term
+Rule 43    term -> factor
+Rule 44    factor -> NUMBER
+Rule 45    factor -> FLOAT
+Rule 46    factor -> MINUS NUMBER
+Rule 47    factor -> MINUS FLOAT
+Rule 48    expression -> expression DIVISION term
+Rule 49    expression -> expression MOD term
+Rule 50    expression -> expression MULT term
+Rule 51    string -> STRINGV
+Rule 52    cadena -> type POINT type
+Rule 53    cadena -> type POINT type LPARENTHESIS string RPARENTHESIS
+Rule 54    cadena -> type LPARENTHESIS string RPARENTHESIS
+Rule 55    arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS
+Rule 56    arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
+Rule 57    arreglo -> type LSQBRACKET arraycontent RSQBRACKET
+Rule 58    arraycontent -> factor
+Rule 59    arraycontent -> string
+Rule 60    arraycontent -> factor COMMA arraycontent
+Rule 61    arraycontent -> string COMMA arraycontent
+Rule 62    hash -> LBRACKET hashcontent RBRACKET
+Rule 63    hashcontent -> string ASSIGN GREATER hashcontentvalue
+Rule 64    hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent
+Rule 65    hashcontentvalue -> factor
+Rule 66    hashcontentvalue -> string
+Rule 67    type -> STRING
+Rule 68    type -> ARRAY
+Rule 69    type -> NEW
 
 Terminals, with rules where they appear
 
 AND                  : 
 ANDS                 : 
-ARRAY                : 50
-ASSIGN               : 16 17 45 46
-ASSIGNMIN            : 20 21
-ASSIGNPLUS           : 18 19
+ARRAY                : 68
+ASSIGN               : 34 35 63 64
+ASSIGNMIN            : 38 39
+ASSIGNPLUS           : 36 37
 BREAK                : 
 BSLASH               : 
 CASE                 : 
@@ -120,66 +130,66 @@ CLASS                :
 COMENTARIO           : 
 COMID                : 
 COMIS                : 
-COMMA                : 38 42 43 46
-COMPARE              : 
+COMMA                : 56 60 61 64
+COMPARE              : 24
 DEF                  : 
 DEFINED              : 
-DIVISION             : 30
+DIVISION             : 48
 DO                   : 
 ELSE                 : 
 ELSIF                : 
 END                  : 
 ENSURE               : 
 EXP                  : 
-FALSE                : 10
-FLOAT                : 27 29
+FALSE                : 14
+FLOAT                : 45 47
 FOR                  : 
 GETS                 : 
-GREATER              : 45 46
-GREQUAL              : 
+GREATER              : 29 63 64
+GREQUAL              : 25
 HASH                 : 
-IDCLASS              : 14
+IDCLASS              : 32
 IDENTIFIER           : 
-IDGLOBAL             : 15
-IDINSTANCE           : 13
-IDLOCAL              : 12
-IF                   : 
+IDGLOBAL             : 33
+IDINSTANCE           : 31
+IDLOCAL              : 30
+IF                   : 23
 IN                   : 
-LBRACKET             : 44
-LESS                 : 
-LPARENTHESIS         : 35 36 37 38
-LSEQUAL              : 
-LSQBRACKET           : 39
-MINUS                : 23 28 29
-MOD                  : 31
+LBRACKET             : 62
+LESS                 : 28
+LPARENTHESIS         : 53 54 55 56
+LSEQUAL              : 26
+LSQBRACKET           : 57
+MINUS                : 41 46 47
+MOD                  : 49
 MODULE               : 
-MULT                 : 32
-NEW                  : 51
+MULT                 : 50
+NEW                  : 69
 NEXT                 : 
-NIL                  : 11
+NIL                  : 15
 NOT                  : 
-NOTEQUAL             : 
+NOTEQUAL             : 27
 NOTS                 : 
-NUMBER               : 26 28
+NUMBER               : 44 46
 NUML                 : 
 OR                   : 
 ORS                  : 
-PLUS                 : 22
-POINT                : 34 35 37 38
-PRINT                : 
+PLUS                 : 40
+POINT                : 52 53 55 56
+PRINT                : 19 20 22
 PUTC                 : 
-PUTS                 : 
-RBRACKET             : 44
+PUTS                 : 16 17 18 21
+RBRACKET             : 62
 REDO                 : 
 RESCUE               : 
 RETURN               : 
-RPARENTHESIS         : 35 36 37 38
-RSQBRACKET           : 39
+RPARENTHESIS         : 53 54 55 56
+RSQBRACKET           : 57
 SELF                 : 
 SEMICOLON            : 
-STRING               : 49
-STRINGV              : 33
-TRUE                 : 9
+STRING               : 67
+STRINGV              : 51
+TRUE                 : 13
 UNDEF                : 
 UNTIL                : 
 WHEN                 : 
@@ -188,21 +198,26 @@ error                :
 
 Nonterminals, with rules where they appear
 
-arraycontent         : 38 39 42 43
+arraycontent         : 56 57 60 61
 arreglo              : 3
 assigns              : 8
 boolean              : 6
-cadena               : 2
-expression           : 1 16 18 20 22 23 30 31 32
-factor               : 25 37 38 40 42 47
+cadena               : 2 18 20
+comparador           : 23
+expression           : 1 21 22 34 36 38 40 41 48 49 50
+factor               : 43 55 56 58 60 65
 hash                 : 5
-hashcontent          : 44 46
-hashcontentvalue     : 45 46
+hashcontent          : 62 64
+hashcontentvalue     : 63 64
 instrucciones        : 0
-string               : 4 35 36 41 43 45 46 48
-term                 : 22 23 24 30 31 32
-type                 : 34 34 35 35 36 37 37 38 38 39
-variables            : 7 16 17 17 18 19 19 20 21 21
+oputs                : 9
+putsenx              : 11
+putss                : 10
+sentenIF             : 12
+string               : 4 17 19 53 54 59 61 63 64 66
+term                 : 23 40 41 42 48 49 50
+type                 : 52 52 53 53 54 55 55 56 56 57
+variables            : 7 34 35 35 36 37 37 38 39 39
 
 Parsing method: LALR
 
@@ -217,57 +232,72 @@ state 0
     (6) instrucciones -> . boolean
     (7) instrucciones -> . variables
     (8) instrucciones -> . assigns
-    (22) expression -> . expression PLUS term
-    (23) expression -> . expression MINUS term
-    (24) expression -> . term
-    (30) expression -> . expression DIVISION term
-    (31) expression -> . expression MOD term
-    (32) expression -> . expression MULT term
-    (34) cadena -> . type POINT type
-    (35) cadena -> . type POINT type LPARENTHESIS string RPARENTHESIS
-    (36) cadena -> . type LPARENTHESIS string RPARENTHESIS
-    (37) arreglo -> . type POINT type LPARENTHESIS factor RPARENTHESIS
-    (38) arreglo -> . type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
-    (39) arreglo -> . type LSQBRACKET arraycontent RSQBRACKET
-    (33) string -> . STRINGV
-    (44) hash -> . LBRACKET hashcontent RBRACKET
-    (9) boolean -> . TRUE
-    (10) boolean -> . FALSE
-    (11) boolean -> . NIL
-    (12) variables -> . IDLOCAL
-    (13) variables -> . IDINSTANCE
-    (14) variables -> . IDCLASS
-    (15) variables -> . IDGLOBAL
-    (16) assigns -> . variables ASSIGN expression
-    (17) assigns -> . variables ASSIGN variables
-    (18) assigns -> . variables ASSIGNPLUS expression
-    (19) assigns -> . variables ASSIGNPLUS variables
-    (20) assigns -> . variables ASSIGNMIN expression
-    (21) assigns -> . variables ASSIGNMIN variables
-    (25) term -> . factor
-    (49) type -> . STRING
-    (50) type -> . ARRAY
-    (51) type -> . NEW
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (9) instrucciones -> . oputs
+    (10) instrucciones -> . putss
+    (11) instrucciones -> . putsenx
+    (12) instrucciones -> . sentenIF
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (52) cadena -> . type POINT type
+    (53) cadena -> . type POINT type LPARENTHESIS string RPARENTHESIS
+    (54) cadena -> . type LPARENTHESIS string RPARENTHESIS
+    (55) arreglo -> . type POINT type LPARENTHESIS factor RPARENTHESIS
+    (56) arreglo -> . type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
+    (57) arreglo -> . type LSQBRACKET arraycontent RSQBRACKET
+    (51) string -> . STRINGV
+    (62) hash -> . LBRACKET hashcontent RBRACKET
+    (13) boolean -> . TRUE
+    (14) boolean -> . FALSE
+    (15) boolean -> . NIL
+    (30) variables -> . IDLOCAL
+    (31) variables -> . IDINSTANCE
+    (32) variables -> . IDCLASS
+    (33) variables -> . IDGLOBAL
+    (34) assigns -> . variables ASSIGN expression
+    (35) assigns -> . variables ASSIGN variables
+    (36) assigns -> . variables ASSIGNPLUS expression
+    (37) assigns -> . variables ASSIGNPLUS variables
+    (38) assigns -> . variables ASSIGNMIN expression
+    (39) assigns -> . variables ASSIGNMIN variables
+    (16) oputs -> . PUTS
+    (17) putss -> . PUTS string
+    (18) putss -> . PUTS cadena
+    (19) putss -> . PRINT string
+    (20) putss -> . PRINT cadena
+    (21) putsenx -> . PUTS expression
+    (22) putsenx -> . PRINT expression
+    (23) sentenIF -> . IF comparador term
+    (43) term -> . factor
+    (67) type -> . STRING
+    (68) type -> . ARRAY
+    (69) type -> . NEW
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    STRINGV         shift and go to state 14
-    LBRACKET        shift and go to state 15
-    TRUE            shift and go to state 16
-    FALSE           shift and go to state 17
-    NIL             shift and go to state 18
-    IDLOCAL         shift and go to state 19
-    IDINSTANCE      shift and go to state 20
-    IDCLASS         shift and go to state 21
-    IDGLOBAL        shift and go to state 22
-    STRING          shift and go to state 23
-    ARRAY           shift and go to state 24
-    NEW             shift and go to state 25
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    STRINGV         shift and go to state 18
+    LBRACKET        shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    NIL             shift and go to state 22
+    IDLOCAL         shift and go to state 23
+    IDINSTANCE      shift and go to state 24
+    IDCLASS         shift and go to state 25
+    IDGLOBAL        shift and go to state 26
+    PUTS            shift and go to state 27
+    PRINT           shift and go to state 28
+    IF              shift and go to state 29
+    STRING          shift and go to state 30
+    ARRAY           shift and go to state 31
+    NEW             shift and go to state 32
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
     instrucciones                  shift and go to state 1
     expression                     shift and go to state 2
@@ -278,9 +308,13 @@ state 0
     boolean                        shift and go to state 7
     variables                      shift and go to state 8
     assigns                        shift and go to state 9
-    term                           shift and go to state 10
-    type                           shift and go to state 12
-    factor                         shift and go to state 13
+    oputs                          shift and go to state 10
+    putss                          shift and go to state 11
+    putsenx                        shift and go to state 12
+    sentenIF                       shift and go to state 13
+    term                           shift and go to state 14
+    type                           shift and go to state 16
+    factor                         shift and go to state 17
 
 state 1
 
@@ -291,18 +325,18 @@ state 1
 state 2
 
     (1) instrucciones -> expression .
-    (22) expression -> expression . PLUS term
-    (23) expression -> expression . MINUS term
-    (30) expression -> expression . DIVISION term
-    (31) expression -> expression . MOD term
-    (32) expression -> expression . MULT term
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
     $end            reduce using rule 1 (instrucciones -> expression .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    DIVISION        shift and go to state 30
-    MOD             shift and go to state 31
-    MULT            shift and go to state 32
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 3
@@ -343,17 +377,17 @@ state 7
 state 8
 
     (7) instrucciones -> variables .
-    (16) assigns -> variables . ASSIGN expression
-    (17) assigns -> variables . ASSIGN variables
-    (18) assigns -> variables . ASSIGNPLUS expression
-    (19) assigns -> variables . ASSIGNPLUS variables
-    (20) assigns -> variables . ASSIGNMIN expression
-    (21) assigns -> variables . ASSIGNMIN variables
+    (34) assigns -> variables . ASSIGN expression
+    (35) assigns -> variables . ASSIGN variables
+    (36) assigns -> variables . ASSIGNPLUS expression
+    (37) assigns -> variables . ASSIGNPLUS variables
+    (38) assigns -> variables . ASSIGNMIN expression
+    (39) assigns -> variables . ASSIGNMIN variables
 
     $end            reduce using rule 7 (instrucciones -> variables .)
-    ASSIGN          shift and go to state 33
-    ASSIGNPLUS      shift and go to state 34
-    ASSIGNMIN       shift and go to state 35
+    ASSIGN          shift and go to state 40
+    ASSIGNPLUS      shift and go to state 41
+    ASSIGNMIN       shift and go to state 42
 
 
 state 9
@@ -365,883 +399,1191 @@ state 9
 
 state 10
 
-    (24) expression -> term .
+    (9) instrucciones -> oputs .
 
-    PLUS            reduce using rule 24 (expression -> term .)
-    MINUS           reduce using rule 24 (expression -> term .)
-    DIVISION        reduce using rule 24 (expression -> term .)
-    MOD             reduce using rule 24 (expression -> term .)
-    MULT            reduce using rule 24 (expression -> term .)
-    $end            reduce using rule 24 (expression -> term .)
+    $end            reduce using rule 9 (instrucciones -> oputs .)
 
 
 state 11
 
-    (28) factor -> MINUS . NUMBER
-    (29) factor -> MINUS . FLOAT
+    (10) instrucciones -> putss .
 
-    NUMBER          shift and go to state 36
-    FLOAT           shift and go to state 37
+    $end            reduce using rule 10 (instrucciones -> putss .)
 
 
 state 12
 
-    (34) cadena -> type . POINT type
-    (35) cadena -> type . POINT type LPARENTHESIS string RPARENTHESIS
-    (36) cadena -> type . LPARENTHESIS string RPARENTHESIS
-    (37) arreglo -> type . POINT type LPARENTHESIS factor RPARENTHESIS
-    (38) arreglo -> type . POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
-    (39) arreglo -> type . LSQBRACKET arraycontent RSQBRACKET
+    (11) instrucciones -> putsenx .
 
-    POINT           shift and go to state 38
-    LPARENTHESIS    shift and go to state 39
-    LSQBRACKET      shift and go to state 40
+    $end            reduce using rule 11 (instrucciones -> putsenx .)
 
 
 state 13
 
-    (25) term -> factor .
+    (12) instrucciones -> sentenIF .
 
-    PLUS            reduce using rule 25 (term -> factor .)
-    MINUS           reduce using rule 25 (term -> factor .)
-    DIVISION        reduce using rule 25 (term -> factor .)
-    MOD             reduce using rule 25 (term -> factor .)
-    MULT            reduce using rule 25 (term -> factor .)
-    $end            reduce using rule 25 (term -> factor .)
+    $end            reduce using rule 12 (instrucciones -> sentenIF .)
 
 
 state 14
 
-    (33) string -> STRINGV .
+    (42) expression -> term .
 
-    $end            reduce using rule 33 (string -> STRINGV .)
-    ASSIGN          reduce using rule 33 (string -> STRINGV .)
-    RPARENTHESIS    reduce using rule 33 (string -> STRINGV .)
-    COMMA           reduce using rule 33 (string -> STRINGV .)
-    RSQBRACKET      reduce using rule 33 (string -> STRINGV .)
-    RBRACKET        reduce using rule 33 (string -> STRINGV .)
+    PLUS            reduce using rule 42 (expression -> term .)
+    MINUS           reduce using rule 42 (expression -> term .)
+    DIVISION        reduce using rule 42 (expression -> term .)
+    MOD             reduce using rule 42 (expression -> term .)
+    MULT            reduce using rule 42 (expression -> term .)
+    $end            reduce using rule 42 (expression -> term .)
 
 
 state 15
 
-    (44) hash -> LBRACKET . hashcontent RBRACKET
-    (45) hashcontent -> . string ASSIGN GREATER hashcontentvalue
-    (46) hashcontent -> . string ASSIGN GREATER hashcontentvalue COMMA hashcontent
-    (33) string -> . STRINGV
+    (46) factor -> MINUS . NUMBER
+    (47) factor -> MINUS . FLOAT
 
-    STRINGV         shift and go to state 14
+    NUMBER          shift and go to state 43
+    FLOAT           shift and go to state 44
 
-    hashcontent                    shift and go to state 41
-    string                         shift and go to state 42
 
 state 16
 
-    (9) boolean -> TRUE .
+    (52) cadena -> type . POINT type
+    (53) cadena -> type . POINT type LPARENTHESIS string RPARENTHESIS
+    (54) cadena -> type . LPARENTHESIS string RPARENTHESIS
+    (55) arreglo -> type . POINT type LPARENTHESIS factor RPARENTHESIS
+    (56) arreglo -> type . POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
+    (57) arreglo -> type . LSQBRACKET arraycontent RSQBRACKET
 
-    $end            reduce using rule 9 (boolean -> TRUE .)
+    POINT           shift and go to state 45
+    LPARENTHESIS    shift and go to state 46
+    LSQBRACKET      shift and go to state 47
 
 
 state 17
 
-    (10) boolean -> FALSE .
+    (43) term -> factor .
 
-    $end            reduce using rule 10 (boolean -> FALSE .)
+    PLUS            reduce using rule 43 (term -> factor .)
+    MINUS           reduce using rule 43 (term -> factor .)
+    DIVISION        reduce using rule 43 (term -> factor .)
+    MOD             reduce using rule 43 (term -> factor .)
+    MULT            reduce using rule 43 (term -> factor .)
+    $end            reduce using rule 43 (term -> factor .)
 
 
 state 18
 
-    (11) boolean -> NIL .
+    (51) string -> STRINGV .
 
-    $end            reduce using rule 11 (boolean -> NIL .)
+    $end            reduce using rule 51 (string -> STRINGV .)
+    ASSIGN          reduce using rule 51 (string -> STRINGV .)
+    RPARENTHESIS    reduce using rule 51 (string -> STRINGV .)
+    COMMA           reduce using rule 51 (string -> STRINGV .)
+    RSQBRACKET      reduce using rule 51 (string -> STRINGV .)
+    RBRACKET        reduce using rule 51 (string -> STRINGV .)
 
 
 state 19
 
-    (12) variables -> IDLOCAL .
+    (62) hash -> LBRACKET . hashcontent RBRACKET
+    (63) hashcontent -> . string ASSIGN GREATER hashcontentvalue
+    (64) hashcontent -> . string ASSIGN GREATER hashcontentvalue COMMA hashcontent
+    (51) string -> . STRINGV
 
-    ASSIGN          reduce using rule 12 (variables -> IDLOCAL .)
-    ASSIGNPLUS      reduce using rule 12 (variables -> IDLOCAL .)
-    ASSIGNMIN       reduce using rule 12 (variables -> IDLOCAL .)
-    $end            reduce using rule 12 (variables -> IDLOCAL .)
+    STRINGV         shift and go to state 18
 
+    hashcontent                    shift and go to state 48
+    string                         shift and go to state 49
 
 state 20
 
-    (13) variables -> IDINSTANCE .
+    (13) boolean -> TRUE .
 
-    ASSIGN          reduce using rule 13 (variables -> IDINSTANCE .)
-    ASSIGNPLUS      reduce using rule 13 (variables -> IDINSTANCE .)
-    ASSIGNMIN       reduce using rule 13 (variables -> IDINSTANCE .)
-    $end            reduce using rule 13 (variables -> IDINSTANCE .)
+    $end            reduce using rule 13 (boolean -> TRUE .)
 
 
 state 21
 
-    (14) variables -> IDCLASS .
+    (14) boolean -> FALSE .
 
-    ASSIGN          reduce using rule 14 (variables -> IDCLASS .)
-    ASSIGNPLUS      reduce using rule 14 (variables -> IDCLASS .)
-    ASSIGNMIN       reduce using rule 14 (variables -> IDCLASS .)
-    $end            reduce using rule 14 (variables -> IDCLASS .)
+    $end            reduce using rule 14 (boolean -> FALSE .)
 
 
 state 22
 
-    (15) variables -> IDGLOBAL .
+    (15) boolean -> NIL .
 
-    ASSIGN          reduce using rule 15 (variables -> IDGLOBAL .)
-    ASSIGNPLUS      reduce using rule 15 (variables -> IDGLOBAL .)
-    ASSIGNMIN       reduce using rule 15 (variables -> IDGLOBAL .)
-    $end            reduce using rule 15 (variables -> IDGLOBAL .)
+    $end            reduce using rule 15 (boolean -> NIL .)
 
 
 state 23
 
-    (49) type -> STRING .
+    (30) variables -> IDLOCAL .
 
-    POINT           reduce using rule 49 (type -> STRING .)
-    LPARENTHESIS    reduce using rule 49 (type -> STRING .)
-    LSQBRACKET      reduce using rule 49 (type -> STRING .)
-    $end            reduce using rule 49 (type -> STRING .)
+    ASSIGN          reduce using rule 30 (variables -> IDLOCAL .)
+    ASSIGNPLUS      reduce using rule 30 (variables -> IDLOCAL .)
+    ASSIGNMIN       reduce using rule 30 (variables -> IDLOCAL .)
+    $end            reduce using rule 30 (variables -> IDLOCAL .)
 
 
 state 24
 
-    (50) type -> ARRAY .
+    (31) variables -> IDINSTANCE .
 
-    POINT           reduce using rule 50 (type -> ARRAY .)
-    LPARENTHESIS    reduce using rule 50 (type -> ARRAY .)
-    LSQBRACKET      reduce using rule 50 (type -> ARRAY .)
-    $end            reduce using rule 50 (type -> ARRAY .)
+    ASSIGN          reduce using rule 31 (variables -> IDINSTANCE .)
+    ASSIGNPLUS      reduce using rule 31 (variables -> IDINSTANCE .)
+    ASSIGNMIN       reduce using rule 31 (variables -> IDINSTANCE .)
+    $end            reduce using rule 31 (variables -> IDINSTANCE .)
 
 
 state 25
 
-    (51) type -> NEW .
+    (32) variables -> IDCLASS .
 
-    POINT           reduce using rule 51 (type -> NEW .)
-    LPARENTHESIS    reduce using rule 51 (type -> NEW .)
-    LSQBRACKET      reduce using rule 51 (type -> NEW .)
-    $end            reduce using rule 51 (type -> NEW .)
+    ASSIGN          reduce using rule 32 (variables -> IDCLASS .)
+    ASSIGNPLUS      reduce using rule 32 (variables -> IDCLASS .)
+    ASSIGNMIN       reduce using rule 32 (variables -> IDCLASS .)
+    $end            reduce using rule 32 (variables -> IDCLASS .)
 
 
 state 26
 
-    (26) factor -> NUMBER .
+    (33) variables -> IDGLOBAL .
 
-    PLUS            reduce using rule 26 (factor -> NUMBER .)
-    MINUS           reduce using rule 26 (factor -> NUMBER .)
-    DIVISION        reduce using rule 26 (factor -> NUMBER .)
-    MOD             reduce using rule 26 (factor -> NUMBER .)
-    MULT            reduce using rule 26 (factor -> NUMBER .)
-    $end            reduce using rule 26 (factor -> NUMBER .)
-    COMMA           reduce using rule 26 (factor -> NUMBER .)
-    RSQBRACKET      reduce using rule 26 (factor -> NUMBER .)
-    RPARENTHESIS    reduce using rule 26 (factor -> NUMBER .)
-    RBRACKET        reduce using rule 26 (factor -> NUMBER .)
+    ASSIGN          reduce using rule 33 (variables -> IDGLOBAL .)
+    ASSIGNPLUS      reduce using rule 33 (variables -> IDGLOBAL .)
+    ASSIGNMIN       reduce using rule 33 (variables -> IDGLOBAL .)
+    $end            reduce using rule 33 (variables -> IDGLOBAL .)
 
 
 state 27
 
-    (27) factor -> FLOAT .
+    (16) oputs -> PUTS .
+    (17) putss -> PUTS . string
+    (18) putss -> PUTS . cadena
+    (21) putsenx -> PUTS . expression
+    (51) string -> . STRINGV
+    (52) cadena -> . type POINT type
+    (53) cadena -> . type POINT type LPARENTHESIS string RPARENTHESIS
+    (54) cadena -> . type LPARENTHESIS string RPARENTHESIS
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (67) type -> . STRING
+    (68) type -> . ARRAY
+    (69) type -> . NEW
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    PLUS            reduce using rule 27 (factor -> FLOAT .)
-    MINUS           reduce using rule 27 (factor -> FLOAT .)
-    DIVISION        reduce using rule 27 (factor -> FLOAT .)
-    MOD             reduce using rule 27 (factor -> FLOAT .)
-    MULT            reduce using rule 27 (factor -> FLOAT .)
-    $end            reduce using rule 27 (factor -> FLOAT .)
-    COMMA           reduce using rule 27 (factor -> FLOAT .)
-    RSQBRACKET      reduce using rule 27 (factor -> FLOAT .)
-    RPARENTHESIS    reduce using rule 27 (factor -> FLOAT .)
-    RBRACKET        reduce using rule 27 (factor -> FLOAT .)
+    $end            reduce using rule 16 (oputs -> PUTS .)
+    STRINGV         shift and go to state 18
+    STRING          shift and go to state 30
+    ARRAY           shift and go to state 31
+    NEW             shift and go to state 32
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    string                         shift and go to state 50
+    cadena                         shift and go to state 51
+    expression                     shift and go to state 52
+    type                           shift and go to state 53
+    term                           shift and go to state 14
+    factor                         shift and go to state 17
 
 state 28
 
-    (22) expression -> expression PLUS . term
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (19) putss -> PRINT . string
+    (20) putss -> PRINT . cadena
+    (22) putsenx -> PRINT . expression
+    (51) string -> . STRINGV
+    (52) cadena -> . type POINT type
+    (53) cadena -> . type POINT type LPARENTHESIS string RPARENTHESIS
+    (54) cadena -> . type LPARENTHESIS string RPARENTHESIS
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (67) type -> . STRING
+    (68) type -> . ARRAY
+    (69) type -> . NEW
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    STRINGV         shift and go to state 18
+    STRING          shift and go to state 30
+    ARRAY           shift and go to state 31
+    NEW             shift and go to state 32
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
-    term                           shift and go to state 43
-    factor                         shift and go to state 13
+    string                         shift and go to state 54
+    cadena                         shift and go to state 55
+    expression                     shift and go to state 56
+    type                           shift and go to state 53
+    term                           shift and go to state 14
+    factor                         shift and go to state 17
 
 state 29
 
-    (23) expression -> expression MINUS . term
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (23) sentenIF -> IF . comparador term
+    (24) comparador -> . COMPARE
+    (25) comparador -> . GREQUAL
+    (26) comparador -> . LSEQUAL
+    (27) comparador -> . NOTEQUAL
+    (28) comparador -> . LESS
+    (29) comparador -> . GREATER
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    COMPARE         shift and go to state 58
+    GREQUAL         shift and go to state 59
+    LSEQUAL         shift and go to state 60
+    NOTEQUAL        shift and go to state 61
+    LESS            shift and go to state 62
+    GREATER         shift and go to state 63
 
-    term                           shift and go to state 44
-    factor                         shift and go to state 13
+    comparador                     shift and go to state 57
 
 state 30
 
-    (30) expression -> expression DIVISION . term
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (67) type -> STRING .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    POINT           reduce using rule 67 (type -> STRING .)
+    LPARENTHESIS    reduce using rule 67 (type -> STRING .)
+    LSQBRACKET      reduce using rule 67 (type -> STRING .)
+    $end            reduce using rule 67 (type -> STRING .)
 
-    term                           shift and go to state 45
-    factor                         shift and go to state 13
 
 state 31
 
-    (31) expression -> expression MOD . term
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (68) type -> ARRAY .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    POINT           reduce using rule 68 (type -> ARRAY .)
+    LPARENTHESIS    reduce using rule 68 (type -> ARRAY .)
+    LSQBRACKET      reduce using rule 68 (type -> ARRAY .)
+    $end            reduce using rule 68 (type -> ARRAY .)
 
-    term                           shift and go to state 46
-    factor                         shift and go to state 13
 
 state 32
 
-    (32) expression -> expression MULT . term
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (69) type -> NEW .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    POINT           reduce using rule 69 (type -> NEW .)
+    LPARENTHESIS    reduce using rule 69 (type -> NEW .)
+    LSQBRACKET      reduce using rule 69 (type -> NEW .)
+    $end            reduce using rule 69 (type -> NEW .)
 
-    term                           shift and go to state 47
-    factor                         shift and go to state 13
 
 state 33
 
-    (16) assigns -> variables ASSIGN . expression
-    (17) assigns -> variables ASSIGN . variables
-    (22) expression -> . expression PLUS term
-    (23) expression -> . expression MINUS term
-    (24) expression -> . term
-    (30) expression -> . expression DIVISION term
-    (31) expression -> . expression MOD term
-    (32) expression -> . expression MULT term
-    (12) variables -> . IDLOCAL
-    (13) variables -> . IDINSTANCE
-    (14) variables -> . IDCLASS
-    (15) variables -> . IDGLOBAL
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (44) factor -> NUMBER .
 
-    IDLOCAL         shift and go to state 19
-    IDINSTANCE      shift and go to state 20
-    IDCLASS         shift and go to state 21
-    IDGLOBAL        shift and go to state 22
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    PLUS            reduce using rule 44 (factor -> NUMBER .)
+    MINUS           reduce using rule 44 (factor -> NUMBER .)
+    DIVISION        reduce using rule 44 (factor -> NUMBER .)
+    MOD             reduce using rule 44 (factor -> NUMBER .)
+    MULT            reduce using rule 44 (factor -> NUMBER .)
+    $end            reduce using rule 44 (factor -> NUMBER .)
+    COMMA           reduce using rule 44 (factor -> NUMBER .)
+    RSQBRACKET      reduce using rule 44 (factor -> NUMBER .)
+    RPARENTHESIS    reduce using rule 44 (factor -> NUMBER .)
+    RBRACKET        reduce using rule 44 (factor -> NUMBER .)
 
-    variables                      shift and go to state 48
-    expression                     shift and go to state 49
-    term                           shift and go to state 10
-    factor                         shift and go to state 13
 
 state 34
 
-    (18) assigns -> variables ASSIGNPLUS . expression
-    (19) assigns -> variables ASSIGNPLUS . variables
-    (22) expression -> . expression PLUS term
-    (23) expression -> . expression MINUS term
-    (24) expression -> . term
-    (30) expression -> . expression DIVISION term
-    (31) expression -> . expression MOD term
-    (32) expression -> . expression MULT term
-    (12) variables -> . IDLOCAL
-    (13) variables -> . IDINSTANCE
-    (14) variables -> . IDCLASS
-    (15) variables -> . IDGLOBAL
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (45) factor -> FLOAT .
 
-    IDLOCAL         shift and go to state 19
-    IDINSTANCE      shift and go to state 20
-    IDCLASS         shift and go to state 21
-    IDGLOBAL        shift and go to state 22
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    PLUS            reduce using rule 45 (factor -> FLOAT .)
+    MINUS           reduce using rule 45 (factor -> FLOAT .)
+    DIVISION        reduce using rule 45 (factor -> FLOAT .)
+    MOD             reduce using rule 45 (factor -> FLOAT .)
+    MULT            reduce using rule 45 (factor -> FLOAT .)
+    $end            reduce using rule 45 (factor -> FLOAT .)
+    COMMA           reduce using rule 45 (factor -> FLOAT .)
+    RSQBRACKET      reduce using rule 45 (factor -> FLOAT .)
+    RPARENTHESIS    reduce using rule 45 (factor -> FLOAT .)
+    RBRACKET        reduce using rule 45 (factor -> FLOAT .)
 
-    variables                      shift and go to state 50
-    expression                     shift and go to state 51
-    term                           shift and go to state 10
-    factor                         shift and go to state 13
 
 state 35
 
-    (20) assigns -> variables ASSIGNMIN . expression
-    (21) assigns -> variables ASSIGNMIN . variables
-    (22) expression -> . expression PLUS term
-    (23) expression -> . expression MINUS term
-    (24) expression -> . term
-    (30) expression -> . expression DIVISION term
-    (31) expression -> . expression MOD term
-    (32) expression -> . expression MULT term
-    (12) variables -> . IDLOCAL
-    (13) variables -> . IDINSTANCE
-    (14) variables -> . IDCLASS
-    (15) variables -> . IDGLOBAL
-    (25) term -> . factor
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (40) expression -> expression PLUS . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    IDLOCAL         shift and go to state 19
-    IDINSTANCE      shift and go to state 20
-    IDCLASS         shift and go to state 21
-    IDGLOBAL        shift and go to state 22
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
-    variables                      shift and go to state 52
-    expression                     shift and go to state 53
-    term                           shift and go to state 10
-    factor                         shift and go to state 13
+    term                           shift and go to state 64
+    factor                         shift and go to state 17
 
 state 36
 
-    (28) factor -> MINUS NUMBER .
+    (41) expression -> expression MINUS . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    PLUS            reduce using rule 28 (factor -> MINUS NUMBER .)
-    MINUS           reduce using rule 28 (factor -> MINUS NUMBER .)
-    DIVISION        reduce using rule 28 (factor -> MINUS NUMBER .)
-    MOD             reduce using rule 28 (factor -> MINUS NUMBER .)
-    MULT            reduce using rule 28 (factor -> MINUS NUMBER .)
-    $end            reduce using rule 28 (factor -> MINUS NUMBER .)
-    COMMA           reduce using rule 28 (factor -> MINUS NUMBER .)
-    RSQBRACKET      reduce using rule 28 (factor -> MINUS NUMBER .)
-    RPARENTHESIS    reduce using rule 28 (factor -> MINUS NUMBER .)
-    RBRACKET        reduce using rule 28 (factor -> MINUS NUMBER .)
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    term                           shift and go to state 65
+    factor                         shift and go to state 17
 
 state 37
 
-    (29) factor -> MINUS FLOAT .
+    (48) expression -> expression DIVISION . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    PLUS            reduce using rule 29 (factor -> MINUS FLOAT .)
-    MINUS           reduce using rule 29 (factor -> MINUS FLOAT .)
-    DIVISION        reduce using rule 29 (factor -> MINUS FLOAT .)
-    MOD             reduce using rule 29 (factor -> MINUS FLOAT .)
-    MULT            reduce using rule 29 (factor -> MINUS FLOAT .)
-    $end            reduce using rule 29 (factor -> MINUS FLOAT .)
-    COMMA           reduce using rule 29 (factor -> MINUS FLOAT .)
-    RSQBRACKET      reduce using rule 29 (factor -> MINUS FLOAT .)
-    RPARENTHESIS    reduce using rule 29 (factor -> MINUS FLOAT .)
-    RBRACKET        reduce using rule 29 (factor -> MINUS FLOAT .)
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    term                           shift and go to state 66
+    factor                         shift and go to state 17
 
 state 38
 
-    (34) cadena -> type POINT . type
-    (35) cadena -> type POINT . type LPARENTHESIS string RPARENTHESIS
-    (37) arreglo -> type POINT . type LPARENTHESIS factor RPARENTHESIS
-    (38) arreglo -> type POINT . type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
-    (49) type -> . STRING
-    (50) type -> . ARRAY
-    (51) type -> . NEW
+    (49) expression -> expression MOD . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    STRING          shift and go to state 23
-    ARRAY           shift and go to state 24
-    NEW             shift and go to state 25
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
-    type                           shift and go to state 54
+    term                           shift and go to state 67
+    factor                         shift and go to state 17
 
 state 39
 
-    (36) cadena -> type LPARENTHESIS . string RPARENTHESIS
-    (33) string -> . STRINGV
+    (50) expression -> expression MULT . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    STRINGV         shift and go to state 14
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
-    string                         shift and go to state 55
+    term                           shift and go to state 68
+    factor                         shift and go to state 17
 
 state 40
 
-    (39) arreglo -> type LSQBRACKET . arraycontent RSQBRACKET
-    (40) arraycontent -> . factor
-    (41) arraycontent -> . string
-    (42) arraycontent -> . factor COMMA arraycontent
-    (43) arraycontent -> . string COMMA arraycontent
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
-    (33) string -> . STRINGV
+    (34) assigns -> variables ASSIGN . expression
+    (35) assigns -> variables ASSIGN . variables
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (30) variables -> . IDLOCAL
+    (31) variables -> . IDINSTANCE
+    (32) variables -> . IDCLASS
+    (33) variables -> . IDGLOBAL
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
-    STRINGV         shift and go to state 14
+    IDLOCAL         shift and go to state 23
+    IDINSTANCE      shift and go to state 24
+    IDCLASS         shift and go to state 25
+    IDGLOBAL        shift and go to state 26
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
-    arraycontent                   shift and go to state 56
-    factor                         shift and go to state 57
-    string                         shift and go to state 58
+    variables                      shift and go to state 69
+    expression                     shift and go to state 70
+    term                           shift and go to state 14
+    factor                         shift and go to state 17
 
 state 41
 
-    (44) hash -> LBRACKET hashcontent . RBRACKET
+    (36) assigns -> variables ASSIGNPLUS . expression
+    (37) assigns -> variables ASSIGNPLUS . variables
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (30) variables -> . IDLOCAL
+    (31) variables -> . IDINSTANCE
+    (32) variables -> . IDCLASS
+    (33) variables -> . IDGLOBAL
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    RBRACKET        shift and go to state 59
+    IDLOCAL         shift and go to state 23
+    IDINSTANCE      shift and go to state 24
+    IDCLASS         shift and go to state 25
+    IDGLOBAL        shift and go to state 26
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    variables                      shift and go to state 71
+    expression                     shift and go to state 72
+    term                           shift and go to state 14
+    factor                         shift and go to state 17
 
 state 42
 
-    (45) hashcontent -> string . ASSIGN GREATER hashcontentvalue
-    (46) hashcontent -> string . ASSIGN GREATER hashcontentvalue COMMA hashcontent
+    (38) assigns -> variables ASSIGNMIN . expression
+    (39) assigns -> variables ASSIGNMIN . variables
+    (40) expression -> . expression PLUS term
+    (41) expression -> . expression MINUS term
+    (42) expression -> . term
+    (48) expression -> . expression DIVISION term
+    (49) expression -> . expression MOD term
+    (50) expression -> . expression MULT term
+    (30) variables -> . IDLOCAL
+    (31) variables -> . IDINSTANCE
+    (32) variables -> . IDCLASS
+    (33) variables -> . IDGLOBAL
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    ASSIGN          shift and go to state 60
+    IDLOCAL         shift and go to state 23
+    IDINSTANCE      shift and go to state 24
+    IDCLASS         shift and go to state 25
+    IDGLOBAL        shift and go to state 26
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    variables                      shift and go to state 73
+    expression                     shift and go to state 74
+    term                           shift and go to state 14
+    factor                         shift and go to state 17
 
 state 43
 
-    (22) expression -> expression PLUS term .
+    (46) factor -> MINUS NUMBER .
 
-    PLUS            reduce using rule 22 (expression -> expression PLUS term .)
-    MINUS           reduce using rule 22 (expression -> expression PLUS term .)
-    DIVISION        reduce using rule 22 (expression -> expression PLUS term .)
-    MOD             reduce using rule 22 (expression -> expression PLUS term .)
-    MULT            reduce using rule 22 (expression -> expression PLUS term .)
-    $end            reduce using rule 22 (expression -> expression PLUS term .)
+    PLUS            reduce using rule 46 (factor -> MINUS NUMBER .)
+    MINUS           reduce using rule 46 (factor -> MINUS NUMBER .)
+    DIVISION        reduce using rule 46 (factor -> MINUS NUMBER .)
+    MOD             reduce using rule 46 (factor -> MINUS NUMBER .)
+    MULT            reduce using rule 46 (factor -> MINUS NUMBER .)
+    $end            reduce using rule 46 (factor -> MINUS NUMBER .)
+    COMMA           reduce using rule 46 (factor -> MINUS NUMBER .)
+    RSQBRACKET      reduce using rule 46 (factor -> MINUS NUMBER .)
+    RPARENTHESIS    reduce using rule 46 (factor -> MINUS NUMBER .)
+    RBRACKET        reduce using rule 46 (factor -> MINUS NUMBER .)
 
 
 state 44
 
-    (23) expression -> expression MINUS term .
+    (47) factor -> MINUS FLOAT .
 
-    PLUS            reduce using rule 23 (expression -> expression MINUS term .)
-    MINUS           reduce using rule 23 (expression -> expression MINUS term .)
-    DIVISION        reduce using rule 23 (expression -> expression MINUS term .)
-    MOD             reduce using rule 23 (expression -> expression MINUS term .)
-    MULT            reduce using rule 23 (expression -> expression MINUS term .)
-    $end            reduce using rule 23 (expression -> expression MINUS term .)
+    PLUS            reduce using rule 47 (factor -> MINUS FLOAT .)
+    MINUS           reduce using rule 47 (factor -> MINUS FLOAT .)
+    DIVISION        reduce using rule 47 (factor -> MINUS FLOAT .)
+    MOD             reduce using rule 47 (factor -> MINUS FLOAT .)
+    MULT            reduce using rule 47 (factor -> MINUS FLOAT .)
+    $end            reduce using rule 47 (factor -> MINUS FLOAT .)
+    COMMA           reduce using rule 47 (factor -> MINUS FLOAT .)
+    RSQBRACKET      reduce using rule 47 (factor -> MINUS FLOAT .)
+    RPARENTHESIS    reduce using rule 47 (factor -> MINUS FLOAT .)
+    RBRACKET        reduce using rule 47 (factor -> MINUS FLOAT .)
 
 
 state 45
 
-    (30) expression -> expression DIVISION term .
+    (52) cadena -> type POINT . type
+    (53) cadena -> type POINT . type LPARENTHESIS string RPARENTHESIS
+    (55) arreglo -> type POINT . type LPARENTHESIS factor RPARENTHESIS
+    (56) arreglo -> type POINT . type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
+    (67) type -> . STRING
+    (68) type -> . ARRAY
+    (69) type -> . NEW
 
-    PLUS            reduce using rule 30 (expression -> expression DIVISION term .)
-    MINUS           reduce using rule 30 (expression -> expression DIVISION term .)
-    DIVISION        reduce using rule 30 (expression -> expression DIVISION term .)
-    MOD             reduce using rule 30 (expression -> expression DIVISION term .)
-    MULT            reduce using rule 30 (expression -> expression DIVISION term .)
-    $end            reduce using rule 30 (expression -> expression DIVISION term .)
+    STRING          shift and go to state 30
+    ARRAY           shift and go to state 31
+    NEW             shift and go to state 32
 
+    type                           shift and go to state 75
 
 state 46
 
-    (31) expression -> expression MOD term .
+    (54) cadena -> type LPARENTHESIS . string RPARENTHESIS
+    (51) string -> . STRINGV
 
-    PLUS            reduce using rule 31 (expression -> expression MOD term .)
-    MINUS           reduce using rule 31 (expression -> expression MOD term .)
-    DIVISION        reduce using rule 31 (expression -> expression MOD term .)
-    MOD             reduce using rule 31 (expression -> expression MOD term .)
-    MULT            reduce using rule 31 (expression -> expression MOD term .)
-    $end            reduce using rule 31 (expression -> expression MOD term .)
+    STRINGV         shift and go to state 18
 
+    string                         shift and go to state 76
 
 state 47
 
-    (32) expression -> expression MULT term .
+    (57) arreglo -> type LSQBRACKET . arraycontent RSQBRACKET
+    (58) arraycontent -> . factor
+    (59) arraycontent -> . string
+    (60) arraycontent -> . factor COMMA arraycontent
+    (61) arraycontent -> . string COMMA arraycontent
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+    (51) string -> . STRINGV
 
-    PLUS            reduce using rule 32 (expression -> expression MULT term .)
-    MINUS           reduce using rule 32 (expression -> expression MULT term .)
-    DIVISION        reduce using rule 32 (expression -> expression MULT term .)
-    MOD             reduce using rule 32 (expression -> expression MULT term .)
-    MULT            reduce using rule 32 (expression -> expression MULT term .)
-    $end            reduce using rule 32 (expression -> expression MULT term .)
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+    STRINGV         shift and go to state 18
 
+    arraycontent                   shift and go to state 77
+    factor                         shift and go to state 78
+    string                         shift and go to state 79
 
 state 48
 
-    (17) assigns -> variables ASSIGN variables .
+    (62) hash -> LBRACKET hashcontent . RBRACKET
 
-    $end            reduce using rule 17 (assigns -> variables ASSIGN variables .)
+    RBRACKET        shift and go to state 80
 
 
 state 49
 
-    (16) assigns -> variables ASSIGN expression .
-    (22) expression -> expression . PLUS term
-    (23) expression -> expression . MINUS term
-    (30) expression -> expression . DIVISION term
-    (31) expression -> expression . MOD term
-    (32) expression -> expression . MULT term
+    (63) hashcontent -> string . ASSIGN GREATER hashcontentvalue
+    (64) hashcontent -> string . ASSIGN GREATER hashcontentvalue COMMA hashcontent
 
-    $end            reduce using rule 16 (assigns -> variables ASSIGN expression .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    DIVISION        shift and go to state 30
-    MOD             shift and go to state 31
-    MULT            shift and go to state 32
+    ASSIGN          shift and go to state 81
 
 
 state 50
 
-    (19) assigns -> variables ASSIGNPLUS variables .
+    (17) putss -> PUTS string .
 
-    $end            reduce using rule 19 (assigns -> variables ASSIGNPLUS variables .)
+    $end            reduce using rule 17 (putss -> PUTS string .)
 
 
 state 51
 
-    (18) assigns -> variables ASSIGNPLUS expression .
-    (22) expression -> expression . PLUS term
-    (23) expression -> expression . MINUS term
-    (30) expression -> expression . DIVISION term
-    (31) expression -> expression . MOD term
-    (32) expression -> expression . MULT term
+    (18) putss -> PUTS cadena .
 
-    $end            reduce using rule 18 (assigns -> variables ASSIGNPLUS expression .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    DIVISION        shift and go to state 30
-    MOD             shift and go to state 31
-    MULT            shift and go to state 32
+    $end            reduce using rule 18 (putss -> PUTS cadena .)
 
 
 state 52
 
-    (21) assigns -> variables ASSIGNMIN variables .
+    (21) putsenx -> PUTS expression .
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
-    $end            reduce using rule 21 (assigns -> variables ASSIGNMIN variables .)
+    $end            reduce using rule 21 (putsenx -> PUTS expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 53
 
-    (20) assigns -> variables ASSIGNMIN expression .
-    (22) expression -> expression . PLUS term
-    (23) expression -> expression . MINUS term
-    (30) expression -> expression . DIVISION term
-    (31) expression -> expression . MOD term
-    (32) expression -> expression . MULT term
+    (52) cadena -> type . POINT type
+    (53) cadena -> type . POINT type LPARENTHESIS string RPARENTHESIS
+    (54) cadena -> type . LPARENTHESIS string RPARENTHESIS
 
-    $end            reduce using rule 20 (assigns -> variables ASSIGNMIN expression .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    DIVISION        shift and go to state 30
-    MOD             shift and go to state 31
-    MULT            shift and go to state 32
+    POINT           shift and go to state 82
+    LPARENTHESIS    shift and go to state 46
 
 
 state 54
 
-    (34) cadena -> type POINT type .
-    (35) cadena -> type POINT type . LPARENTHESIS string RPARENTHESIS
-    (37) arreglo -> type POINT type . LPARENTHESIS factor RPARENTHESIS
-    (38) arreglo -> type POINT type . LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
+    (19) putss -> PRINT string .
 
-    $end            reduce using rule 34 (cadena -> type POINT type .)
-    LPARENTHESIS    shift and go to state 61
+    $end            reduce using rule 19 (putss -> PRINT string .)
 
 
 state 55
 
-    (36) cadena -> type LPARENTHESIS string . RPARENTHESIS
+    (20) putss -> PRINT cadena .
 
-    RPARENTHESIS    shift and go to state 62
+    $end            reduce using rule 20 (putss -> PRINT cadena .)
 
 
 state 56
 
-    (39) arreglo -> type LSQBRACKET arraycontent . RSQBRACKET
+    (22) putsenx -> PRINT expression .
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
-    RSQBRACKET      shift and go to state 63
+    $end            reduce using rule 22 (putsenx -> PRINT expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 57
 
-    (40) arraycontent -> factor .
-    (42) arraycontent -> factor . COMMA arraycontent
+    (23) sentenIF -> IF comparador . term
+    (43) term -> . factor
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
 
-    RSQBRACKET      reduce using rule 40 (arraycontent -> factor .)
-    RPARENTHESIS    reduce using rule 40 (arraycontent -> factor .)
-    COMMA           shift and go to state 64
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
 
+    term                           shift and go to state 83
+    factor                         shift and go to state 17
 
 state 58
 
-    (41) arraycontent -> string .
-    (43) arraycontent -> string . COMMA arraycontent
+    (24) comparador -> COMPARE .
 
-    RSQBRACKET      reduce using rule 41 (arraycontent -> string .)
-    RPARENTHESIS    reduce using rule 41 (arraycontent -> string .)
-    COMMA           shift and go to state 65
+    NUMBER          reduce using rule 24 (comparador -> COMPARE .)
+    FLOAT           reduce using rule 24 (comparador -> COMPARE .)
+    MINUS           reduce using rule 24 (comparador -> COMPARE .)
 
 
 state 59
 
-    (44) hash -> LBRACKET hashcontent RBRACKET .
+    (25) comparador -> GREQUAL .
 
-    $end            reduce using rule 44 (hash -> LBRACKET hashcontent RBRACKET .)
+    NUMBER          reduce using rule 25 (comparador -> GREQUAL .)
+    FLOAT           reduce using rule 25 (comparador -> GREQUAL .)
+    MINUS           reduce using rule 25 (comparador -> GREQUAL .)
 
 
 state 60
 
-    (45) hashcontent -> string ASSIGN . GREATER hashcontentvalue
-    (46) hashcontent -> string ASSIGN . GREATER hashcontentvalue COMMA hashcontent
+    (26) comparador -> LSEQUAL .
 
-    GREATER         shift and go to state 66
+    NUMBER          reduce using rule 26 (comparador -> LSEQUAL .)
+    FLOAT           reduce using rule 26 (comparador -> LSEQUAL .)
+    MINUS           reduce using rule 26 (comparador -> LSEQUAL .)
 
 
 state 61
 
-    (35) cadena -> type POINT type LPARENTHESIS . string RPARENTHESIS
-    (37) arreglo -> type POINT type LPARENTHESIS . factor RPARENTHESIS
-    (38) arreglo -> type POINT type LPARENTHESIS . factor COMMA arraycontent RPARENTHESIS
-    (33) string -> . STRINGV
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
+    (27) comparador -> NOTEQUAL .
 
-    STRINGV         shift and go to state 14
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
+    NUMBER          reduce using rule 27 (comparador -> NOTEQUAL .)
+    FLOAT           reduce using rule 27 (comparador -> NOTEQUAL .)
+    MINUS           reduce using rule 27 (comparador -> NOTEQUAL .)
 
-    string                         shift and go to state 67
-    factor                         shift and go to state 68
 
 state 62
 
-    (36) cadena -> type LPARENTHESIS string RPARENTHESIS .
+    (28) comparador -> LESS .
 
-    $end            reduce using rule 36 (cadena -> type LPARENTHESIS string RPARENTHESIS .)
+    NUMBER          reduce using rule 28 (comparador -> LESS .)
+    FLOAT           reduce using rule 28 (comparador -> LESS .)
+    MINUS           reduce using rule 28 (comparador -> LESS .)
 
 
 state 63
 
-    (39) arreglo -> type LSQBRACKET arraycontent RSQBRACKET .
+    (29) comparador -> GREATER .
 
-    $end            reduce using rule 39 (arreglo -> type LSQBRACKET arraycontent RSQBRACKET .)
+    NUMBER          reduce using rule 29 (comparador -> GREATER .)
+    FLOAT           reduce using rule 29 (comparador -> GREATER .)
+    MINUS           reduce using rule 29 (comparador -> GREATER .)
 
 
 state 64
 
-    (42) arraycontent -> factor COMMA . arraycontent
-    (40) arraycontent -> . factor
-    (41) arraycontent -> . string
-    (42) arraycontent -> . factor COMMA arraycontent
-    (43) arraycontent -> . string COMMA arraycontent
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
-    (33) string -> . STRINGV
+    (40) expression -> expression PLUS term .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
-    STRINGV         shift and go to state 14
+    PLUS            reduce using rule 40 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 40 (expression -> expression PLUS term .)
+    DIVISION        reduce using rule 40 (expression -> expression PLUS term .)
+    MOD             reduce using rule 40 (expression -> expression PLUS term .)
+    MULT            reduce using rule 40 (expression -> expression PLUS term .)
+    $end            reduce using rule 40 (expression -> expression PLUS term .)
 
-    factor                         shift and go to state 57
-    arraycontent                   shift and go to state 69
-    string                         shift and go to state 58
 
 state 65
 
-    (43) arraycontent -> string COMMA . arraycontent
-    (40) arraycontent -> . factor
-    (41) arraycontent -> . string
-    (42) arraycontent -> . factor COMMA arraycontent
-    (43) arraycontent -> . string COMMA arraycontent
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
-    (33) string -> . STRINGV
+    (41) expression -> expression MINUS term .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
-    STRINGV         shift and go to state 14
+    PLUS            reduce using rule 41 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 41 (expression -> expression MINUS term .)
+    DIVISION        reduce using rule 41 (expression -> expression MINUS term .)
+    MOD             reduce using rule 41 (expression -> expression MINUS term .)
+    MULT            reduce using rule 41 (expression -> expression MINUS term .)
+    $end            reduce using rule 41 (expression -> expression MINUS term .)
 
-    string                         shift and go to state 58
-    arraycontent                   shift and go to state 70
-    factor                         shift and go to state 57
 
 state 66
 
-    (45) hashcontent -> string ASSIGN GREATER . hashcontentvalue
-    (46) hashcontent -> string ASSIGN GREATER . hashcontentvalue COMMA hashcontent
-    (47) hashcontentvalue -> . factor
-    (48) hashcontentvalue -> . string
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
-    (33) string -> . STRINGV
+    (48) expression -> expression DIVISION term .
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
-    STRINGV         shift and go to state 14
+    PLUS            reduce using rule 48 (expression -> expression DIVISION term .)
+    MINUS           reduce using rule 48 (expression -> expression DIVISION term .)
+    DIVISION        reduce using rule 48 (expression -> expression DIVISION term .)
+    MOD             reduce using rule 48 (expression -> expression DIVISION term .)
+    MULT            reduce using rule 48 (expression -> expression DIVISION term .)
+    $end            reduce using rule 48 (expression -> expression DIVISION term .)
 
-    string                         shift and go to state 71
-    hashcontentvalue               shift and go to state 72
-    factor                         shift and go to state 73
 
 state 67
 
-    (35) cadena -> type POINT type LPARENTHESIS string . RPARENTHESIS
+    (49) expression -> expression MOD term .
 
-    RPARENTHESIS    shift and go to state 74
+    PLUS            reduce using rule 49 (expression -> expression MOD term .)
+    MINUS           reduce using rule 49 (expression -> expression MOD term .)
+    DIVISION        reduce using rule 49 (expression -> expression MOD term .)
+    MOD             reduce using rule 49 (expression -> expression MOD term .)
+    MULT            reduce using rule 49 (expression -> expression MOD term .)
+    $end            reduce using rule 49 (expression -> expression MOD term .)
 
 
 state 68
 
-    (37) arreglo -> type POINT type LPARENTHESIS factor . RPARENTHESIS
-    (38) arreglo -> type POINT type LPARENTHESIS factor . COMMA arraycontent RPARENTHESIS
+    (50) expression -> expression MULT term .
 
-    RPARENTHESIS    shift and go to state 75
-    COMMA           shift and go to state 76
+    PLUS            reduce using rule 50 (expression -> expression MULT term .)
+    MINUS           reduce using rule 50 (expression -> expression MULT term .)
+    DIVISION        reduce using rule 50 (expression -> expression MULT term .)
+    MOD             reduce using rule 50 (expression -> expression MULT term .)
+    MULT            reduce using rule 50 (expression -> expression MULT term .)
+    $end            reduce using rule 50 (expression -> expression MULT term .)
 
 
 state 69
 
-    (42) arraycontent -> factor COMMA arraycontent .
+    (35) assigns -> variables ASSIGN variables .
 
-    RSQBRACKET      reduce using rule 42 (arraycontent -> factor COMMA arraycontent .)
-    RPARENTHESIS    reduce using rule 42 (arraycontent -> factor COMMA arraycontent .)
+    $end            reduce using rule 35 (assigns -> variables ASSIGN variables .)
 
 
 state 70
 
-    (43) arraycontent -> string COMMA arraycontent .
+    (34) assigns -> variables ASSIGN expression .
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
-    RSQBRACKET      reduce using rule 43 (arraycontent -> string COMMA arraycontent .)
-    RPARENTHESIS    reduce using rule 43 (arraycontent -> string COMMA arraycontent .)
+    $end            reduce using rule 34 (assigns -> variables ASSIGN expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 71
 
-    (48) hashcontentvalue -> string .
+    (37) assigns -> variables ASSIGNPLUS variables .
 
-    COMMA           reduce using rule 48 (hashcontentvalue -> string .)
-    RBRACKET        reduce using rule 48 (hashcontentvalue -> string .)
+    $end            reduce using rule 37 (assigns -> variables ASSIGNPLUS variables .)
 
 
 state 72
 
-    (45) hashcontent -> string ASSIGN GREATER hashcontentvalue .
-    (46) hashcontent -> string ASSIGN GREATER hashcontentvalue . COMMA hashcontent
+    (36) assigns -> variables ASSIGNPLUS expression .
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
-    RBRACKET        reduce using rule 45 (hashcontent -> string ASSIGN GREATER hashcontentvalue .)
-    COMMA           shift and go to state 77
+    $end            reduce using rule 36 (assigns -> variables ASSIGNPLUS expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 73
 
-    (47) hashcontentvalue -> factor .
+    (39) assigns -> variables ASSIGNMIN variables .
 
-    COMMA           reduce using rule 47 (hashcontentvalue -> factor .)
-    RBRACKET        reduce using rule 47 (hashcontentvalue -> factor .)
+    $end            reduce using rule 39 (assigns -> variables ASSIGNMIN variables .)
 
 
 state 74
 
-    (35) cadena -> type POINT type LPARENTHESIS string RPARENTHESIS .
+    (38) assigns -> variables ASSIGNMIN expression .
+    (40) expression -> expression . PLUS term
+    (41) expression -> expression . MINUS term
+    (48) expression -> expression . DIVISION term
+    (49) expression -> expression . MOD term
+    (50) expression -> expression . MULT term
 
-    $end            reduce using rule 35 (cadena -> type POINT type LPARENTHESIS string RPARENTHESIS .)
+    $end            reduce using rule 38 (assigns -> variables ASSIGNMIN expression .)
+    PLUS            shift and go to state 35
+    MINUS           shift and go to state 36
+    DIVISION        shift and go to state 37
+    MOD             shift and go to state 38
+    MULT            shift and go to state 39
 
 
 state 75
 
-    (37) arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS .
+    (52) cadena -> type POINT type .
+    (53) cadena -> type POINT type . LPARENTHESIS string RPARENTHESIS
+    (55) arreglo -> type POINT type . LPARENTHESIS factor RPARENTHESIS
+    (56) arreglo -> type POINT type . LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
 
-    $end            reduce using rule 37 (arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS .)
+    $end            reduce using rule 52 (cadena -> type POINT type .)
+    LPARENTHESIS    shift and go to state 84
 
 
 state 76
 
-    (38) arreglo -> type POINT type LPARENTHESIS factor COMMA . arraycontent RPARENTHESIS
-    (40) arraycontent -> . factor
-    (41) arraycontent -> . string
-    (42) arraycontent -> . factor COMMA arraycontent
-    (43) arraycontent -> . string COMMA arraycontent
-    (26) factor -> . NUMBER
-    (27) factor -> . FLOAT
-    (28) factor -> . MINUS NUMBER
-    (29) factor -> . MINUS FLOAT
-    (33) string -> . STRINGV
+    (54) cadena -> type LPARENTHESIS string . RPARENTHESIS
 
-    NUMBER          shift and go to state 26
-    FLOAT           shift and go to state 27
-    MINUS           shift and go to state 11
-    STRINGV         shift and go to state 14
+    RPARENTHESIS    shift and go to state 85
 
-    factor                         shift and go to state 57
-    arraycontent                   shift and go to state 78
-    string                         shift and go to state 58
 
 state 77
 
-    (46) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA . hashcontent
-    (45) hashcontent -> . string ASSIGN GREATER hashcontentvalue
-    (46) hashcontent -> . string ASSIGN GREATER hashcontentvalue COMMA hashcontent
-    (33) string -> . STRINGV
+    (57) arreglo -> type LSQBRACKET arraycontent . RSQBRACKET
 
-    STRINGV         shift and go to state 14
+    RSQBRACKET      shift and go to state 86
 
-    string                         shift and go to state 42
-    hashcontent                    shift and go to state 79
 
 state 78
 
-    (38) arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent . RPARENTHESIS
+    (58) arraycontent -> factor .
+    (60) arraycontent -> factor . COMMA arraycontent
 
-    RPARENTHESIS    shift and go to state 80
+    RSQBRACKET      reduce using rule 58 (arraycontent -> factor .)
+    RPARENTHESIS    reduce using rule 58 (arraycontent -> factor .)
+    COMMA           shift and go to state 87
 
 
 state 79
 
-    (46) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .
+    (59) arraycontent -> string .
+    (61) arraycontent -> string . COMMA arraycontent
 
-    RBRACKET        reduce using rule 46 (hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .)
+    RSQBRACKET      reduce using rule 59 (arraycontent -> string .)
+    RPARENTHESIS    reduce using rule 59 (arraycontent -> string .)
+    COMMA           shift and go to state 88
 
 
 state 80
 
-    (38) arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .
+    (62) hash -> LBRACKET hashcontent RBRACKET .
 
-    $end            reduce using rule 38 (arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .)
+    $end            reduce using rule 62 (hash -> LBRACKET hashcontent RBRACKET .)
+
+
+state 81
+
+    (63) hashcontent -> string ASSIGN . GREATER hashcontentvalue
+    (64) hashcontent -> string ASSIGN . GREATER hashcontentvalue COMMA hashcontent
+
+    GREATER         shift and go to state 89
+
+
+state 82
+
+    (52) cadena -> type POINT . type
+    (53) cadena -> type POINT . type LPARENTHESIS string RPARENTHESIS
+    (67) type -> . STRING
+    (68) type -> . ARRAY
+    (69) type -> . NEW
+
+    STRING          shift and go to state 30
+    ARRAY           shift and go to state 31
+    NEW             shift and go to state 32
+
+    type                           shift and go to state 90
+
+state 83
+
+    (23) sentenIF -> IF comparador term .
+
+    $end            reduce using rule 23 (sentenIF -> IF comparador term .)
+
+
+state 84
+
+    (53) cadena -> type POINT type LPARENTHESIS . string RPARENTHESIS
+    (55) arreglo -> type POINT type LPARENTHESIS . factor RPARENTHESIS
+    (56) arreglo -> type POINT type LPARENTHESIS . factor COMMA arraycontent RPARENTHESIS
+    (51) string -> . STRINGV
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+
+    STRINGV         shift and go to state 18
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+
+    string                         shift and go to state 91
+    factor                         shift and go to state 92
+
+state 85
+
+    (54) cadena -> type LPARENTHESIS string RPARENTHESIS .
+
+    $end            reduce using rule 54 (cadena -> type LPARENTHESIS string RPARENTHESIS .)
+
+
+state 86
+
+    (57) arreglo -> type LSQBRACKET arraycontent RSQBRACKET .
+
+    $end            reduce using rule 57 (arreglo -> type LSQBRACKET arraycontent RSQBRACKET .)
+
+
+state 87
+
+    (60) arraycontent -> factor COMMA . arraycontent
+    (58) arraycontent -> . factor
+    (59) arraycontent -> . string
+    (60) arraycontent -> . factor COMMA arraycontent
+    (61) arraycontent -> . string COMMA arraycontent
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+    (51) string -> . STRINGV
+
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+    STRINGV         shift and go to state 18
+
+    factor                         shift and go to state 78
+    arraycontent                   shift and go to state 93
+    string                         shift and go to state 79
+
+state 88
+
+    (61) arraycontent -> string COMMA . arraycontent
+    (58) arraycontent -> . factor
+    (59) arraycontent -> . string
+    (60) arraycontent -> . factor COMMA arraycontent
+    (61) arraycontent -> . string COMMA arraycontent
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+    (51) string -> . STRINGV
+
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+    STRINGV         shift and go to state 18
+
+    string                         shift and go to state 79
+    arraycontent                   shift and go to state 94
+    factor                         shift and go to state 78
+
+state 89
+
+    (63) hashcontent -> string ASSIGN GREATER . hashcontentvalue
+    (64) hashcontent -> string ASSIGN GREATER . hashcontentvalue COMMA hashcontent
+    (65) hashcontentvalue -> . factor
+    (66) hashcontentvalue -> . string
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+    (51) string -> . STRINGV
+
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+    STRINGV         shift and go to state 18
+
+    string                         shift and go to state 95
+    hashcontentvalue               shift and go to state 96
+    factor                         shift and go to state 97
+
+state 90
+
+    (52) cadena -> type POINT type .
+    (53) cadena -> type POINT type . LPARENTHESIS string RPARENTHESIS
+
+    $end            reduce using rule 52 (cadena -> type POINT type .)
+    LPARENTHESIS    shift and go to state 98
+
+
+state 91
+
+    (53) cadena -> type POINT type LPARENTHESIS string . RPARENTHESIS
+
+    RPARENTHESIS    shift and go to state 99
+
+
+state 92
+
+    (55) arreglo -> type POINT type LPARENTHESIS factor . RPARENTHESIS
+    (56) arreglo -> type POINT type LPARENTHESIS factor . COMMA arraycontent RPARENTHESIS
+
+    RPARENTHESIS    shift and go to state 100
+    COMMA           shift and go to state 101
+
+
+state 93
+
+    (60) arraycontent -> factor COMMA arraycontent .
+
+    RSQBRACKET      reduce using rule 60 (arraycontent -> factor COMMA arraycontent .)
+    RPARENTHESIS    reduce using rule 60 (arraycontent -> factor COMMA arraycontent .)
+
+
+state 94
+
+    (61) arraycontent -> string COMMA arraycontent .
+
+    RSQBRACKET      reduce using rule 61 (arraycontent -> string COMMA arraycontent .)
+    RPARENTHESIS    reduce using rule 61 (arraycontent -> string COMMA arraycontent .)
+
+
+state 95
+
+    (66) hashcontentvalue -> string .
+
+    COMMA           reduce using rule 66 (hashcontentvalue -> string .)
+    RBRACKET        reduce using rule 66 (hashcontentvalue -> string .)
+
+
+state 96
+
+    (63) hashcontent -> string ASSIGN GREATER hashcontentvalue .
+    (64) hashcontent -> string ASSIGN GREATER hashcontentvalue . COMMA hashcontent
+
+    RBRACKET        reduce using rule 63 (hashcontent -> string ASSIGN GREATER hashcontentvalue .)
+    COMMA           shift and go to state 102
+
+
+state 97
+
+    (65) hashcontentvalue -> factor .
+
+    COMMA           reduce using rule 65 (hashcontentvalue -> factor .)
+    RBRACKET        reduce using rule 65 (hashcontentvalue -> factor .)
+
+
+state 98
+
+    (53) cadena -> type POINT type LPARENTHESIS . string RPARENTHESIS
+    (51) string -> . STRINGV
+
+    STRINGV         shift and go to state 18
+
+    string                         shift and go to state 91
+
+state 99
+
+    (53) cadena -> type POINT type LPARENTHESIS string RPARENTHESIS .
+
+    $end            reduce using rule 53 (cadena -> type POINT type LPARENTHESIS string RPARENTHESIS .)
+
+
+state 100
+
+    (55) arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS .
+
+    $end            reduce using rule 55 (arreglo -> type POINT type LPARENTHESIS factor RPARENTHESIS .)
+
+
+state 101
+
+    (56) arreglo -> type POINT type LPARENTHESIS factor COMMA . arraycontent RPARENTHESIS
+    (58) arraycontent -> . factor
+    (59) arraycontent -> . string
+    (60) arraycontent -> . factor COMMA arraycontent
+    (61) arraycontent -> . string COMMA arraycontent
+    (44) factor -> . NUMBER
+    (45) factor -> . FLOAT
+    (46) factor -> . MINUS NUMBER
+    (47) factor -> . MINUS FLOAT
+    (51) string -> . STRINGV
+
+    NUMBER          shift and go to state 33
+    FLOAT           shift and go to state 34
+    MINUS           shift and go to state 15
+    STRINGV         shift and go to state 18
+
+    factor                         shift and go to state 78
+    arraycontent                   shift and go to state 103
+    string                         shift and go to state 79
+
+state 102
+
+    (64) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA . hashcontent
+    (63) hashcontent -> . string ASSIGN GREATER hashcontentvalue
+    (64) hashcontent -> . string ASSIGN GREATER hashcontentvalue COMMA hashcontent
+    (51) string -> . STRINGV
+
+    STRINGV         shift and go to state 18
+
+    string                         shift and go to state 49
+    hashcontent                    shift and go to state 104
+
+state 103
+
+    (56) arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent . RPARENTHESIS
+
+    RPARENTHESIS    shift and go to state 105
+
+
+state 104
+
+    (64) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .
+
+    RBRACKET        reduce using rule 64 (hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .)
+
+
+state 105
+
+    (56) arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .
+
+    $end            reduce using rule 56 (arreglo -> type POINT type LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .)
 

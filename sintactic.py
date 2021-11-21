@@ -15,7 +15,7 @@ def p_instrucciones(p):
                         | oputs 
                         | putss
                         | putsenx 
-                        | sentenIF ''''''
+                        | sentenIF '''
 
 
 
