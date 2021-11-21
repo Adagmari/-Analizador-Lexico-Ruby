@@ -86,8 +86,7 @@ def p_arraycontent_var2(p):
 
 #CADENAS MÉTODOS 
 
-def p_metodocadena_empty(p):
-    
+#def p_metodocadena_empty
 
 #HASH
 
