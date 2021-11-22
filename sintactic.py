@@ -29,7 +29,10 @@ def p_noasignar(p):
                     | putss
                     | putsenx 
                     | sentenIF
-                    | sentenWHILE'''
+                    | sentenifp
+                    | sentenifelse
+                    | sentenWHILE
+                    | funcion1'''
     p[0] = p[1]
 
 
@@ -77,6 +80,9 @@ def p_algoritmo(p):
                 | boolean
                 | assigns
                 | sentenIF
+                | sentenifp
+                | sentenifelse
+                | variables
                 | sentenWHILE '''
     p[0]= p[1]
 
@@ -100,8 +106,19 @@ def p_comparador(p):
     p[0]= p[1]
 
 #OPERADORES
+# if vida==0
+def p_if(p):
+    ''' sentenIF : IF variables comparador term '''
+    p[0]= p[1] + p[2] + p[3]+ str(p[4]) 
 
+# if vida === 0 algoritmo end
+def p_vif(p):
+    ''' sentenifp : IF variables comparador term algoritmo END'''
+    p[0]
 
+def p_if_else(p):
+    ''' sentenifelse : IF variables comparador term algoritmo ELSE algoritmo END'''
+    p[0]
 #VARIABLES
 def p_variables(p):
    '''variables : IDLOCAL
@@ -296,9 +313,7 @@ def p_metodohash_length2(p):
 
 # IF
 
-def p_if(p):
-    ''' sentenIF : IF comparador term '''
-    p[0]= p[1] + p[2] + str(p[3])
+
 
 def p_comparador(p):
     ''' comparador : COMPARE
@@ -335,6 +350,16 @@ def p_forcontentvalue_var(p):
     p[0] = str(p[1])
 
 
+
+#FUNCIONES
+def p_funcion1(p):
+    ''' funcion1 : DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END
+                 | DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo END'''
+    p[0]
+
+def p_funcioncontent(p):
+    ''' fcontenido : variables
+                  |   variables COMMA fcontenido'''
 
 parser = yacc.yacc()
  
