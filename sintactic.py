@@ -87,6 +87,7 @@ def p_algoritmo(p):
                 | sentenifelse
                 | variables
                 | sentenWHILE '''
+    p[0]= p[1]
 
 
 
@@ -329,12 +330,28 @@ def p_comparador(p):
 
 #FOR
 def p_estructurasControl_for1(p):
-    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO BREAK IF END'''
-    p[0] = p[1] + str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] + p[10] + p[11]
+    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK IF forcontentvalue END'''
+    p[0] = p[1] + str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] + p[10] + p[11] + p[12] + p[13]
 
 def p_estructurasControl_for2(p):
-    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO END'''
-    p[0] = p[1] +str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] 
+    '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO forcontent END'''
+    p[0] = p[1] +str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] + p[10] 
+
+
+
+def p_forcontent_var1(p):
+    '''forcontent : forcontentvalue'''
+    p[0] = p[1]
+
+def p_forcontent_var2(p):
+    '''forcontent : forcontentvalue forcontent'''
+    p[0] = p[1] + p[2]
+
+def p_forcontentvalue_var(p):
+    '''forcontentvalue : expression
+                        | algoritmo'''
+    p[0] = str(p[1])
+
 
 
 #FUNCIONES
