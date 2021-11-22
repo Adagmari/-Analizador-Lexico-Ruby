@@ -34,7 +34,9 @@ def p_noasignar(p):
                     | sentenWHILE
                     | funcion1
                     | funcion2
-                    | funcion3'''
+                    | funcion3
+                    | ogets
+                    | getsr'''
 
     p[0] = p[1]
 
@@ -412,9 +414,19 @@ def p_funcion3(p):
 #def sumar(*hola) 1 + 2 end
 #sandy}
 
+#LECTURA DE DATOS
+def p_lectura(p):
+    '''ogets : GETS'''
+    p[0]=''
+
+def p_lectura2(p):
+    ''' getsr : IDLOCAL ASSIGN GETS'''
+    p[0]
+
 
 parser = yacc.yacc()
  
+
 while True:
     try:
         s = input('calc > ')
