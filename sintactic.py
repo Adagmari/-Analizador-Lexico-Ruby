@@ -157,9 +157,18 @@ def p_expression_plus(p):
     'expression : expression PLUS term'
     p[0] = p[1] + p[3]
 
+def p_expression_plusVAR(p):
+    'expression : expression PLUS variables'
+    p[0] = p[1] + p[2] + p[3]
+
+def p_expression_minusVAR(p):
+    'expression : expression MINUS variables'
+    p[0] = p[1] + p[2] + p[3]
+
 def p_expression_minus(p):
     'expression : expression MINUS term'
     p[0] = p[1] - p[3]
+
 
 def p_expression_term(p):
     'expression : term'
@@ -169,9 +178,13 @@ def p_term_factor(p):
     'term : factor'
     p[0] = p[1]
 
+def p_term_variable(p):
+    'term : variables'
+    p[0] = p[1]
+
 def p_factor_num(p):
     '''factor : NUMBER
-              | FLOAT'''
+                | FLOAT'''
     p[0] = p[1]
 
 def p_factor_numnegative(p):

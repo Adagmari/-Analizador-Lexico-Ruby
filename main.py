@@ -169,6 +169,11 @@ def t_IDENTIFIER(t):
 
 #Jeremy Ramírez{
 
+def t_FLOAT(t):
+     r'(\d+\.\d+)'
+     t.value= float(t.value)
+     return t
+     
 def t_NUML(t):
      r'([0-9]{3}_?)+'
      return t
@@ -178,10 +183,6 @@ def t_NUMBER(t):
      t.value= int(t.value)
      return t
 
-def t_FLOAT(t):
-     r'\d+(\.\d+)?'
-     t.value= float(t.value)
-     return t
 
 
 #Jeremy Ramírez}
