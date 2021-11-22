@@ -32,7 +32,10 @@ def p_noasignar(p):
                     | sentenifp
                     | sentenifelse
                     | sentenWHILE
-                    | funcion1'''
+                    | funcion1
+                    | funcion2
+                    | funcion3'''
+
     p[0] = p[1]
 
 
@@ -70,6 +73,7 @@ def p_puts_expression(p):
 
 
 #algoritmo
+#sandy, jeremy y diana {
 def p_algoritmo(p):
     '''algoritmo : expression
                 | metodocadena
@@ -85,16 +89,18 @@ def p_algoritmo(p):
                 | variables
                 | sentenWHILE '''
     p[0]= p[1]
+#sandy, jeremy y diana }
 
 
-
+#sandy{
 #while
 def p_sentenwhile(p):
     ''' sentenWHILE : WHILE variables comparador  variables  algoritmo END
                     | WHILE variables comparador  expression  algoritmo END
                     | WHILE boolean  algoritmo END
                     | WHILE variables algoritmo   END'''
-    p[0] = p[1] + p[2] + str(p[3])
+    #p[0] = p[1] + p[2] + str(p[3])
+#sandy}
 
 def p_comparador(p):
     ''' comparador : COMPARE
@@ -119,6 +125,9 @@ def p_vif(p):
 def p_if_else(p):
     ''' sentenifelse : IF variables comparador term algoritmo ELSE algoritmo END'''
     p[0]
+
+
+#sandy{
 #VARIABLES
 def p_variables(p):
    '''variables : IDLOCAL
@@ -150,11 +159,14 @@ def p_assigns_min(p):
                     | variables ASSIGNMIN variables
                     '''
     p[0] = p[1] + p[2] + str(p[3])
+#sandy}
+
+
 
 #NÚMEROS Y OPERACIONES 
 
 def p_expression_plus(p):
-    'expression : expression PLUS term'
+    'expression : expression PLUS term '
     p[0] = p[1] + p[3]
 
 def p_expression_plusVAR(p):
@@ -196,6 +208,7 @@ def p_expression_division(p):
     'expression : expression DIVISION term'
     p[0] = p[1] / p[3]
 
+#sandy {
 def p_expression_mod(p):
     'expression : expression MOD term'
     p[0] = p[1] % p[3]
@@ -207,6 +220,7 @@ def p_expression_mult(p):
 def p_expression_exp(p):
     'expression : expression EXP term'
     p[0] = p[1] ** p[3]
+#sandy}
 
 #CADENAS
 
@@ -373,6 +387,31 @@ def p_funcion1(p):
 def p_funcioncontent(p):
     ''' fcontenido : variables
                   |   variables COMMA fcontenido'''
+
+#sandy{
+def p_values(p):
+    ''' values : term
+                | boolean
+                | cadena
+                | arreglo
+                '''
+def p_valuedefect(p):
+    ''' valuedefect : variables ASSIGN values
+                    | variables COMMA fcontenido
+                    | variables COMMA valuedefect'''
+def p_funcion2(p):
+    ''' funcion2 : DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN variables END
+                | DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo END'''
+    p[0]
+#def sumar(num1, num2 = 15) 1 + 2 end
+
+def p_funcion3(p):
+    ''' funcion3 : DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN variables END
+                | DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo END'''
+    p[0]
+#def sumar(*hola) 1 + 2 end
+#sandy}
+
 
 parser = yacc.yacc()
  
