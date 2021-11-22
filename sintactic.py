@@ -73,6 +73,7 @@ def p_puts_expression(p):
 
 
 #algoritmo
+#sandy, jeremy y diana {
 def p_algoritmo(p):
     '''algoritmo : expression
                 | metodocadena
@@ -88,9 +89,10 @@ def p_algoritmo(p):
                 | variables
                 | sentenWHILE '''
     p[0]= p[1]
+#sandy, jeremy y diana }
 
 
-
+#sandy{
 #while
 def p_sentenwhile(p):
     ''' sentenWHILE : WHILE variables comparador  variables  algoritmo END
@@ -98,6 +100,7 @@ def p_sentenwhile(p):
                     | WHILE boolean  algoritmo END
                     | WHILE variables algoritmo   END'''
     #p[0] = p[1] + p[2] + str(p[3])
+#sandy}
 
 def p_comparador(p):
     ''' comparador : COMPARE
@@ -122,6 +125,9 @@ def p_vif(p):
 def p_if_else(p):
     ''' sentenifelse : IF variables comparador term algoritmo ELSE algoritmo END'''
     p[0]
+
+
+#sandy{
 #VARIABLES
 def p_variables(p):
    '''variables : IDLOCAL
@@ -153,6 +159,9 @@ def p_assigns_min(p):
                     | variables ASSIGNMIN variables
                     '''
     p[0] = p[1] + p[2] + str(p[3])
+#sandy}
+
+
 
 #NÚMEROS Y OPERACIONES 
 
@@ -186,6 +195,7 @@ def p_expression_division(p):
     'expression : expression DIVISION term'
     p[0] = p[1] / p[3]
 
+#sandy {
 def p_expression_mod(p):
     'expression : expression MOD term'
     p[0] = p[1] % p[3]
@@ -197,6 +207,7 @@ def p_expression_mult(p):
 def p_expression_exp(p):
     'expression : expression EXP term'
     p[0] = p[1] ** p[3]
+#sandy}
 
 #CADENAS
 
@@ -364,6 +375,7 @@ def p_funcioncontent(p):
     ''' fcontenido : variables
                   |   variables COMMA fcontenido'''
 
+#sandy{
 def p_values(p):
     ''' values : term
                 | boolean
@@ -385,6 +397,9 @@ def p_funcion3(p):
                 | DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo END'''
     p[0]
 #def sumar(*hola) 1 + 2 end
+#sandy}
+
+
 parser = yacc.yacc()
  
 while True:
