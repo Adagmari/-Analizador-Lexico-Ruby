@@ -28,7 +28,8 @@ def p_noasignar(p):
                     | oputs 
                     | putss
                     | putsenx 
-                    | sentenIF'''
+                    | sentenIF
+                    | sentenWHILE'''
     p[0] = p[1]
 
 
