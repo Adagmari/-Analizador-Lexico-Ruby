@@ -31,7 +31,8 @@ def p_noasignar(p):
                     | sentenIF
                     | sentenifp
                     | sentenifelse
-                    | sentenWHILE'''
+                    | sentenWHILE
+                    | funcion1'''
     p[0] = p[1]
 
 
@@ -332,6 +333,16 @@ def p_estructurasControl_for2(p):
     '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO END'''
     p[0] = p[1] +str(p[2]) + p[3] + str(p[4]) + p[5] + p[6] + str(p[7]) + p[8] + p[9] 
 
+
+#FUNCIONES
+def p_funcion1(p):
+    ''' funcion1 : DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END
+                 | DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo END'''
+    p[0]
+
+def p_funcioncontent(p):
+    ''' fcontenido : variables
+                  |   variables COMMA fcontenido'''
 
 parser = yacc.yacc()
  
