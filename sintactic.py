@@ -1,6 +1,7 @@
 import ply.yacc as yacc
 from main import tokens
 
+#{Diana Ramírez
 #INSTRUCCIÓN PRINCIPAL
 def p_instrucciones(p):
     '''instrucciones : asignar
@@ -37,8 +38,9 @@ def p_noasignar(p):
                     | funcion3'''
 
     p[0] = p[1]
+#Diana Ramírez}
 
-
+#{Jeremy Ramírez
 #BOOLEANOS
 
 def p_boolean(p):
@@ -71,6 +73,7 @@ def p_puts_expression(p):
     p[0]= str(p[2])
 
 
+#Jeremy Ramírez}
 
 #algoritmo
 #sandy, jeremy y diana {
@@ -101,7 +104,7 @@ def p_sentenwhile(p):
                     | WHILE variables algoritmo   END'''
     #p[0] = p[1] + p[2] + str(p[3])
 #sandy}
-
+#{Jeremy Ramírez
 def p_comparador(p):
     ''' comparador : COMPARE
                    | GREQUAL 
@@ -125,7 +128,7 @@ def p_vif(p):
 def p_if_else(p):
     ''' sentenifelse : IF variables comparador term algoritmo ELSE algoritmo END'''
     p[0]
-
+#Jeremy Ramírez}
 
 #sandy{
 #VARIABLES
@@ -164,7 +167,7 @@ def p_assigns_min(p):
 
 
 #NÚMEROS Y OPERACIONES 
-
+#{Diana Ramírez
 def p_expression_plus(p):
     'expression : expression PLUS term '
     p[0] = p[1] + p[3]
@@ -203,12 +206,14 @@ def p_factor_numnegative(p):
     '''factor : MINUS NUMBER
               | MINUS FLOAT'''
     p[0] = p[1] + str(p[2])
+#Diana Ramírez}
 
+#sandy {
 def p_expression_division(p):
     'expression : expression DIVISION term'
     p[0] = p[1] / p[3]
 
-#sandy {
+
 def p_expression_mod(p):
     'expression : expression MOD term'
     p[0] = p[1] % p[3]
@@ -221,6 +226,8 @@ def p_expression_exp(p):
     'expression : expression EXP term'
     p[0] = p[1] ** p[3]
 #sandy}
+
+#{Diana Ramírez
 
 #CADENAS
 
@@ -241,10 +248,6 @@ def p_cadena_forma3(p):
     p[0] = p[1] + p[2] + p[3] + p[4]
 
 
-#'''def p_functionStr_empty(p):
-#   'functionStr : type POINT ' '''
-
-
 #CADENAS MÉTODOS 
 
 def p_metodocadena_empty(p):
@@ -256,8 +259,6 @@ def p_metodocadena_length(p):
     '''metodocadena : cadena POINT LENGTH
                     | string POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3]
-
-
 
 #ARREGLOS
 
@@ -335,9 +336,10 @@ def p_metodohash_length2(p):
     '''metodohash : variables POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3]
 
+#Diana Ramírez}
 
 #ESTRUCTURAS DE CONTROL
-
+#{Jeremy Ramírez
 # IF
 
 
@@ -350,8 +352,8 @@ def p_comparador(p):
                    | LESS
                    | GREATER '''
     p[0]= p[1]
-    
-
+#Jeremy Ramírez}   
+#{Diana Ramírez
 #FOR
 def p_estructurasControl_for1(p):
     '''estructurasControl : FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK IF forcontentvalue END'''
@@ -376,8 +378,8 @@ def p_forcontentvalue_var(p):
                         | algoritmo'''
     p[0] = str(p[1])
 
-
-
+#Diana Ramírez}
+#{Jeremy Ramírez
 #FUNCIONES
 def p_funcion1(p):
     ''' funcion1 : DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END
@@ -387,7 +389,8 @@ def p_funcion1(p):
 def p_funcioncontent(p):
     ''' fcontenido : variables
                   |   variables COMMA fcontenido'''
-
+                  
+#Jeremy Ramírez}
 #sandy{
 def p_values(p):
     ''' values : term
