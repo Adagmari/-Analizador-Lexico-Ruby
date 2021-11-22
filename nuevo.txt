@@ -6,4 +6,27 @@ while a===0 i+=2 end
 "Esta es la ultima cadena"
 String ("Esta es otra cadena")
 String.new("Esta es una cadena")
-a=2
+{"clave1" => "valor1","clave2" => "valor2","clave3" => "valor3"}
+@@a=2
+for i in 1..10 do x=4 end
+puts 4 ** 4
+puts 2 + 4
+puts 3 - 4
+puts 5 % 2
+puts 7 / 3
+puts 4 * 4
+_soyVariable
+soyVariabletoo
+@Variableinstancia
+@@Clase
+$Global
+soyVariable += otraVariable
+$Hj -= @@otravar
+@@@HOLA
+2.5 
+true
+false
+nil
+print "hola" 
+puts "hola" 
+hola + palabra
