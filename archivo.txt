@@ -4,11 +4,7 @@ String
 cadena= String.new
 mystring3 = String ("Esta también es una cadena")
 array = Array.new
-hash1 = {
- "clave1" => "valor1",
- "clave2" => "valor2",
- "clave3" => "valor3"
-}
+hash1 = {"clave1" => "valor1","clave2" => "valor2","clave3" => "valor3"}
 
 puts 4 ** 4
 puts 2 + 4
