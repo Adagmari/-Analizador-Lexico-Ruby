@@ -1,0 +1,8 @@
+if a<0 i+=2 end
+hola
+como
+estas
+while a===0 i+=2 end
+"Esta es la última cadena"
+String ("Esta es otra cadena")
+String.new("Esta es una cadena")

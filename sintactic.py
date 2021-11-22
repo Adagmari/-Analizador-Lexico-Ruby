@@ -429,12 +429,25 @@ def p_lectura2(p):
 
 parser = yacc.yacc()
  
+with open ("nuevo.txt") as archivo:
+    for linea in archivo:
+        result = parser.parse(linea)
+        print(result)
 
-while True:
+
+'''f=open("nuevo.txt")
+s = f.read()
+print(s)
+result = parser.parse(s)
+print(result)
+f.close()'''
+
+
+'''while True:
     try:
         s = input('calc > ')
     except EOFError:
         break
     if not s: continue
     result = parser.parse(s)
-    print(result)
+    print(result)'''
