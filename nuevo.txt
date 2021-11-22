@@ -3,6 +3,7 @@ hola
 como
 estas
 while a===0 i+=2 end
-"Esta es la última cadena"
+"Esta es la ultima cadena"
 String ("Esta es otra cadena")
 String.new("Esta es una cadena")
+a=2
