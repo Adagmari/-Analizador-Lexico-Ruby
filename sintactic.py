@@ -29,6 +29,7 @@ def p_noasignar(p):
                     | putss
                     | putsenx 
                     | sentenIF
+                    | sentenifp
                     | sentenWHILE'''
     p[0] = p[1]
 
@@ -77,6 +78,8 @@ def p_algoritmo(p):
                 | boolean
                 | assigns
                 | sentenIF
+                | sentenifp
+                | variables
                 | sentenWHILE '''
 
 
@@ -99,6 +102,15 @@ def p_comparador(p):
     p[0]= p[1]
 
 #OPERADORES
+# if vida==0
+def p_if(p):
+    ''' sentenIF : IF variables comparador term '''
+    p[0]= p[1] + p[2] + p[3]+ str(p[4]) 
+
+# if vida === 0 algoritmo end
+def p_vif(p):
+    ''' sentenifp : IF variables comparador term algoritmo END'''
+    p[0]
 
 
 #VARIABLES
@@ -295,9 +307,7 @@ def p_metodohash_length2(p):
 
 # IF
 
-def p_if(p):
-    ''' sentenIF : IF comparador term '''
-    p[0]= p[1] + p[2] + str(p[3])
+
 
 def p_comparador(p):
     ''' comparador : COMPARE
