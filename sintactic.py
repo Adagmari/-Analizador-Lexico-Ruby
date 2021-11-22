@@ -30,6 +30,7 @@ def p_noasignar(p):
                     | putsenx 
                     | sentenIF
                     | sentenifp
+                    | sentenifelse
                     | sentenWHILE'''
     p[0] = p[1]
 
@@ -79,6 +80,7 @@ def p_algoritmo(p):
                 | assigns
                 | sentenIF
                 | sentenifp
+                | sentenifelse
                 | variables
                 | sentenWHILE '''
 
@@ -112,7 +114,9 @@ def p_vif(p):
     ''' sentenifp : IF variables comparador term algoritmo END'''
     p[0]
 
-
+def p_if_else(p):
+    ''' sentenifelse : IF variables comparador term algoritmo ELSE algoritmo END'''
+    p[0]
 #VARIABLES
 def p_variables(p):
    '''variables : IDLOCAL
