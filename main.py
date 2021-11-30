@@ -67,7 +67,7 @@ tokens = [
     'GREATER',
     'RPARENTHESIS',
     'LPARENTHESIS',
-    'EQUAL',
+    'ASSIGN',
     'ASSIGNPLUS',
     'ASSIGNMIN',
     'POINT',
@@ -87,7 +87,8 @@ tokens = [
     'COMID',
     'BSLASH',
     'NUML',
-    'INTERROGATIVE'
+    'INTERROGATIVE',
+    'ARROBA'
     
 
     
@@ -99,6 +100,7 @@ tokens = [
 
 #t_STRINGV = r'((\'[\w\W\s][^\']*\')|(\"[\w\W\s][^\"]*\"))'
 #Jeremy Ramírez{
+t_ASSIGN = r'='
 t_COMPARE = r'==='
 t_MINUS = r'-'
 t_PLUS = r'\+'
@@ -110,7 +112,7 @@ t_LESS = r'<'
 t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
-t_EQUAL = r'='
+
 #Jeremy Ramírez}
 
 #-SANDY{
@@ -136,7 +138,7 @@ t_BSLASH = r'\\'
 t_COMIS = r'\''
 t_COMID = r'\"'
 t_INTERROGATIVE = r'\?'
-
+t_ARROBA = r'\@'
 
 def t_STRINGV(t):
     r'((\'[\w\W\s]?[^\']*\')|(\"[\w\W\s]?[^\"]*\"))'
@@ -145,21 +147,22 @@ def t_STRINGV(t):
 #Diana Ramírez}
 
 #SANDY{
-def t_IDLOCAL(t):
-    r'([a-z][a-zA-Z0-9_]*|[_][a-zA-Z0-9_]*)'
-    t.type = reserved.get(t.value, 'IDLOCAL')
-    return t
+
 def t_IDINSTANCE(t):
-    r'^[@][a-zA-Z0-9_]*$'
+    r'^@[a-zA-Z0-9_]*$'
     t.type = reserved.get(t.value, 'IDINSTANCE')
     return t
 def t_IDCLASS(t):
-    r'([@]{2})[a-zA-Z0-9_]+'
+    r'^@@[a-zA-Z0-9_]+$'
     t.type = reserved.get(t.value, 'IDCLASS')
     return t
 def t_IDGLOBAL(t):
-    r'\s*[\$][a-zA-Z0-9_]*'
+    r'[\$][a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, 'IDGLOBAL')
+    return t
+def t_IDLOCAL(t):
+    r'([a-z][a-zA-Z0-9_]*|[_][a-zA-Z0-9_]*)'
+    t.type = reserved.get(t.value, 'IDLOCAL')
     return t
 def t_IDENTIFIER(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -170,7 +173,7 @@ def t_IDENTIFIER(t):
 #Jeremy Ramírez{
 
 def t_FLOAT(t):
-     r'(\d+\.\d+)'
+     r'\d+\.\d+'
      t.value= float(t.value)
      return t
 
@@ -228,7 +231,7 @@ def inputLex(s):
         tok = lexer.token()
         if not tok:
             break
-        #print(tok)
+        print(tok)
         resultado += str(tok) + "\n"
     return resultado
 

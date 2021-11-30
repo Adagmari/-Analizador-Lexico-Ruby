@@ -1,7 +1,7 @@
 import ply.yacc as yacc
 from main import tokens
 
-#{DianaRamírez
+#{Diana Ramírez
 #INSTRUCCIÓN PRINCIPAL
 def p_instrucciones(p):
     '''instrucciones : asignar
@@ -19,8 +19,7 @@ def p_asignar(p):
                 | hash
                 | metodohash
                 | boolean 
-                | variables
-                | factor'''
+                | variables'''
     p[0] = p[1]
 
 
@@ -38,7 +37,7 @@ def p_noasignar(p):
                     | funcion3
                     | ogets
                     | getsr
-                    | assigns '''
+                    | assigns'''
 
     p[0] = p[1]
 #Diana Ramírez}
@@ -108,6 +107,14 @@ def p_sentenwhile(p):
     #p[0] = p[1] + p[2] + str(p[3])
 #sandy}
 #{Jeremy Ramírez
+def p_comparador(p):
+    ''' comparador : COMPARE
+                   | GREQUAL 
+                   | LSEQUAL
+                   | NOTEQUAL
+                   | LESS
+                   | GREATER '''
+    p[0]= p[1]
 
 #OPERADORES
 # if vida==0
@@ -128,19 +135,26 @@ def p_if_else(p):
 #sandy{
 #VARIABLES
 def p_variables(p):
-    '''variables : IDLOCAL
+   '''variables : IDLOCAL
                 | IDINSTANCE
                 | IDCLASS
-                | IDGLOBAL'''
-    p[0] = p[1]
+                | IDGLOBAL
+                | IDENTIFIER'''
+   p[0] = p[1]
 
 #ASIGNACIONES
 
-def p_assigns_normal(p):
-    '''assigns : variables EQUAL asignar
-               | variables EQUAL factor
+def p_assigns(p):
+    '''assigns : IDLOCAL ASSIGN expression
+                    | IDINSTANCE ASSIGN expression
+                    | IDCLASS ASSIGN expression
+                    | IDGLOBAL ASSIGN expression
+                    | IDENTIFIER ASSIGN expression
+                    | variables ASSIGN variables
+                    | variables ASSIGN boolean
+                    | variables ASSIGN asignar
                 '''
-   #p[0] = p[1] + p[2] + str(p[3])
+    p[0] = p[1] + p[2] + str(p[3])
 
 def p_assigns_plus(p):
     '''assigns : variables ASSIGNPLUS expression
@@ -164,17 +178,20 @@ def p_expression_plus(p):
     'expression : expression PLUS term '
     p[0] = p[1] + p[3]
 
-def p_expression_plusVAR(p):
-    'expression : expression PLUS variables'
-    p[0] = p[1] + p[2] + p[3]
-
-def p_expression_minusVAR(p):
-    'expression : expression MINUS variables'
-    p[0] = p[1] + p[2] + p[3]
-
 def p_expression_minus(p):
     'expression : expression MINUS term'
     p[0] = p[1] - p[3]
+    
+def p_expression_plusVAR(p):
+    '''expression : expression PLUS variables
+                    | variables PLUS expression'''
+    p[0] = str(p[1]) + p[2] + str(p[3])
+
+def p_expression_minusVAR(p):
+    '''expression : expression MINUS variables
+                    | variables MINUS expression'''
+    p[0] = str(p[1]) + p[2] + str(p[3])
+
 
 
 def p_expression_term(p):
@@ -187,18 +204,19 @@ def p_term_factor(p):
 
 def p_term_variable(p):
     'term : variables'
-    p[0] = p[1]
+    p[0] = str(p[1])
 
 def p_factor_num(p):
     '''factor : NUMBER
                 | FLOAT
-                | NUML'''
+                | NUML
+                '''
     p[0] = p[1]
 
 def p_factor_numnegative(p):
     '''factor : MINUS NUMBER
               | MINUS FLOAT'''
-    p[0] = p[1] + str(p[2])
+    p[0] = - p[2]
 #Diana Ramírez}
 
 #sandy {
@@ -306,11 +324,11 @@ def p_hash_tipo2(p):
     p[0] = p[1] + p[2] + p[3]  
 
 def p_hashcontent_var1(p):
-    'hashcontent : string EQUAL GREATER hashcontentvalue'
+    'hashcontent : string ASSIGN GREATER hashcontentvalue'
     p[0] = p[1] + p[2] + p[3] + p[4]
 
 def p_hashcontent_var2(p):
-    'hashcontent : string EQUAL GREATER hashcontentvalue COMMA hashcontent'
+    'hashcontent : string ASSIGN GREATER hashcontentvalue COMMA hashcontent'
     p[0] = p[1] + p[2] + p[3] + p[4] + p[5] + p[6]
 
 def p_hashcontentvalue_var(p):
@@ -321,7 +339,7 @@ def p_hashcontentvalue_var(p):
 #METODOS HASH
 
 def p_metodohash_length(p):
-    '''metodohash : variables EQUAL hash POINT LENGTH'''
+    '''metodohash : variables ASSIGN hash POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3] + p[4] + p[5]
 
 
@@ -392,7 +410,7 @@ def p_values(p):
                 | arreglo
                 '''
 def p_valuedefect(p):
-    ''' valuedefect : variables EQUAL values
+    ''' valuedefect : variables ASSIGN values
                     | variables COMMA fcontenido
                     | variables COMMA valuedefect'''
 def p_funcion2(p):
@@ -414,15 +432,9 @@ def p_lectura(p):
     p[0]=''
 
 def p_lectura2(p):
-    ''' getsr : IDLOCAL EQUAL GETS'''
+    ''' getsr : IDLOCAL ASSIGN GETS'''
     p[0]
 
-
-def p_error(p):
-    if p:
-        print("Syntax error: "+p.type)
-    else:
-        pass
 
 parser = yacc.yacc()
  
