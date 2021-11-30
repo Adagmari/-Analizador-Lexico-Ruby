@@ -41,7 +41,7 @@ def sintactico():
 def clearTextInput():
     
     E1.delete("1.0","end")    
-     
+    Output.delete("1.0","end")
     #label.config(text='')
 
 L1 = Label(raiz, text = "Ingresar cadena")
