@@ -19,8 +19,7 @@ def p_asignar(p):
                 | hash
                 | metodohash
                 | boolean 
-                | variables
-                | assigns'''
+                | variables'''
     p[0] = p[1]
 
 
@@ -37,7 +36,8 @@ def p_noasignar(p):
                     | funcion2
                     | funcion3
                     | ogets
-                    | getsr'''
+                    | getsr
+                    | assigns'''
 
     p[0] = p[1]
 #Diana Ramírez}
@@ -138,17 +138,16 @@ def p_variables(p):
    '''variables : IDLOCAL
                 | IDINSTANCE
                 | IDCLASS
-                | IDGLOBAL
-                '''
+                | IDGLOBAL'''
    p[0] = p[1]
 
 #ASIGNACIONES
 
 def p_assigns(p):
     '''assigns : variables ASSIGN expression
-                | variables ASSIGN variables
-                | variables ASSIGN boolean
-                | variables ASSIGN asignar
+                    | variables ASSIGN variables
+                    | variables ASSIGN boolean
+                    | variables ASSIGN asignar
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 
@@ -201,7 +200,8 @@ def p_term_variable(p):
 
 def p_factor_num(p):
     '''factor : NUMBER
-                | FLOAT'''
+                | FLOAT
+                | NUML'''
     p[0] = p[1]
 
 def p_factor_numnegative(p):
@@ -443,11 +443,8 @@ print(result)
 f.close()'''
 
 
-'''while True:
-    try:
-        s = input('calc > ')
-    except EOFError:
-        break
-    if not s: continue
+def inputSintactico(l):
+    s = l
     result = parser.parse(s)
-    print(result)'''
+    return str(result)
+    print(result)

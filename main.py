@@ -110,7 +110,7 @@ t_LESS = r'<'
 t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
-t_ASSIGN = r'='
+t_ASSIGN = r'\='
 #Jeremy Ramírez}
 
 #-SANDY{
@@ -209,13 +209,26 @@ def t_error(t):
 #Diana Ramírez{
 lexer = lex.lex()
 
-def inputLex(s):
+"""def inputLex(s):
     lexer.input(s)
     while True:
         tok = lexer.token()
         if not tok:
             break
         print(tok)
+
+"""
+
+def inputLex(s):
+    lexer.input(s)
+    resultado=""
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        print(tok)
+        resultado += str(tok) + "\n"
+    return resultado
 
 
 file = open("archivo.txt", encoding="utf8")  
