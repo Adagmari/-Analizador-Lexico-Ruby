@@ -173,15 +173,17 @@ def t_FLOAT(t):
      r'(\d+\.\d+)'
      t.value= float(t.value)
      return t
-     
+
 def t_NUML(t):
-     r'([0-9]{3}_?)+'
+     r'[0-9]{3}_[0-9]{3}((_[0-9]{3})+)?'
      return t
        
 def t_NUMBER(t):
      r'\d+'
      t.value= int(t.value)
      return t
+
+     
 
 
 
