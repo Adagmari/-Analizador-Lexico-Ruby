@@ -67,7 +67,7 @@ tokens = [
     'GREATER',
     'RPARENTHESIS',
     'LPARENTHESIS',
-    'ASSIGN',
+    'EQUAL',
     'ASSIGNPLUS',
     'ASSIGNMIN',
     'POINT',
@@ -110,7 +110,7 @@ t_LESS = r'<'
 t_GREATER = r'>'
 t_RPARENTHESIS = r'\)'
 t_LPARENTHESIS = r'\('
-t_ASSIGN = r'\='
+t_EQUAL = r'='
 #Jeremy Ramírez}
 
 #-SANDY{
@@ -228,7 +228,7 @@ def inputLex(s):
         tok = lexer.token()
         if not tok:
             break
-        print(tok)
+        #print(tok)
         resultado += str(tok) + "\n"
     return resultado
 

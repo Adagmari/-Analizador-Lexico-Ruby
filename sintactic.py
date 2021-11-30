@@ -1,7 +1,7 @@
 import ply.yacc as yacc
 from main import tokens
 
-#{Diana Ramírez
+#{DianaRamírez
 #INSTRUCCIÓN PRINCIPAL
 def p_instrucciones(p):
     '''instrucciones : asignar
@@ -38,8 +38,7 @@ def p_noasignar(p):
                     | funcion3
                     | ogets
                     | getsr
-                    | assigns
-                    | assigns2'''
+                    | assigns '''
 
     p[0] = p[1]
 #Diana Ramírez}
@@ -90,7 +89,6 @@ def p_algoritmo(p):
                 | estructurasControl
                 | boolean
                 | assigns
-                | assigns2
                 | sentenIF
                 | sentenifp
                 | sentenifelse
@@ -139,10 +137,10 @@ def p_variables(p):
 #ASIGNACIONES
 
 def p_assigns_normal(p):
-    '''assigns2 : variables ASSIGN asignar
-                    | variables ASSIGN factor
+    '''assigns : variables EQUAL asignar
+               | variables EQUAL factor
                 '''
-    p[0] = p[1] + p[2] + str(p[3])
+   #p[0] = p[1] + p[2] + str(p[3])
 
 def p_assigns_plus(p):
     '''assigns : variables ASSIGNPLUS expression
@@ -308,11 +306,11 @@ def p_hash_tipo2(p):
     p[0] = p[1] + p[2] + p[3]  
 
 def p_hashcontent_var1(p):
-    'hashcontent : string ASSIGN GREATER hashcontentvalue'
+    'hashcontent : string EQUAL GREATER hashcontentvalue'
     p[0] = p[1] + p[2] + p[3] + p[4]
 
 def p_hashcontent_var2(p):
-    'hashcontent : string ASSIGN GREATER hashcontentvalue COMMA hashcontent'
+    'hashcontent : string EQUAL GREATER hashcontentvalue COMMA hashcontent'
     p[0] = p[1] + p[2] + p[3] + p[4] + p[5] + p[6]
 
 def p_hashcontentvalue_var(p):
@@ -323,7 +321,7 @@ def p_hashcontentvalue_var(p):
 #METODOS HASH
 
 def p_metodohash_length(p):
-    '''metodohash : variables ASSIGN hash POINT LENGTH'''
+    '''metodohash : variables EQUAL hash POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3] + p[4] + p[5]
 
 
@@ -394,7 +392,7 @@ def p_values(p):
                 | arreglo
                 '''
 def p_valuedefect(p):
-    ''' valuedefect : variables ASSIGN values
+    ''' valuedefect : variables EQUAL values
                     | variables COMMA fcontenido
                     | variables COMMA valuedefect'''
 def p_funcion2(p):
@@ -416,7 +414,7 @@ def p_lectura(p):
     p[0]=''
 
 def p_lectura2(p):
-    ''' getsr : IDLOCAL ASSIGN GETS'''
+    ''' getsr : IDLOCAL EQUAL GETS'''
     p[0]
 
 
