@@ -38,6 +38,11 @@ def sintactico():
     print("mensaje", mensaje) 
 
 
+def clearTextInput():
+    
+    E1.delete("1.0","end")    
+     
+    #label.config(text='')
 
 L1 = Label(raiz, text = "Ingresar cadena")
 L1.place(x=5, y=5)
@@ -50,6 +55,6 @@ E1.place(x=150, y=5)
 ttk.Button(raiz, text='Léxico', command=lexico).place(x=150, y=250)
 ttk.Button(raiz, text='Sintáctico', command=sintactico).place(x=250, y=250)
 ttk.Button(raiz, text='Salir', command=quit).place(x=350, y=250)
-
+ttk.Button(raiz, text='RESET', command=clearTextInput).place(x=450, y=250)
 
 raiz.mainloop()
