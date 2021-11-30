@@ -19,7 +19,8 @@ def p_asignar(p):
                 | hash
                 | metodohash
                 | boolean 
-                | variables'''
+                | variables
+                | factor'''
     p[0] = p[1]
 
 
@@ -37,7 +38,8 @@ def p_noasignar(p):
                     | funcion3
                     | ogets
                     | getsr
-                    | assigns'''
+                    | assigns
+                    | assigns2'''
 
     p[0] = p[1]
 #Diana Ramírez}
@@ -88,6 +90,7 @@ def p_algoritmo(p):
                 | estructurasControl
                 | boolean
                 | assigns
+                | assigns2
                 | sentenIF
                 | sentenifp
                 | sentenifelse
@@ -107,14 +110,6 @@ def p_sentenwhile(p):
     #p[0] = p[1] + p[2] + str(p[3])
 #sandy}
 #{Jeremy Ramírez
-def p_comparador(p):
-    ''' comparador : COMPARE
-                   | GREQUAL 
-                   | LSEQUAL
-                   | NOTEQUAL
-                   | LESS
-                   | GREATER '''
-    p[0]= p[1]
 
 #OPERADORES
 # if vida==0
@@ -135,19 +130,17 @@ def p_if_else(p):
 #sandy{
 #VARIABLES
 def p_variables(p):
-   '''variables : IDLOCAL
+    '''variables : IDLOCAL
                 | IDINSTANCE
                 | IDCLASS
                 | IDGLOBAL'''
-   p[0] = p[1]
+    p[0] = p[1]
 
 #ASIGNACIONES
 
-def p_assigns(p):
-    '''assigns : variables ASSIGN expression
-                    | variables ASSIGN variables
-                    | variables ASSIGN boolean
-                    | variables ASSIGN asignar
+def p_assigns_normal(p):
+    '''assigns2 : variables ASSIGN asignar
+                    | variables ASSIGN factor
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 
@@ -426,6 +419,12 @@ def p_lectura2(p):
     ''' getsr : IDLOCAL ASSIGN GETS'''
     p[0]
 
+
+def p_error(p):
+    if p:
+        print("Syntax error: "+p.type)
+    else:
+        pass
 
 parser = yacc.yacc()
  
