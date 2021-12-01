@@ -100,7 +100,7 @@ Rule 67    assigns -> IDENTIFIER ASSIGN expression
 Rule 68    assigns -> variables ASSIGN variables
 Rule 69    assigns -> variables ASSIGN boolean
 Rule 70    assigns -> variables ASSIGN asignar
-Rule 71    assigns -> variables ASSIGN reglaSemanticaComparaciones
+Rule 71    assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones
 Rule 72    assigns -> variables ASSIGNPLUS expression
 Rule 73    assigns -> variables ASSIGNPLUS variables
 Rule 74    assigns -> variables ASSIGNMIN expression
@@ -232,7 +232,7 @@ IDCLASS              : 60 65
 IDENTIFIER           : 62 67
 IDGLOBAL             : 61 66
 IDINSTANCE           : 59 64
-IDLOCAL              : 58 63 127 128 133 133 134 144 145 146 146 147 147 162
+IDLOCAL              : 58 63 71 127 128 133 133 134 144 145 146 146 147 147 162
 IF                   : 55 56 57 127
 IN                   : 127 128
 INDEX                : 111
@@ -321,7 +321,7 @@ term                 : 55 56 57 76 77 82 90 91 92 93 137 150
 value2               : 153 153 154 154 155 155 156 156 157 157 158 158
 valuedefect          : 143 144 145
 values               : 141
-variables            : 12 49 51 51 52 54 55 56 57 68 68 69 70 71 72 73 73 74 75 75 78 79 80 81 84 119 120 135 136 141 142 143 144 146 148
+variables            : 12 49 51 51 52 54 55 56 57 68 68 69 70 72 73 73 74 75 75 78 79 80 81 84 119 120 135 136 141 142 143 144 146 148
 
 Parsing method: LALR
 
@@ -433,7 +433,7 @@ state 0
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -851,7 +851,6 @@ state 13
     (68) assigns -> variables . ASSIGN variables
     (69) assigns -> variables . ASSIGN boolean
     (70) assigns -> variables . ASSIGN asignar
-    (71) assigns -> variables . ASSIGN reglaSemanticaComparaciones
     (72) assigns -> variables . ASSIGNPLUS expression
     (73) assigns -> variables . ASSIGNPLUS variables
     (74) assigns -> variables . ASSIGNMIN expression
@@ -904,6 +903,31 @@ state 14
     (160) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ORS reglaSemanticaComparaciones
 
     $end            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    END             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    ELSE            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    RETURN          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IDLOCAL         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IDINSTANCE      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IDCLASS         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IDGLOBAL        reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IDENTIFIER      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    ARRAY           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    LSQBRACKET      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    LBRACKET        reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    HASH            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    FOR             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    TRUE            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    FALSE           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    NIL             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    IF              reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    WHILE           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    NUMBER          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    FLOAT           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    NUML            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    MINUS           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    STRING          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    STRINGV         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
+    BREAK           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
     ANDS            shift and go to state 73
     ORS             shift and go to state 74
 
@@ -1348,6 +1372,7 @@ state 41
     (58) variables -> IDLOCAL .
     (162) getsr -> IDLOCAL . ASSIGN GETS
     (63) assigns -> IDLOCAL . ASSIGN expression
+    (71) assigns -> IDLOCAL . ASSIGN reglaSemanticaComparaciones
 
   ! shift/reduce conflict for ASSIGN resolved as shift
     PLUS            reduce using rule 58 (variables -> IDLOCAL .)
@@ -2229,7 +2254,6 @@ state 69
     (68) assigns -> variables ASSIGN . variables
     (69) assigns -> variables ASSIGN . boolean
     (70) assigns -> variables ASSIGN . asignar
-    (71) assigns -> variables ASSIGN . reglaSemanticaComparaciones
     (113) hash -> . LBRACKET hashcontent RBRACKET
     (114) hash -> . HASH POINT NEW
     (58) variables -> . IDLOCAL
@@ -2251,14 +2275,6 @@ state 69
     (11) asignar -> . boolean
     (12) asignar -> . variables
     (13) asignar -> . reglaSemanticaComparaciones
-    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
-    (154) reglaSemanticaComparaciones -> . value2 LESS value2
-    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
-    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
-    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
-    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
-    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
-    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     (76) expression -> . expression PLUS term
     (77) expression -> . expression MINUS term
     (78) expression -> . expression PLUS variables
@@ -2287,13 +2303,21 @@ state 69
     (112) metodosarreglo -> . arreglo LSQBRACKET factor RSQBRACKET
     (119) metodohash -> . variables ASSIGN hash POINT LENGTH
     (120) metodohash -> . variables POINT LENGTH
+    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
+    (154) reglaSemanticaComparaciones -> . value2 LESS value2
+    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
+    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
+    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
+    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
+    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
+    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
+    (83) term -> . factor
+    (84) term -> . variables
     (148) value2 -> . variables
     (149) value2 -> . boolean
     (150) value2 -> . term
     (151) value2 -> . expression
     (152) value2 -> . cadena
-    (83) term -> . factor
-    (84) term -> . variables
     (85) factor -> . NUMBER
     (86) factor -> . FLOAT
     (87) factor -> . NUML
@@ -2323,7 +2347,6 @@ state 69
     hash                           shift and go to state 134
     boolean                        shift and go to state 135
     asignar                        shift and go to state 136
-    reglaSemanticaComparaciones    shift and go to state 137
     expression                     shift and go to state 4
     string                         shift and go to state 5
     cadena                         shift and go to state 6
@@ -2331,15 +2354,16 @@ state 69
     arreglo                        shift and go to state 8
     metodosarreglo                 shift and go to state 9
     metodohash                     shift and go to state 11
-    value2                         shift and go to state 46
+    reglaSemanticaComparaciones    shift and go to state 14
     term                           shift and go to state 29
     factor                         shift and go to state 34
+    value2                         shift and go to state 46
 
 state 70
 
     (120) metodohash -> variables POINT . LENGTH
 
-    LENGTH          shift and go to state 138
+    LENGTH          shift and go to state 137
 
 
 state 71
@@ -2380,8 +2404,8 @@ state 71
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    variables                      shift and go to state 139
-    expression                     shift and go to state 140
+    variables                      shift and go to state 138
+    expression                     shift and go to state 139
     term                           shift and go to state 108
     factor                         shift and go to state 34
 
@@ -2423,8 +2447,8 @@ state 72
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    variables                      shift and go to state 141
-    expression                     shift and go to state 142
+    variables                      shift and go to state 140
+    expression                     shift and go to state 141
     term                           shift and go to state 108
     factor                         shift and go to state 34
 
@@ -2488,13 +2512,13 @@ state 73
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    reglaSemanticaComparaciones    shift and go to state 143
+    reglaSemanticaComparaciones    shift and go to state 142
     value2                         shift and go to state 46
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 74
@@ -2557,13 +2581,13 @@ state 74
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    reglaSemanticaComparaciones    shift and go to state 149
+    reglaSemanticaComparaciones    shift and go to state 148
     value2                         shift and go to state 46
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 75
@@ -2673,7 +2697,7 @@ state 77
     (95) cadena -> STRING POINT . NEW
     (96) cadena -> STRING POINT . NEW LPARENTHESIS string RPARENTHESIS
 
-    NEW             shift and go to state 150
+    NEW             shift and go to state 149
 
 
 state 78
@@ -2683,7 +2707,7 @@ state 78
 
     STRINGV         shift and go to state 31
 
-    string                         shift and go to state 151
+    string                         shift and go to state 150
 
 state 79
 
@@ -2691,7 +2715,7 @@ state 79
     (103) arreglo -> ARRAY POINT . NEW LPARENTHESIS factor RPARENTHESIS
     (104) arreglo -> ARRAY POINT . NEW LPARENTHESIS factor COMMA arraycontent RPARENTHESIS
 
-    NEW             shift and go to state 152
+    NEW             shift and go to state 151
 
 
 state 80
@@ -2714,7 +2738,7 @@ state 80
     MINUS           shift and go to state 30
     STRINGV         shift and go to state 31
 
-    arraycontent                   shift and go to state 153
+    arraycontent                   shift and go to state 152
     factor                         shift and go to state 82
     string                         shift and go to state 83
 
@@ -2722,7 +2746,7 @@ state 81
 
     (106) arreglo -> LSQBRACKET arraycontent . RSQBRACKET
 
-    RSQBRACKET      shift and go to state 154
+    RSQBRACKET      shift and go to state 153
 
 
 state 82
@@ -2732,7 +2756,7 @@ state 82
 
     RSQBRACKET      reduce using rule 107 (arraycontent -> factor .)
     RPARENTHESIS    reduce using rule 107 (arraycontent -> factor .)
-    COMMA           shift and go to state 155
+    COMMA           shift and go to state 154
 
 
 state 83
@@ -2742,14 +2766,14 @@ state 83
 
     RSQBRACKET      reduce using rule 108 (arraycontent -> string .)
     RPARENTHESIS    reduce using rule 108 (arraycontent -> string .)
-    COMMA           shift and go to state 156
+    COMMA           shift and go to state 155
 
 
 state 84
 
     (113) hash -> LBRACKET hashcontent . RBRACKET
 
-    RBRACKET        shift and go to state 157
+    RBRACKET        shift and go to state 156
 
 
 state 85
@@ -2757,20 +2781,21 @@ state 85
     (115) hashcontent -> string . ASSIGN GREATER hashcontentvalue
     (116) hashcontent -> string . ASSIGN GREATER hashcontentvalue COMMA hashcontent
 
-    ASSIGN          shift and go to state 158
+    ASSIGN          shift and go to state 157
 
 
 state 86
 
     (114) hash -> HASH POINT . NEW
 
-    NEW             shift and go to state 159
+    NEW             shift and go to state 158
 
 
 state 87
 
     (162) getsr -> IDLOCAL ASSIGN . GETS
     (63) assigns -> IDLOCAL ASSIGN . expression
+    (71) assigns -> IDLOCAL ASSIGN . reglaSemanticaComparaciones
     (76) expression -> . expression PLUS term
     (77) expression -> . expression MINUS term
     (78) expression -> . expression PLUS variables
@@ -2782,6 +2807,14 @@ state 87
     (91) expression -> . expression MOD term
     (92) expression -> . expression MULT term
     (93) expression -> . expression EXP term
+    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
+    (154) reglaSemanticaComparaciones -> . value2 LESS value2
+    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
+    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
+    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
+    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
+    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
+    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     (58) variables -> . IDLOCAL
     (59) variables -> . IDINSTANCE
     (60) variables -> . IDCLASS
@@ -2789,13 +2822,24 @@ state 87
     (62) variables -> . IDENTIFIER
     (83) term -> . factor
     (84) term -> . variables
+    (148) value2 -> . variables
+    (149) value2 -> . boolean
+    (150) value2 -> . term
+    (151) value2 -> . expression
+    (152) value2 -> . cadena
     (85) factor -> . NUMBER
     (86) factor -> . FLOAT
     (87) factor -> . NUML
     (88) factor -> . MINUS NUMBER
     (89) factor -> . MINUS FLOAT
+    (28) boolean -> . TRUE
+    (29) boolean -> . FALSE
+    (30) boolean -> . NIL
+    (95) cadena -> . STRING POINT NEW
+    (96) cadena -> . STRING POINT NEW LPARENTHESIS string RPARENTHESIS
+    (97) cadena -> . STRING LPARENTHESIS string RPARENTHESIS
 
-    GETS            shift and go to state 160
+    GETS            shift and go to state 159
     IDLOCAL         shift and go to state 100
     IDINSTANCE      shift and go to state 101
     IDCLASS         shift and go to state 102
@@ -2805,11 +2849,19 @@ state 87
     FLOAT           shift and go to state 55
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
+    TRUE            shift and go to state 38
+    FALSE           shift and go to state 39
+    NIL             shift and go to state 40
+    STRING          shift and go to state 32
 
-    expression                     shift and go to state 161
-    term                           shift and go to state 108
-    variables                      shift and go to state 109
+    expression                     shift and go to state 160
+    reglaSemanticaComparaciones    shift and go to state 161
+    term                           shift and go to state 29
+    variables                      shift and go to state 162
+    value2                         shift and go to state 46
     factor                         shift and go to state 34
+    boolean                        shift and go to state 144
+    cadena                         shift and go to state 147
 
 state 88
 
@@ -2848,7 +2900,7 @@ state 88
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    expression                     shift and go to state 162
+    expression                     shift and go to state 163
     term                           shift and go to state 108
     variables                      shift and go to state 109
     factor                         shift and go to state 34
@@ -2890,7 +2942,7 @@ state 89
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    expression                     shift and go to state 163
+    expression                     shift and go to state 164
     term                           shift and go to state 108
     variables                      shift and go to state 109
     factor                         shift and go to state 34
@@ -2932,7 +2984,7 @@ state 90
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    expression                     shift and go to state 164
+    expression                     shift and go to state 165
     term                           shift and go to state 108
     variables                      shift and go to state 109
     factor                         shift and go to state 34
@@ -2974,7 +3026,7 @@ state 91
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    expression                     shift and go to state 165
+    expression                     shift and go to state 166
     term                           shift and go to state 108
     variables                      shift and go to state 109
     factor                         shift and go to state 34
@@ -3031,12 +3083,12 @@ state 92
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 166
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 167
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 93
@@ -3091,12 +3143,12 @@ state 93
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 167
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 168
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 94
@@ -3151,12 +3203,12 @@ state 94
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 168
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 169
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 95
@@ -3211,12 +3263,12 @@ state 95
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 169
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 170
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 96
@@ -3271,12 +3323,12 @@ state 96
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 170
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 171
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 97
@@ -3331,12 +3383,12 @@ state 97
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    value2                         shift and go to state 171
-    variables                      shift and go to state 144
-    boolean                        shift and go to state 145
-    term                           shift and go to state 146
-    expression                     shift and go to state 147
-    cadena                         shift and go to state 148
+    value2                         shift and go to state 172
+    variables                      shift and go to state 143
+    boolean                        shift and go to state 144
+    term                           shift and go to state 145
+    expression                     shift and go to state 146
+    cadena                         shift and go to state 147
     factor                         shift and go to state 34
 
 state 98
@@ -3344,7 +3396,7 @@ state 98
     (127) estructurasControl -> FOR IDLOCAL . IN factor POINT POINT factor DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL . IN factor POINT POINT factor DO forcontent END
 
-    IN              shift and go to state 172
+    IN              shift and go to state 173
 
 
 state 99
@@ -3359,14 +3411,14 @@ state 99
     (125) comparador -> . LESS
     (126) comparador -> . GREATER
 
-    COMPARE         shift and go to state 174
-    GREQUAL         shift and go to state 175
-    LSEQUAL         shift and go to state 176
-    NOTEQUAL        shift and go to state 177
-    LESS            shift and go to state 178
-    GREATER         shift and go to state 179
+    COMPARE         shift and go to state 175
+    GREQUAL         shift and go to state 176
+    LSEQUAL         shift and go to state 177
+    NOTEQUAL        shift and go to state 178
+    LESS            shift and go to state 179
+    GREATER         shift and go to state 180
 
-    comparador                     shift and go to state 173
+    comparador                     shift and go to state 174
 
 state 100
 
@@ -3841,7 +3893,7 @@ state 113
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -3870,12 +3922,12 @@ state 113
     (88) factor -> . MINUS NUMBER
     (89) factor -> . MINUS FLOAT
 
-    COMPARE         shift and go to state 174
-    GREQUAL         shift and go to state 175
-    LSEQUAL         shift and go to state 176
-    NOTEQUAL        shift and go to state 177
-    LESS            shift and go to state 178
-    GREATER         shift and go to state 179
+    COMPARE         shift and go to state 175
+    GREQUAL         shift and go to state 176
+    LSEQUAL         shift and go to state 177
+    NOTEQUAL        shift and go to state 178
+    LESS            shift and go to state 179
+    GREATER         shift and go to state 180
     ARRAY           shift and go to state 33
     LSQBRACKET      shift and go to state 35
     LBRACKET        shift and go to state 36
@@ -3884,11 +3936,11 @@ state 113
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -3898,24 +3950,24 @@ state 113
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    variables                      shift and go to state 180
-    comparador                     shift and go to state 181
-    algoritmo                      shift and go to state 182
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
+    variables                      shift and go to state 181
+    comparador                     shift and go to state 182
+    algoritmo                      shift and go to state 183
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
 state 114
@@ -3971,7 +4023,7 @@ state 114
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -4008,11 +4060,11 @@ state 114
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -4022,23 +4074,23 @@ state 114
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    boolean                        shift and go to state 189
-    algoritmo                      shift and go to state 202
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    variables                      shift and go to state 180
-    sentenWHILE                    shift and go to state 194
+    boolean                        shift and go to state 190
+    algoritmo                      shift and go to state 203
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    variables                      shift and go to state 181
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
 state 115
@@ -4050,7 +4102,7 @@ state 115
     (146) funcion3 -> DEF IDLOCAL . LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN variables END
     (147) funcion3 -> DEF IDLOCAL . LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo END
 
-    LPARENTHESIS    shift and go to state 203
+    LPARENTHESIS    shift and go to state 204
 
 
 state 116
@@ -4623,7 +4675,7 @@ state 125
 
     (99) metodocadena -> string POINT EMPTY . INTERROGATIVE
 
-    INTERROGATIVE   shift and go to state 204
+    INTERROGATIVE   shift and go to state 205
 
 
 state 126
@@ -4662,7 +4714,7 @@ state 127
 
     (98) metodocadena -> cadena POINT EMPTY . INTERROGATIVE
 
-    INTERROGATIVE   shift and go to state 205
+    INTERROGATIVE   shift and go to state 206
 
 
 state 128
@@ -4701,14 +4753,14 @@ state 129
 
     (111) metodosarreglo -> arreglo POINT INDEX . LPARENTHESIS arraycontent RPARENTHESIS
 
-    LPARENTHESIS    shift and go to state 206
+    LPARENTHESIS    shift and go to state 207
 
 
 state 130
 
     (112) metodosarreglo -> arreglo LSQBRACKET factor . RSQBRACKET
 
-    RSQBRACKET      shift and go to state 207
+    RSQBRACKET      shift and go to state 208
 
 
 state 131
@@ -4851,8 +4903,8 @@ state 133
     (81) expression -> variables . MINUS expression
     (119) metodohash -> variables . ASSIGN hash POINT LENGTH
     (120) metodohash -> variables . POINT LENGTH
-    (148) value2 -> variables .
     (84) term -> variables .
+    (148) value2 -> variables .
 
   ! reduce/reduce conflict for $end resolved using rule 12 (asignar -> variables .)
   ! reduce/reduce conflict for END resolved using rule 12 (asignar -> variables .)
@@ -4884,12 +4936,6 @@ state 133
   ! shift/reduce conflict for PLUS resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
   ! reduce/reduce conflict for $end resolved using rule 12 (asignar -> variables .)
-  ! reduce/reduce conflict for COMPARE resolved using rule 84 (term -> variables .)
-  ! reduce/reduce conflict for LESS resolved using rule 84 (term -> variables .)
-  ! reduce/reduce conflict for GREATER resolved using rule 84 (term -> variables .)
-  ! reduce/reduce conflict for GREQUAL resolved using rule 84 (term -> variables .)
-  ! reduce/reduce conflict for LSEQUAL resolved using rule 84 (term -> variables .)
-  ! reduce/reduce conflict for NOTEQUAL resolved using rule 84 (term -> variables .)
   ! reduce/reduce conflict for END resolved using rule 12 (asignar -> variables .)
   ! reduce/reduce conflict for ELSE resolved using rule 12 (asignar -> variables .)
   ! reduce/reduce conflict for RETURN resolved using rule 12 (asignar -> variables .)
@@ -4914,6 +4960,12 @@ state 133
   ! reduce/reduce conflict for STRING resolved using rule 12 (asignar -> variables .)
   ! reduce/reduce conflict for STRINGV resolved using rule 12 (asignar -> variables .)
   ! reduce/reduce conflict for BREAK resolved using rule 12 (asignar -> variables .)
+  ! reduce/reduce conflict for COMPARE resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for LESS resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for GREATER resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for GREQUAL resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for LSEQUAL resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for NOTEQUAL resolved using rule 84 (term -> variables .)
     $end            reduce using rule 12 (asignar -> variables .)
     END             reduce using rule 12 (asignar -> variables .)
     ELSE            reduce using rule 12 (asignar -> variables .)
@@ -4941,7 +4993,7 @@ state 133
     BREAK           reduce using rule 12 (asignar -> variables .)
     PLUS            shift and go to state 67
     MINUS           shift and go to state 68
-    ASSIGN          shift and go to state 208
+    ASSIGN          shift and go to state 209
     POINT           shift and go to state 70
     DIVISION        reduce using rule 84 (term -> variables .)
     MOD             reduce using rule 84 (term -> variables .)
@@ -4981,12 +5033,6 @@ state 133
   ! STRINGV         [ reduce using rule 68 (assigns -> variables ASSIGN variables .) ]
   ! BREAK           [ reduce using rule 68 (assigns -> variables ASSIGN variables .) ]
   ! MINUS           [ reduce using rule 12 (asignar -> variables .) ]
-  ! COMPARE         [ reduce using rule 148 (value2 -> variables .) ]
-  ! LESS            [ reduce using rule 148 (value2 -> variables .) ]
-  ! GREATER         [ reduce using rule 148 (value2 -> variables .) ]
-  ! GREQUAL         [ reduce using rule 148 (value2 -> variables .) ]
-  ! LSEQUAL         [ reduce using rule 148 (value2 -> variables .) ]
-  ! NOTEQUAL        [ reduce using rule 148 (value2 -> variables .) ]
   ! PLUS            [ reduce using rule 84 (term -> variables .) ]
   ! MINUS           [ reduce using rule 84 (term -> variables .) ]
   ! $end            [ reduce using rule 84 (term -> variables .) ]
@@ -5014,6 +5060,12 @@ state 133
   ! STRING          [ reduce using rule 84 (term -> variables .) ]
   ! STRINGV         [ reduce using rule 84 (term -> variables .) ]
   ! BREAK           [ reduce using rule 84 (term -> variables .) ]
+  ! COMPARE         [ reduce using rule 148 (value2 -> variables .) ]
+  ! LESS            [ reduce using rule 148 (value2 -> variables .) ]
+  ! GREATER         [ reduce using rule 148 (value2 -> variables .) ]
+  ! GREQUAL         [ reduce using rule 148 (value2 -> variables .) ]
+  ! LSEQUAL         [ reduce using rule 148 (value2 -> variables .) ]
+  ! NOTEQUAL        [ reduce using rule 148 (value2 -> variables .) ]
 
 
 state 134
@@ -5021,7 +5073,7 @@ state 134
     (119) metodohash -> variables ASSIGN hash . POINT LENGTH
     (9) asignar -> hash .
 
-    POINT           shift and go to state 209
+    POINT           shift and go to state 210
     $end            reduce using rule 9 (asignar -> hash .)
 
 
@@ -5152,96 +5204,6 @@ state 136
 
 state 137
 
-    (71) assigns -> variables ASSIGN reglaSemanticaComparaciones .
-    (13) asignar -> reglaSemanticaComparaciones .
-    (159) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ANDS reglaSemanticaComparaciones
-    (160) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ORS reglaSemanticaComparaciones
-
-  ! reduce/reduce conflict for $end resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for END resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for ELSE resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for RETURN resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IDLOCAL resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IDINSTANCE resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IDCLASS resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IDGLOBAL resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IDENTIFIER resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for ARRAY resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for LSQBRACKET resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for LBRACKET resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for HASH resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for FOR resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for TRUE resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for FALSE resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for NIL resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for IF resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for WHILE resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for NUMBER resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for FLOAT resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for NUML resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for MINUS resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for STRING resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for STRINGV resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-  ! reduce/reduce conflict for BREAK resolved using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    $end            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    END             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    ELSE            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    RETURN          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IDLOCAL         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IDINSTANCE      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IDCLASS         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IDGLOBAL        reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IDENTIFIER      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    ARRAY           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    LSQBRACKET      reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    LBRACKET        reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    HASH            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    FOR             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    TRUE            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    FALSE           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    NIL             reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    IF              reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    WHILE           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    NUMBER          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    FLOAT           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    NUML            reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    MINUS           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    STRING          reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    STRINGV         reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    BREAK           reduce using rule 13 (asignar -> reglaSemanticaComparaciones .)
-    ANDS            shift and go to state 73
-    ORS             shift and go to state 74
-
-  ! $end            [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! END             [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! ELSE            [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! RETURN          [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IDLOCAL         [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IDINSTANCE      [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IDCLASS         [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IDGLOBAL        [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IDENTIFIER      [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! ARRAY           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! LSQBRACKET      [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! LBRACKET        [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! HASH            [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! FOR             [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! TRUE            [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! FALSE           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! NIL             [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! IF              [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! WHILE           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! NUMBER          [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! FLOAT           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! NUML            [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! MINUS           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! STRING          [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! STRINGV         [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-  ! BREAK           [ reduce using rule 71 (assigns -> variables ASSIGN reglaSemanticaComparaciones .) ]
-
-
-state 138
-
     (120) metodohash -> variables POINT LENGTH .
 
     $end            reduce using rule 120 (metodohash -> variables POINT LENGTH .)
@@ -5272,7 +5234,7 @@ state 138
     BREAK           reduce using rule 120 (metodohash -> variables POINT LENGTH .)
 
 
-state 139
+state 138
 
     (73) assigns -> variables ASSIGNPLUS variables .
     (79) expression -> variables . PLUS expression
@@ -5369,7 +5331,7 @@ state 139
   ! BREAK           [ reduce using rule 84 (term -> variables .) ]
 
 
-state 140
+state 139
 
     (72) assigns -> variables ASSIGNPLUS expression .
     (76) expression -> expression . PLUS term
@@ -5417,7 +5379,7 @@ state 140
   ! MINUS           [ reduce using rule 72 (assigns -> variables ASSIGNPLUS expression .) ]
 
 
-state 141
+state 140
 
     (75) assigns -> variables ASSIGNMIN variables .
     (79) expression -> variables . PLUS expression
@@ -5514,7 +5476,7 @@ state 141
   ! BREAK           [ reduce using rule 84 (term -> variables .) ]
 
 
-state 142
+state 141
 
     (74) assigns -> variables ASSIGNMIN expression .
     (76) expression -> expression . PLUS term
@@ -5562,7 +5524,7 @@ state 142
   ! MINUS           [ reduce using rule 74 (assigns -> variables ASSIGNMIN expression .) ]
 
 
-state 143
+state 142
 
     (159) reglaSemanticaComparaciones -> reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones .
     (159) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ANDS reglaSemanticaComparaciones
@@ -5603,7 +5565,7 @@ state 143
   ! ORS             [ reduce using rule 159 (reglaSemanticaComparaciones -> reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones .) ]
 
 
-state 144
+state 143
 
     (148) value2 -> variables .
     (84) term -> variables .
@@ -5724,7 +5686,7 @@ state 144
   ! MINUS           [ reduce using rule 84 (term -> variables .) ]
 
 
-state 145
+state 144
 
     (149) value2 -> boolean .
 
@@ -5764,7 +5726,7 @@ state 145
     BREAK           reduce using rule 149 (value2 -> boolean .)
 
 
-state 146
+state 145
 
     (150) value2 -> term .
     (82) expression -> term .
@@ -5879,7 +5841,7 @@ state 146
   ! BREAK           [ reduce using rule 150 (value2 -> term .) ]
 
 
-state 147
+state 146
 
     (151) value2 -> expression .
     (76) expression -> expression . PLUS term
@@ -5935,7 +5897,7 @@ state 147
   ! MINUS           [ reduce using rule 151 (value2 -> expression .) ]
 
 
-state 148
+state 147
 
     (152) value2 -> cadena .
 
@@ -5975,7 +5937,7 @@ state 148
     BREAK           reduce using rule 152 (value2 -> cadena .)
 
 
-state 149
+state 148
 
     (160) reglaSemanticaComparaciones -> reglaSemanticaComparaciones ORS reglaSemanticaComparaciones .
     (159) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ANDS reglaSemanticaComparaciones
@@ -6016,7 +5978,7 @@ state 149
   ! ORS             [ reduce using rule 160 (reglaSemanticaComparaciones -> reglaSemanticaComparaciones ORS reglaSemanticaComparaciones .) ]
 
 
-state 150
+state 149
 
     (95) cadena -> STRING POINT NEW .
     (96) cadena -> STRING POINT NEW . LPARENTHESIS string RPARENTHESIS
@@ -6057,17 +6019,17 @@ state 150
     STRINGV         reduce using rule 95 (cadena -> STRING POINT NEW .)
     BREAK           reduce using rule 95 (cadena -> STRING POINT NEW .)
     RPARENTHESIS    reduce using rule 95 (cadena -> STRING POINT NEW .)
-    LPARENTHESIS    shift and go to state 210
+    LPARENTHESIS    shift and go to state 211
 
 
-state 151
+state 150
 
     (97) cadena -> STRING LPARENTHESIS string . RPARENTHESIS
 
-    RPARENTHESIS    shift and go to state 211
+    RPARENTHESIS    shift and go to state 212
 
 
-state 152
+state 151
 
     (102) arreglo -> ARRAY POINT NEW .
     (103) arreglo -> ARRAY POINT NEW . LPARENTHESIS factor RPARENTHESIS
@@ -6101,17 +6063,17 @@ state 152
     STRINGV         reduce using rule 102 (arreglo -> ARRAY POINT NEW .)
     BREAK           reduce using rule 102 (arreglo -> ARRAY POINT NEW .)
     RPARENTHESIS    reduce using rule 102 (arreglo -> ARRAY POINT NEW .)
-    LPARENTHESIS    shift and go to state 212
+    LPARENTHESIS    shift and go to state 213
 
 
-state 153
+state 152
 
     (105) arreglo -> ARRAY LSQBRACKET arraycontent . RSQBRACKET
 
-    RSQBRACKET      shift and go to state 213
+    RSQBRACKET      shift and go to state 214
 
 
-state 154
+state 153
 
     (106) arreglo -> LSQBRACKET arraycontent RSQBRACKET .
 
@@ -6145,7 +6107,7 @@ state 154
     RPARENTHESIS    reduce using rule 106 (arreglo -> LSQBRACKET arraycontent RSQBRACKET .)
 
 
-state 155
+state 154
 
     (109) arraycontent -> factor COMMA . arraycontent
     (107) arraycontent -> . factor
@@ -6166,10 +6128,10 @@ state 155
     STRINGV         shift and go to state 31
 
     factor                         shift and go to state 82
-    arraycontent                   shift and go to state 214
+    arraycontent                   shift and go to state 215
     string                         shift and go to state 83
 
-state 156
+state 155
 
     (110) arraycontent -> string COMMA . arraycontent
     (107) arraycontent -> . factor
@@ -6190,10 +6152,10 @@ state 156
     STRINGV         shift and go to state 31
 
     string                         shift and go to state 83
-    arraycontent                   shift and go to state 215
+    arraycontent                   shift and go to state 216
     factor                         shift and go to state 82
 
-state 157
+state 156
 
     (113) hash -> LBRACKET hashcontent RBRACKET .
 
@@ -6226,15 +6188,15 @@ state 157
     BREAK           reduce using rule 113 (hash -> LBRACKET hashcontent RBRACKET .)
 
 
-state 158
+state 157
 
     (115) hashcontent -> string ASSIGN . GREATER hashcontentvalue
     (116) hashcontent -> string ASSIGN . GREATER hashcontentvalue COMMA hashcontent
 
-    GREATER         shift and go to state 216
+    GREATER         shift and go to state 217
 
 
-state 159
+state 158
 
     (114) hash -> HASH POINT NEW .
 
@@ -6267,14 +6229,14 @@ state 159
     BREAK           reduce using rule 114 (hash -> HASH POINT NEW .)
 
 
-state 160
+state 159
 
     (162) getsr -> IDLOCAL ASSIGN GETS .
 
     $end            reduce using rule 162 (getsr -> IDLOCAL ASSIGN GETS .)
 
 
-state 161
+state 160
 
     (63) assigns -> IDLOCAL ASSIGN expression .
     (76) expression -> expression . PLUS term
@@ -6285,6 +6247,7 @@ state 161
     (91) expression -> expression . MOD term
     (92) expression -> expression . MULT term
     (93) expression -> expression . EXP term
+    (151) value2 -> expression .
 
   ! shift/reduce conflict for MINUS resolved as shift
     $end            reduce using rule 63 (assigns -> IDLOCAL ASSIGN expression .)
@@ -6318,11 +6281,116 @@ state 161
     MOD             shift and go to state 60
     MULT            shift and go to state 61
     EXP             shift and go to state 62
+    COMPARE         reduce using rule 151 (value2 -> expression .)
+    LESS            reduce using rule 151 (value2 -> expression .)
+    GREATER         reduce using rule 151 (value2 -> expression .)
+    GREQUAL         reduce using rule 151 (value2 -> expression .)
+    LSEQUAL         reduce using rule 151 (value2 -> expression .)
+    NOTEQUAL        reduce using rule 151 (value2 -> expression .)
 
   ! MINUS           [ reduce using rule 63 (assigns -> IDLOCAL ASSIGN expression .) ]
 
 
+state 161
+
+    (71) assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .
+    (159) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ANDS reglaSemanticaComparaciones
+    (160) reglaSemanticaComparaciones -> reglaSemanticaComparaciones . ORS reglaSemanticaComparaciones
+
+    $end            reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    END             reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    ELSE            reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    RETURN          reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IDLOCAL         reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IDINSTANCE      reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IDCLASS         reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IDGLOBAL        reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IDENTIFIER      reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    ARRAY           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    LSQBRACKET      reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    LBRACKET        reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    HASH            reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    FOR             reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    TRUE            reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    FALSE           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    NIL             reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    IF              reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    WHILE           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    NUMBER          reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    FLOAT           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    NUML            reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    MINUS           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    STRING          reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    STRINGV         reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    BREAK           reduce using rule 71 (assigns -> IDLOCAL ASSIGN reglaSemanticaComparaciones .)
+    ANDS            shift and go to state 73
+    ORS             shift and go to state 74
+
+
 state 162
+
+    (79) expression -> variables . PLUS expression
+    (81) expression -> variables . MINUS expression
+    (84) term -> variables .
+    (148) value2 -> variables .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! reduce/reduce conflict for COMPARE resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for LESS resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for GREATER resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for GREQUAL resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for LSEQUAL resolved using rule 84 (term -> variables .)
+  ! reduce/reduce conflict for NOTEQUAL resolved using rule 84 (term -> variables .)
+    PLUS            shift and go to state 67
+    MINUS           shift and go to state 68
+    DIVISION        reduce using rule 84 (term -> variables .)
+    MOD             reduce using rule 84 (term -> variables .)
+    MULT            reduce using rule 84 (term -> variables .)
+    EXP             reduce using rule 84 (term -> variables .)
+    $end            reduce using rule 84 (term -> variables .)
+    COMPARE         reduce using rule 84 (term -> variables .)
+    LESS            reduce using rule 84 (term -> variables .)
+    GREATER         reduce using rule 84 (term -> variables .)
+    GREQUAL         reduce using rule 84 (term -> variables .)
+    LSEQUAL         reduce using rule 84 (term -> variables .)
+    NOTEQUAL        reduce using rule 84 (term -> variables .)
+    END             reduce using rule 84 (term -> variables .)
+    ELSE            reduce using rule 84 (term -> variables .)
+    RETURN          reduce using rule 84 (term -> variables .)
+    IDLOCAL         reduce using rule 84 (term -> variables .)
+    IDINSTANCE      reduce using rule 84 (term -> variables .)
+    IDCLASS         reduce using rule 84 (term -> variables .)
+    IDGLOBAL        reduce using rule 84 (term -> variables .)
+    IDENTIFIER      reduce using rule 84 (term -> variables .)
+    ARRAY           reduce using rule 84 (term -> variables .)
+    LSQBRACKET      reduce using rule 84 (term -> variables .)
+    LBRACKET        reduce using rule 84 (term -> variables .)
+    HASH            reduce using rule 84 (term -> variables .)
+    FOR             reduce using rule 84 (term -> variables .)
+    TRUE            reduce using rule 84 (term -> variables .)
+    FALSE           reduce using rule 84 (term -> variables .)
+    NIL             reduce using rule 84 (term -> variables .)
+    IF              reduce using rule 84 (term -> variables .)
+    WHILE           reduce using rule 84 (term -> variables .)
+    NUMBER          reduce using rule 84 (term -> variables .)
+    FLOAT           reduce using rule 84 (term -> variables .)
+    NUML            reduce using rule 84 (term -> variables .)
+    STRING          reduce using rule 84 (term -> variables .)
+    STRINGV         reduce using rule 84 (term -> variables .)
+    BREAK           reduce using rule 84 (term -> variables .)
+
+  ! PLUS            [ reduce using rule 84 (term -> variables .) ]
+  ! MINUS           [ reduce using rule 84 (term -> variables .) ]
+  ! COMPARE         [ reduce using rule 148 (value2 -> variables .) ]
+  ! LESS            [ reduce using rule 148 (value2 -> variables .) ]
+  ! GREATER         [ reduce using rule 148 (value2 -> variables .) ]
+  ! GREQUAL         [ reduce using rule 148 (value2 -> variables .) ]
+  ! LSEQUAL         [ reduce using rule 148 (value2 -> variables .) ]
+  ! NOTEQUAL        [ reduce using rule 148 (value2 -> variables .) ]
+
+
+state 163
 
     (64) assigns -> IDINSTANCE ASSIGN expression .
     (76) expression -> expression . PLUS term
@@ -6370,7 +6438,7 @@ state 162
   ! MINUS           [ reduce using rule 64 (assigns -> IDINSTANCE ASSIGN expression .) ]
 
 
-state 163
+state 164
 
     (65) assigns -> IDCLASS ASSIGN expression .
     (76) expression -> expression . PLUS term
@@ -6418,7 +6486,7 @@ state 163
   ! MINUS           [ reduce using rule 65 (assigns -> IDCLASS ASSIGN expression .) ]
 
 
-state 164
+state 165
 
     (66) assigns -> IDGLOBAL ASSIGN expression .
     (76) expression -> expression . PLUS term
@@ -6466,7 +6534,7 @@ state 164
   ! MINUS           [ reduce using rule 66 (assigns -> IDGLOBAL ASSIGN expression .) ]
 
 
-state 165
+state 166
 
     (67) assigns -> IDENTIFIER ASSIGN expression .
     (76) expression -> expression . PLUS term
@@ -6514,7 +6582,7 @@ state 165
   ! MINUS           [ reduce using rule 67 (assigns -> IDENTIFIER ASSIGN expression .) ]
 
 
-state 166
+state 167
 
     (153) reglaSemanticaComparaciones -> value2 COMPARE value2 .
 
@@ -6548,7 +6616,7 @@ state 166
     BREAK           reduce using rule 153 (reglaSemanticaComparaciones -> value2 COMPARE value2 .)
 
 
-state 167
+state 168
 
     (154) reglaSemanticaComparaciones -> value2 LESS value2 .
 
@@ -6582,7 +6650,7 @@ state 167
     BREAK           reduce using rule 154 (reglaSemanticaComparaciones -> value2 LESS value2 .)
 
 
-state 168
+state 169
 
     (155) reglaSemanticaComparaciones -> value2 GREATER value2 .
 
@@ -6616,7 +6684,7 @@ state 168
     BREAK           reduce using rule 155 (reglaSemanticaComparaciones -> value2 GREATER value2 .)
 
 
-state 169
+state 170
 
     (156) reglaSemanticaComparaciones -> value2 GREQUAL value2 .
 
@@ -6650,7 +6718,7 @@ state 169
     BREAK           reduce using rule 156 (reglaSemanticaComparaciones -> value2 GREQUAL value2 .)
 
 
-state 170
+state 171
 
     (157) reglaSemanticaComparaciones -> value2 LSEQUAL value2 .
 
@@ -6684,7 +6752,7 @@ state 170
     BREAK           reduce using rule 157 (reglaSemanticaComparaciones -> value2 LSEQUAL value2 .)
 
 
-state 171
+state 172
 
     (158) reglaSemanticaComparaciones -> value2 NOTEQUAL value2 .
 
@@ -6718,7 +6786,7 @@ state 171
     BREAK           reduce using rule 158 (reglaSemanticaComparaciones -> value2 NOTEQUAL value2 .)
 
 
-state 172
+state 173
 
     (127) estructurasControl -> FOR IDLOCAL IN . factor POINT POINT factor DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN . factor POINT POINT factor DO forcontent END
@@ -6733,9 +6801,9 @@ state 172
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    factor                         shift and go to state 217
+    factor                         shift and go to state 218
 
-state 173
+state 174
 
     (55) sentenIF -> IF variables comparador . term
     (56) sentenifp -> IF variables comparador . term algoritmo END
@@ -6764,10 +6832,10 @@ state 173
     IDENTIFIER      shift and go to state 104
 
     variables                      shift and go to state 121
-    term                           shift and go to state 218
+    term                           shift and go to state 219
     factor                         shift and go to state 34
 
-state 174
+state 175
 
     (121) comparador -> COMPARE .
 
@@ -6782,7 +6850,7 @@ state 174
     IDENTIFIER      reduce using rule 121 (comparador -> COMPARE .)
 
 
-state 175
+state 176
 
     (122) comparador -> GREQUAL .
 
@@ -6797,7 +6865,7 @@ state 175
     IDENTIFIER      reduce using rule 122 (comparador -> GREQUAL .)
 
 
-state 176
+state 177
 
     (123) comparador -> LSEQUAL .
 
@@ -6812,7 +6880,7 @@ state 176
     IDENTIFIER      reduce using rule 123 (comparador -> LSEQUAL .)
 
 
-state 177
+state 178
 
     (124) comparador -> NOTEQUAL .
 
@@ -6827,7 +6895,7 @@ state 177
     IDENTIFIER      reduce using rule 124 (comparador -> NOTEQUAL .)
 
 
-state 178
+state 179
 
     (125) comparador -> LESS .
 
@@ -6842,7 +6910,7 @@ state 178
     IDENTIFIER      reduce using rule 125 (comparador -> LESS .)
 
 
-state 179
+state 180
 
     (126) comparador -> GREATER .
 
@@ -6857,7 +6925,7 @@ state 179
     IDENTIFIER      reduce using rule 126 (comparador -> GREATER .)
 
 
-state 180
+state 181
 
     (49) algoritmo -> variables .
     (79) expression -> variables . PLUS expression
@@ -6865,7 +6933,6 @@ state 180
     (68) assigns -> variables . ASSIGN variables
     (69) assigns -> variables . ASSIGN boolean
     (70) assigns -> variables . ASSIGN asignar
-    (71) assigns -> variables . ASSIGN reglaSemanticaComparaciones
     (72) assigns -> variables . ASSIGNPLUS expression
     (73) assigns -> variables . ASSIGNPLUS variables
     (74) assigns -> variables . ASSIGNMIN expression
@@ -6882,7 +6949,7 @@ state 180
     RETURN          reduce using rule 49 (algoritmo -> variables .)
     PLUS            shift and go to state 67
     MINUS           shift and go to state 68
-    ASSIGN          shift and go to state 219
+    ASSIGN          shift and go to state 220
     ASSIGNPLUS      shift and go to state 71
     ASSIGNMIN       shift and go to state 72
     DIVISION        reduce using rule 84 (term -> variables .)
@@ -6897,7 +6964,7 @@ state 180
   ! RETURN          [ reduce using rule 84 (term -> variables .) ]
 
 
-state 181
+state 182
 
     (51) sentenWHILE -> WHILE variables comparador . variables algoritmo END
     (52) sentenWHILE -> WHILE variables comparador . expression algoritmo END
@@ -6935,19 +7002,19 @@ state 181
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    variables                      shift and go to state 220
-    expression                     shift and go to state 221
+    variables                      shift and go to state 221
+    expression                     shift and go to state 222
     term                           shift and go to state 108
     factor                         shift and go to state 34
 
-state 182
+state 183
 
     (54) sentenWHILE -> WHILE variables algoritmo . END
 
-    END             shift and go to state 222
+    END             shift and go to state 223
 
 
-state 183
+state 184
 
     (38) algoritmo -> expression .
     (76) expression -> expression . PLUS term
@@ -6970,7 +7037,7 @@ state 183
     EXP             shift and go to state 62
 
 
-state 184
+state 185
 
     (39) algoritmo -> metodocadena .
 
@@ -7001,7 +7068,7 @@ state 184
     BREAK           reduce using rule 39 (algoritmo -> metodocadena .)
 
 
-state 185
+state 186
 
     (40) algoritmo -> arreglo .
     (111) metodosarreglo -> arreglo . POINT INDEX LPARENTHESIS arraycontent RPARENTHESIS
@@ -7038,7 +7105,7 @@ state 185
   ! LSQBRACKET      [ reduce using rule 40 (algoritmo -> arreglo .) ]
 
 
-state 186
+state 187
 
     (41) algoritmo -> metodosarreglo .
 
@@ -7069,7 +7136,7 @@ state 186
     BREAK           reduce using rule 41 (algoritmo -> metodosarreglo .)
 
 
-state 187
+state 188
 
     (42) algoritmo -> hash .
 
@@ -7100,7 +7167,7 @@ state 187
     BREAK           reduce using rule 42 (algoritmo -> hash .)
 
 
-state 188
+state 189
 
     (43) algoritmo -> estructurasControl .
 
@@ -7131,7 +7198,7 @@ state 188
     BREAK           reduce using rule 43 (algoritmo -> estructurasControl .)
 
 
-state 189
+state 190
 
     (44) algoritmo -> boolean .
 
@@ -7162,7 +7229,7 @@ state 189
     BREAK           reduce using rule 44 (algoritmo -> boolean .)
 
 
-state 190
+state 191
 
     (45) algoritmo -> assigns .
 
@@ -7193,7 +7260,7 @@ state 190
     BREAK           reduce using rule 45 (algoritmo -> assigns .)
 
 
-state 191
+state 192
 
     (46) algoritmo -> sentenIF .
 
@@ -7224,7 +7291,7 @@ state 191
     BREAK           reduce using rule 46 (algoritmo -> sentenIF .)
 
 
-state 192
+state 193
 
     (47) algoritmo -> sentenifp .
 
@@ -7255,7 +7322,7 @@ state 192
     BREAK           reduce using rule 47 (algoritmo -> sentenifp .)
 
 
-state 193
+state 194
 
     (48) algoritmo -> sentenifelse .
 
@@ -7286,7 +7353,7 @@ state 193
     BREAK           reduce using rule 48 (algoritmo -> sentenifelse .)
 
 
-state 194
+state 195
 
     (50) algoritmo -> sentenWHILE .
 
@@ -7317,7 +7384,7 @@ state 194
     BREAK           reduce using rule 50 (algoritmo -> sentenWHILE .)
 
 
-state 195
+state 196
 
     (98) metodocadena -> cadena . POINT EMPTY INTERROGATIVE
     (100) metodocadena -> cadena . POINT LENGTH
@@ -7325,7 +7392,7 @@ state 195
     POINT           shift and go to state 64
 
 
-state 196
+state 197
 
     (99) metodocadena -> string . POINT EMPTY INTERROGATIVE
     (101) metodocadena -> string . POINT LENGTH
@@ -7333,13 +7400,14 @@ state 196
     POINT           shift and go to state 63
 
 
-state 197
+state 198
 
     (63) assigns -> IDLOCAL . ASSIGN expression
+    (71) assigns -> IDLOCAL . ASSIGN reglaSemanticaComparaciones
     (58) variables -> IDLOCAL .
 
   ! shift/reduce conflict for ASSIGN resolved as shift
-    ASSIGN          shift and go to state 223
+    ASSIGN          shift and go to state 224
     PLUS            reduce using rule 58 (variables -> IDLOCAL .)
     MINUS           reduce using rule 58 (variables -> IDLOCAL .)
     ASSIGNPLUS      reduce using rule 58 (variables -> IDLOCAL .)
@@ -7355,7 +7423,7 @@ state 197
   ! ASSIGN          [ reduce using rule 58 (variables -> IDLOCAL .) ]
 
 
-state 198
+state 199
 
     (64) assigns -> IDINSTANCE . ASSIGN expression
     (59) variables -> IDINSTANCE .
@@ -7377,7 +7445,7 @@ state 198
   ! ASSIGN          [ reduce using rule 59 (variables -> IDINSTANCE .) ]
 
 
-state 199
+state 200
 
     (65) assigns -> IDCLASS . ASSIGN expression
     (60) variables -> IDCLASS .
@@ -7399,7 +7467,7 @@ state 199
   ! ASSIGN          [ reduce using rule 60 (variables -> IDCLASS .) ]
 
 
-state 200
+state 201
 
     (66) assigns -> IDGLOBAL . ASSIGN expression
     (61) variables -> IDGLOBAL .
@@ -7421,7 +7489,7 @@ state 200
   ! ASSIGN          [ reduce using rule 61 (variables -> IDGLOBAL .) ]
 
 
-state 201
+state 202
 
     (67) assigns -> IDENTIFIER . ASSIGN expression
     (62) variables -> IDENTIFIER .
@@ -7443,14 +7511,14 @@ state 201
   ! ASSIGN          [ reduce using rule 62 (variables -> IDENTIFIER .) ]
 
 
-state 202
+state 203
 
     (53) sentenWHILE -> WHILE boolean algoritmo . END
 
-    END             shift and go to state 224
+    END             shift and go to state 225
 
 
-state 203
+state 204
 
     (133) funcion1 -> DEF IDLOCAL LPARENTHESIS . fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END
     (134) funcion1 -> DEF IDLOCAL LPARENTHESIS . fcontenido RPARENTHESIS algoritmo END
@@ -7469,18 +7537,18 @@ state 203
     (61) variables -> . IDGLOBAL
     (62) variables -> . IDENTIFIER
 
-    MULT            shift and go to state 228
+    MULT            shift and go to state 229
     IDLOCAL         shift and go to state 100
     IDINSTANCE      shift and go to state 101
     IDCLASS         shift and go to state 102
     IDGLOBAL        shift and go to state 103
     IDENTIFIER      shift and go to state 104
 
-    fcontenido                     shift and go to state 225
-    valuedefect                    shift and go to state 226
-    variables                      shift and go to state 227
+    fcontenido                     shift and go to state 226
+    valuedefect                    shift and go to state 227
+    variables                      shift and go to state 228
 
-state 204
+state 205
 
     (99) metodocadena -> string POINT EMPTY INTERROGATIVE .
 
@@ -7512,7 +7580,7 @@ state 204
     BREAK           reduce using rule 99 (metodocadena -> string POINT EMPTY INTERROGATIVE .)
 
 
-state 205
+state 206
 
     (98) metodocadena -> cadena POINT EMPTY INTERROGATIVE .
 
@@ -7544,7 +7612,7 @@ state 205
     BREAK           reduce using rule 98 (metodocadena -> cadena POINT EMPTY INTERROGATIVE .)
 
 
-state 206
+state 207
 
     (111) metodosarreglo -> arreglo POINT INDEX LPARENTHESIS . arraycontent RPARENTHESIS
     (107) arraycontent -> . factor
@@ -7564,11 +7632,11 @@ state 206
     MINUS           shift and go to state 30
     STRINGV         shift and go to state 31
 
-    arraycontent                   shift and go to state 229
+    arraycontent                   shift and go to state 230
     factor                         shift and go to state 82
     string                         shift and go to state 83
 
-state 207
+state 208
 
     (112) metodosarreglo -> arreglo LSQBRACKET factor RSQBRACKET .
 
@@ -7600,7 +7668,7 @@ state 207
     BREAK           reduce using rule 112 (metodosarreglo -> arreglo LSQBRACKET factor RSQBRACKET .)
 
 
-state 208
+state 209
 
     (119) metodohash -> variables ASSIGN . hash POINT LENGTH
     (113) hash -> . LBRACKET hashcontent RBRACKET
@@ -7609,25 +7677,25 @@ state 208
     LBRACKET        shift and go to state 36
     HASH            shift and go to state 37
 
-    hash                           shift and go to state 230
+    hash                           shift and go to state 231
 
-state 209
+state 210
 
     (119) metodohash -> variables ASSIGN hash POINT . LENGTH
 
-    LENGTH          shift and go to state 231
+    LENGTH          shift and go to state 232
 
 
-state 210
+state 211
 
     (96) cadena -> STRING POINT NEW LPARENTHESIS . string RPARENTHESIS
     (94) string -> . STRINGV
 
     STRINGV         shift and go to state 31
 
-    string                         shift and go to state 232
+    string                         shift and go to state 233
 
-state 211
+state 212
 
     (97) cadena -> STRING LPARENTHESIS string RPARENTHESIS .
 
@@ -7669,7 +7737,7 @@ state 211
     RPARENTHESIS    reduce using rule 97 (cadena -> STRING LPARENTHESIS string RPARENTHESIS .)
 
 
-state 212
+state 213
 
     (103) arreglo -> ARRAY POINT NEW LPARENTHESIS . factor RPARENTHESIS
     (104) arreglo -> ARRAY POINT NEW LPARENTHESIS . factor COMMA arraycontent RPARENTHESIS
@@ -7684,9 +7752,9 @@ state 212
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    factor                         shift and go to state 233
+    factor                         shift and go to state 234
 
-state 213
+state 214
 
     (105) arreglo -> ARRAY LSQBRACKET arraycontent RSQBRACKET .
 
@@ -7720,7 +7788,7 @@ state 213
     RPARENTHESIS    reduce using rule 105 (arreglo -> ARRAY LSQBRACKET arraycontent RSQBRACKET .)
 
 
-state 214
+state 215
 
     (109) arraycontent -> factor COMMA arraycontent .
 
@@ -7728,7 +7796,7 @@ state 214
     RPARENTHESIS    reduce using rule 109 (arraycontent -> factor COMMA arraycontent .)
 
 
-state 215
+state 216
 
     (110) arraycontent -> string COMMA arraycontent .
 
@@ -7736,7 +7804,7 @@ state 215
     RPARENTHESIS    reduce using rule 110 (arraycontent -> string COMMA arraycontent .)
 
 
-state 216
+state 217
 
     (115) hashcontent -> string ASSIGN GREATER . hashcontentvalue
     (116) hashcontent -> string ASSIGN GREATER . hashcontentvalue COMMA hashcontent
@@ -7755,19 +7823,19 @@ state 216
     MINUS           shift and go to state 30
     STRINGV         shift and go to state 31
 
-    string                         shift and go to state 234
-    hashcontentvalue               shift and go to state 235
-    factor                         shift and go to state 236
+    string                         shift and go to state 235
+    hashcontentvalue               shift and go to state 236
+    factor                         shift and go to state 237
 
-state 217
+state 218
 
     (127) estructurasControl -> FOR IDLOCAL IN factor . POINT POINT factor DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor . POINT POINT factor DO forcontent END
 
-    POINT           shift and go to state 237
+    POINT           shift and go to state 238
 
 
-state 218
+state 219
 
     (55) sentenIF -> IF variables comparador term .
     (56) sentenifp -> IF variables comparador term . algoritmo END
@@ -7822,7 +7890,7 @@ state 218
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -7885,11 +7953,11 @@ state 218
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -7921,31 +7989,30 @@ state 218
   ! STRING          [ reduce using rule 55 (sentenIF -> IF variables comparador term .) ]
   ! STRINGV         [ reduce using rule 55 (sentenIF -> IF variables comparador term .) ]
 
-    variables                      shift and go to state 180
+    variables                      shift and go to state 181
     term                           shift and go to state 108
-    algoritmo                      shift and go to state 238
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    algoritmo                      shift and go to state 239
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 219
+state 220
 
     (68) assigns -> variables ASSIGN . variables
     (69) assigns -> variables ASSIGN . boolean
     (70) assigns -> variables ASSIGN . asignar
-    (71) assigns -> variables ASSIGN . reglaSemanticaComparaciones
     (58) variables -> . IDLOCAL
     (59) variables -> . IDINSTANCE
     (60) variables -> . IDCLASS
@@ -7965,14 +8032,6 @@ state 219
     (11) asignar -> . boolean
     (12) asignar -> . variables
     (13) asignar -> . reglaSemanticaComparaciones
-    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
-    (154) reglaSemanticaComparaciones -> . value2 LESS value2
-    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
-    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
-    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
-    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
-    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
-    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     (76) expression -> . expression PLUS term
     (77) expression -> . expression MINUS term
     (78) expression -> . expression PLUS variables
@@ -8003,13 +8062,21 @@ state 219
     (114) hash -> . HASH POINT NEW
     (119) metodohash -> . variables ASSIGN hash POINT LENGTH
     (120) metodohash -> . variables POINT LENGTH
+    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
+    (154) reglaSemanticaComparaciones -> . value2 LESS value2
+    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
+    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
+    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
+    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
+    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
+    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
+    (83) term -> . factor
+    (84) term -> . variables
     (148) value2 -> . variables
     (149) value2 -> . boolean
     (150) value2 -> . term
     (151) value2 -> . expression
     (152) value2 -> . cadena
-    (83) term -> . factor
-    (84) term -> . variables
     (85) factor -> . NUMBER
     (86) factor -> . FLOAT
     (87) factor -> . NUML
@@ -8038,7 +8105,6 @@ state 219
     variables                      shift and go to state 133
     boolean                        shift and go to state 135
     asignar                        shift and go to state 136
-    reglaSemanticaComparaciones    shift and go to state 137
     expression                     shift and go to state 4
     string                         shift and go to state 5
     cadena                         shift and go to state 6
@@ -8047,11 +8113,12 @@ state 219
     metodosarreglo                 shift and go to state 9
     hash                           shift and go to state 10
     metodohash                     shift and go to state 11
-    value2                         shift and go to state 46
+    reglaSemanticaComparaciones    shift and go to state 14
     term                           shift and go to state 29
     factor                         shift and go to state 34
+    value2                         shift and go to state 46
 
-state 220
+state 221
 
     (51) sentenWHILE -> WHILE variables comparador variables . algoritmo END
     (79) expression -> variables . PLUS expression
@@ -8107,7 +8174,7 @@ state 220
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -8159,7 +8226,7 @@ state 220
   ! shift/reduce conflict for FLOAT resolved as shift
   ! shift/reduce conflict for NUML resolved as shift
     PLUS            shift and go to state 67
-    MINUS           shift and go to state 240
+    MINUS           shift and go to state 241
     DIVISION        reduce using rule 84 (term -> variables .)
     MOD             reduce using rule 84 (term -> variables .)
     MULT            reduce using rule 84 (term -> variables .)
@@ -8172,11 +8239,11 @@ state 220
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -8208,26 +8275,26 @@ state 220
   ! FLOAT           [ reduce using rule 84 (term -> variables .) ]
   ! NUML            [ reduce using rule 84 (term -> variables .) ]
 
-    variables                      shift and go to state 180
-    algoritmo                      shift and go to state 239
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
+    variables                      shift and go to state 181
+    algoritmo                      shift and go to state 240
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 221
+state 222
 
     (52) sentenWHILE -> WHILE variables comparador expression . algoritmo END
     (76) expression -> expression . PLUS term
@@ -8288,7 +8355,7 @@ state 221
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -8318,7 +8385,7 @@ state 221
     (89) factor -> . MINUS FLOAT
 
     PLUS            shift and go to state 57
-    MINUS           shift and go to state 242
+    MINUS           shift and go to state 243
     DIVISION        shift and go to state 59
     MOD             shift and go to state 60
     MULT            shift and go to state 61
@@ -8331,11 +8398,11 @@ state 221
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -8344,26 +8411,26 @@ state 221
     FLOAT           shift and go to state 55
     NUML            shift and go to state 56
 
-    variables                      shift and go to state 180
-    expression                     shift and go to state 183
-    algoritmo                      shift and go to state 241
+    variables                      shift and go to state 181
+    expression                     shift and go to state 184
+    algoritmo                      shift and go to state 242
     term                           shift and go to state 108
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 222
+state 223
 
     (54) sentenWHILE -> WHILE variables algoritmo END .
 
@@ -8395,9 +8462,10 @@ state 222
     BREAK           reduce using rule 54 (sentenWHILE -> WHILE variables algoritmo END .)
 
 
-state 223
+state 224
 
     (63) assigns -> IDLOCAL ASSIGN . expression
+    (71) assigns -> IDLOCAL ASSIGN . reglaSemanticaComparaciones
     (76) expression -> . expression PLUS term
     (77) expression -> . expression MINUS term
     (78) expression -> . expression PLUS variables
@@ -8409,6 +8477,14 @@ state 223
     (91) expression -> . expression MOD term
     (92) expression -> . expression MULT term
     (93) expression -> . expression EXP term
+    (153) reglaSemanticaComparaciones -> . value2 COMPARE value2
+    (154) reglaSemanticaComparaciones -> . value2 LESS value2
+    (155) reglaSemanticaComparaciones -> . value2 GREATER value2
+    (156) reglaSemanticaComparaciones -> . value2 GREQUAL value2
+    (157) reglaSemanticaComparaciones -> . value2 LSEQUAL value2
+    (158) reglaSemanticaComparaciones -> . value2 NOTEQUAL value2
+    (159) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
+    (160) reglaSemanticaComparaciones -> . reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     (58) variables -> . IDLOCAL
     (59) variables -> . IDINSTANCE
     (60) variables -> . IDCLASS
@@ -8416,11 +8492,22 @@ state 223
     (62) variables -> . IDENTIFIER
     (83) term -> . factor
     (84) term -> . variables
+    (148) value2 -> . variables
+    (149) value2 -> . boolean
+    (150) value2 -> . term
+    (151) value2 -> . expression
+    (152) value2 -> . cadena
     (85) factor -> . NUMBER
     (86) factor -> . FLOAT
     (87) factor -> . NUML
     (88) factor -> . MINUS NUMBER
     (89) factor -> . MINUS FLOAT
+    (28) boolean -> . TRUE
+    (29) boolean -> . FALSE
+    (30) boolean -> . NIL
+    (95) cadena -> . STRING POINT NEW
+    (96) cadena -> . STRING POINT NEW LPARENTHESIS string RPARENTHESIS
+    (97) cadena -> . STRING LPARENTHESIS string RPARENTHESIS
 
     IDLOCAL         shift and go to state 100
     IDINSTANCE      shift and go to state 101
@@ -8431,13 +8518,21 @@ state 223
     FLOAT           shift and go to state 55
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
+    TRUE            shift and go to state 38
+    FALSE           shift and go to state 39
+    NIL             shift and go to state 40
+    STRING          shift and go to state 32
 
-    expression                     shift and go to state 161
-    term                           shift and go to state 108
-    variables                      shift and go to state 109
+    expression                     shift and go to state 160
+    reglaSemanticaComparaciones    shift and go to state 161
+    term                           shift and go to state 29
+    variables                      shift and go to state 162
+    value2                         shift and go to state 46
     factor                         shift and go to state 34
+    boolean                        shift and go to state 144
+    cadena                         shift and go to state 147
 
-state 224
+state 225
 
     (53) sentenWHILE -> WHILE boolean algoritmo END .
 
@@ -8469,23 +8564,23 @@ state 224
     BREAK           reduce using rule 53 (sentenWHILE -> WHILE boolean algoritmo END .)
 
 
-state 225
+state 226
 
     (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido . RPARENTHESIS algoritmo RETURN IDLOCAL END
     (134) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido . RPARENTHESIS algoritmo END
-
-    RPARENTHESIS    shift and go to state 243
-
-
-state 226
-
-    (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect . RPARENTHESIS algoritmo RETURN variables END
-    (145) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect . RPARENTHESIS algoritmo END
 
     RPARENTHESIS    shift and go to state 244
 
 
 state 227
+
+    (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect . RPARENTHESIS algoritmo RETURN variables END
+    (145) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect . RPARENTHESIS algoritmo END
+
+    RPARENTHESIS    shift and go to state 245
+
+
+state 228
 
     (135) fcontenido -> variables .
     (136) fcontenido -> variables . COMMA fcontenido
@@ -8494,33 +8589,33 @@ state 227
     (143) valuedefect -> variables . COMMA valuedefect
 
     RPARENTHESIS    reduce using rule 135 (fcontenido -> variables .)
-    COMMA           shift and go to state 245
-    ASSIGN          shift and go to state 246
-
-
-state 228
-
-    (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT . IDLOCAL RPARENTHESIS algoritmo RETURN variables END
-    (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT . IDLOCAL RPARENTHESIS algoritmo END
-
-    IDLOCAL         shift and go to state 247
+    COMMA           shift and go to state 246
+    ASSIGN          shift and go to state 247
 
 
 state 229
 
-    (111) metodosarreglo -> arreglo POINT INDEX LPARENTHESIS arraycontent . RPARENTHESIS
+    (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT . IDLOCAL RPARENTHESIS algoritmo RETURN variables END
+    (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT . IDLOCAL RPARENTHESIS algoritmo END
 
-    RPARENTHESIS    shift and go to state 248
+    IDLOCAL         shift and go to state 248
 
 
 state 230
 
-    (119) metodohash -> variables ASSIGN hash . POINT LENGTH
+    (111) metodosarreglo -> arreglo POINT INDEX LPARENTHESIS arraycontent . RPARENTHESIS
 
-    POINT           shift and go to state 209
+    RPARENTHESIS    shift and go to state 249
 
 
 state 231
+
+    (119) metodohash -> variables ASSIGN hash . POINT LENGTH
+
+    POINT           shift and go to state 210
+
+
+state 232
 
     (119) metodohash -> variables ASSIGN hash POINT LENGTH .
 
@@ -8552,23 +8647,23 @@ state 231
     BREAK           reduce using rule 119 (metodohash -> variables ASSIGN hash POINT LENGTH .)
 
 
-state 232
+state 233
 
     (96) cadena -> STRING POINT NEW LPARENTHESIS string . RPARENTHESIS
 
-    RPARENTHESIS    shift and go to state 249
+    RPARENTHESIS    shift and go to state 250
 
 
-state 233
+state 234
 
     (103) arreglo -> ARRAY POINT NEW LPARENTHESIS factor . RPARENTHESIS
     (104) arreglo -> ARRAY POINT NEW LPARENTHESIS factor . COMMA arraycontent RPARENTHESIS
 
-    RPARENTHESIS    shift and go to state 250
-    COMMA           shift and go to state 251
+    RPARENTHESIS    shift and go to state 251
+    COMMA           shift and go to state 252
 
 
-state 234
+state 235
 
     (118) hashcontentvalue -> string .
 
@@ -8576,16 +8671,16 @@ state 234
     RBRACKET        reduce using rule 118 (hashcontentvalue -> string .)
 
 
-state 235
+state 236
 
     (115) hashcontent -> string ASSIGN GREATER hashcontentvalue .
     (116) hashcontent -> string ASSIGN GREATER hashcontentvalue . COMMA hashcontent
 
     RBRACKET        reduce using rule 115 (hashcontent -> string ASSIGN GREATER hashcontentvalue .)
-    COMMA           shift and go to state 252
+    COMMA           shift and go to state 253
 
 
-state 236
+state 237
 
     (117) hashcontentvalue -> factor .
 
@@ -8593,31 +8688,31 @@ state 236
     RBRACKET        reduce using rule 117 (hashcontentvalue -> factor .)
 
 
-state 237
+state 238
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT . POINT factor DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT . POINT factor DO forcontent END
 
-    POINT           shift and go to state 253
-
-
-state 238
-
-    (56) sentenifp -> IF variables comparador term algoritmo . END
-    (57) sentenifelse -> IF variables comparador term algoritmo . ELSE algoritmo END
-
-    END             shift and go to state 254
-    ELSE            shift and go to state 255
+    POINT           shift and go to state 254
 
 
 state 239
 
-    (51) sentenWHILE -> WHILE variables comparador variables algoritmo . END
+    (56) sentenifp -> IF variables comparador term algoritmo . END
+    (57) sentenifelse -> IF variables comparador term algoritmo . ELSE algoritmo END
 
-    END             shift and go to state 256
+    END             shift and go to state 255
+    ELSE            shift and go to state 256
 
 
 state 240
+
+    (51) sentenWHILE -> WHILE variables comparador variables algoritmo . END
+
+    END             shift and go to state 257
+
+
+state 241
 
     (81) expression -> variables MINUS . expression
     (88) factor -> MINUS . NUMBER
@@ -8646,8 +8741,8 @@ state 240
     (88) factor -> . MINUS NUMBER
     (89) factor -> . MINUS FLOAT
 
-    NUMBER          shift and go to state 257
-    FLOAT           shift and go to state 258
+    NUMBER          shift and go to state 258
+    FLOAT           shift and go to state 259
     IDLOCAL         shift and go to state 100
     IDINSTANCE      shift and go to state 101
     IDCLASS         shift and go to state 102
@@ -8661,14 +8756,14 @@ state 240
     term                           shift and go to state 108
     factor                         shift and go to state 34
 
-state 241
+state 242
 
     (52) sentenWHILE -> WHILE variables comparador expression algoritmo . END
 
-    END             shift and go to state 259
+    END             shift and go to state 260
 
 
-state 242
+state 243
 
     (77) expression -> expression MINUS . term
     (80) expression -> expression MINUS . variables
@@ -8687,8 +8782,8 @@ state 242
     (88) factor -> . MINUS NUMBER
     (89) factor -> . MINUS FLOAT
 
-    NUMBER          shift and go to state 257
-    FLOAT           shift and go to state 258
+    NUMBER          shift and go to state 258
+    FLOAT           shift and go to state 259
     IDLOCAL         shift and go to state 100
     IDINSTANCE      shift and go to state 101
     IDCLASS         shift and go to state 102
@@ -8701,7 +8796,7 @@ state 242
     variables                      shift and go to state 119
     factor                         shift and go to state 34
 
-state 243
+state 244
 
     (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS . algoritmo RETURN IDLOCAL END
     (134) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS . algoritmo END
@@ -8755,7 +8850,7 @@ state 243
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -8792,11 +8887,11 @@ state 243
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -8806,26 +8901,26 @@ state 243
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    algoritmo                      shift and go to state 260
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    variables                      shift and go to state 180
-    sentenWHILE                    shift and go to state 194
+    algoritmo                      shift and go to state 261
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    variables                      shift and go to state 181
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 244
+state 245
 
     (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS . algoritmo RETURN variables END
     (145) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS . algoritmo END
@@ -8879,7 +8974,7 @@ state 244
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -8916,11 +9011,11 @@ state 244
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -8930,26 +9025,26 @@ state 244
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    algoritmo                      shift and go to state 261
-    variables                      shift and go to state 180
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
+    algoritmo                      shift and go to state 262
+    variables                      shift and go to state 181
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 245
+state 246
 
     (136) fcontenido -> variables COMMA . fcontenido
     (142) valuedefect -> variables COMMA . fcontenido
@@ -8971,11 +9066,11 @@ state 245
     IDGLOBAL        shift and go to state 103
     IDENTIFIER      shift and go to state 104
 
-    variables                      shift and go to state 227
-    fcontenido                     shift and go to state 262
-    valuedefect                    shift and go to state 263
+    variables                      shift and go to state 228
+    fcontenido                     shift and go to state 263
+    valuedefect                    shift and go to state 264
 
-state 246
+state 247
 
     (141) valuedefect -> variables ASSIGN . values
     (137) values -> . term
@@ -9023,22 +9118,22 @@ state 246
     IDENTIFIER      shift and go to state 104
 
     variables                      shift and go to state 121
-    values                         shift and go to state 264
-    term                           shift and go to state 265
-    boolean                        shift and go to state 266
-    cadena                         shift and go to state 267
-    arreglo                        shift and go to state 268
+    values                         shift and go to state 265
+    term                           shift and go to state 266
+    boolean                        shift and go to state 267
+    cadena                         shift and go to state 268
+    arreglo                        shift and go to state 269
     factor                         shift and go to state 34
 
-state 247
+state 248
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL . RPARENTHESIS algoritmo RETURN variables END
     (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL . RPARENTHESIS algoritmo END
 
-    RPARENTHESIS    shift and go to state 269
+    RPARENTHESIS    shift and go to state 270
 
 
-state 248
+state 249
 
     (111) metodosarreglo -> arreglo POINT INDEX LPARENTHESIS arraycontent RPARENTHESIS .
 
@@ -9070,7 +9165,7 @@ state 248
     BREAK           reduce using rule 111 (metodosarreglo -> arreglo POINT INDEX LPARENTHESIS arraycontent RPARENTHESIS .)
 
 
-state 249
+state 250
 
     (96) cadena -> STRING POINT NEW LPARENTHESIS string RPARENTHESIS .
 
@@ -9112,7 +9207,7 @@ state 249
     RPARENTHESIS    reduce using rule 96 (cadena -> STRING POINT NEW LPARENTHESIS string RPARENTHESIS .)
 
 
-state 250
+state 251
 
     (103) arreglo -> ARRAY POINT NEW LPARENTHESIS factor RPARENTHESIS .
 
@@ -9146,7 +9241,7 @@ state 250
     RPARENTHESIS    reduce using rule 103 (arreglo -> ARRAY POINT NEW LPARENTHESIS factor RPARENTHESIS .)
 
 
-state 251
+state 252
 
     (104) arreglo -> ARRAY POINT NEW LPARENTHESIS factor COMMA . arraycontent RPARENTHESIS
     (107) arraycontent -> . factor
@@ -9167,10 +9262,10 @@ state 251
     STRINGV         shift and go to state 31
 
     factor                         shift and go to state 82
-    arraycontent                   shift and go to state 270
+    arraycontent                   shift and go to state 271
     string                         shift and go to state 83
 
-state 252
+state 253
 
     (116) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA . hashcontent
     (115) hashcontent -> . string ASSIGN GREATER hashcontentvalue
@@ -9180,9 +9275,9 @@ state 252
     STRINGV         shift and go to state 31
 
     string                         shift and go to state 85
-    hashcontent                    shift and go to state 271
+    hashcontent                    shift and go to state 272
 
-state 253
+state 254
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT . factor DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT POINT . factor DO forcontent END
@@ -9197,9 +9292,9 @@ state 253
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    factor                         shift and go to state 272
+    factor                         shift and go to state 273
 
-state 254
+state 255
 
     (56) sentenifp -> IF variables comparador term algoritmo END .
 
@@ -9231,7 +9326,7 @@ state 254
     BREAK           reduce using rule 56 (sentenifp -> IF variables comparador term algoritmo END .)
 
 
-state 255
+state 256
 
     (57) sentenifelse -> IF variables comparador term algoritmo ELSE . algoritmo END
     (38) algoritmo -> . expression
@@ -9284,7 +9379,7 @@ state 255
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -9321,11 +9416,11 @@ state 255
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -9335,26 +9430,26 @@ state 255
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    variables                      shift and go to state 180
+    variables                      shift and go to state 181
     term                           shift and go to state 108
-    algoritmo                      shift and go to state 273
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    algoritmo                      shift and go to state 274
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 256
+state 257
 
     (51) sentenWHILE -> WHILE variables comparador variables algoritmo END .
 
@@ -9386,7 +9481,7 @@ state 256
     BREAK           reduce using rule 51 (sentenWHILE -> WHILE variables comparador variables algoritmo END .)
 
 
-state 257
+state 258
 
     (88) factor -> MINUS NUMBER .
     (85) factor -> NUMBER .
@@ -9435,7 +9530,7 @@ state 257
   ! END             [ reduce using rule 88 (factor -> MINUS NUMBER .) ]
 
 
-state 258
+state 259
 
     (89) factor -> MINUS FLOAT .
     (86) factor -> FLOAT .
@@ -9484,7 +9579,7 @@ state 258
   ! END             [ reduce using rule 89 (factor -> MINUS FLOAT .) ]
 
 
-state 259
+state 260
 
     (52) sentenWHILE -> WHILE variables comparador expression algoritmo END .
 
@@ -9516,25 +9611,25 @@ state 259
     BREAK           reduce using rule 52 (sentenWHILE -> WHILE variables comparador expression algoritmo END .)
 
 
-state 260
+state 261
 
     (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo . RETURN IDLOCAL END
     (134) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo . END
 
-    RETURN          shift and go to state 274
-    END             shift and go to state 275
+    RETURN          shift and go to state 275
+    END             shift and go to state 276
 
 
-state 261
+state 262
 
     (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo . RETURN variables END
     (145) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo . END
 
-    RETURN          shift and go to state 276
-    END             shift and go to state 277
+    RETURN          shift and go to state 277
+    END             shift and go to state 278
 
 
-state 262
+state 263
 
     (136) fcontenido -> variables COMMA fcontenido .
     (142) valuedefect -> variables COMMA fcontenido .
@@ -9545,49 +9640,49 @@ state 262
   ! RPARENTHESIS    [ reduce using rule 142 (valuedefect -> variables COMMA fcontenido .) ]
 
 
-state 263
+state 264
 
     (143) valuedefect -> variables COMMA valuedefect .
 
     RPARENTHESIS    reduce using rule 143 (valuedefect -> variables COMMA valuedefect .)
 
 
-state 264
+state 265
 
     (141) valuedefect -> variables ASSIGN values .
 
     RPARENTHESIS    reduce using rule 141 (valuedefect -> variables ASSIGN values .)
 
 
-state 265
+state 266
 
     (137) values -> term .
 
     RPARENTHESIS    reduce using rule 137 (values -> term .)
 
 
-state 266
+state 267
 
     (138) values -> boolean .
 
     RPARENTHESIS    reduce using rule 138 (values -> boolean .)
 
 
-state 267
+state 268
 
     (139) values -> cadena .
 
     RPARENTHESIS    reduce using rule 139 (values -> cadena .)
 
 
-state 268
+state 269
 
     (140) values -> arreglo .
 
     RPARENTHESIS    reduce using rule 140 (values -> arreglo .)
 
 
-state 269
+state 270
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS . algoritmo RETURN variables END
     (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS . algoritmo END
@@ -9641,7 +9736,7 @@ state 269
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -9678,11 +9773,11 @@ state 269
     TRUE            shift and go to state 38
     FALSE           shift and go to state 39
     NIL             shift and go to state 40
-    IDLOCAL         shift and go to state 197
-    IDINSTANCE      shift and go to state 198
-    IDCLASS         shift and go to state 199
-    IDGLOBAL        shift and go to state 200
-    IDENTIFIER      shift and go to state 201
+    IDLOCAL         shift and go to state 198
+    IDINSTANCE      shift and go to state 199
+    IDCLASS         shift and go to state 200
+    IDGLOBAL        shift and go to state 201
+    IDENTIFIER      shift and go to state 202
     IF              shift and go to state 48
     WHILE           shift and go to state 51
     STRING          shift and go to state 32
@@ -9692,69 +9787,69 @@ state 269
     NUML            shift and go to state 56
     MINUS           shift and go to state 30
 
-    algoritmo                      shift and go to state 278
-    variables                      shift and go to state 180
-    expression                     shift and go to state 183
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
+    algoritmo                      shift and go to state 279
+    variables                      shift and go to state 181
+    expression                     shift and go to state 184
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
     term                           shift and go to state 108
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
     factor                         shift and go to state 34
 
-state 270
+state 271
 
     (104) arreglo -> ARRAY POINT NEW LPARENTHESIS factor COMMA arraycontent . RPARENTHESIS
 
-    RPARENTHESIS    shift and go to state 279
+    RPARENTHESIS    shift and go to state 280
 
 
-state 271
+state 272
 
     (116) hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .
 
     RBRACKET        reduce using rule 116 (hashcontent -> string ASSIGN GREATER hashcontentvalue COMMA hashcontent .)
 
 
-state 272
+state 273
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor . DO forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor . DO forcontent END
 
-    DO              shift and go to state 280
-
-
-state 273
-
-    (57) sentenifelse -> IF variables comparador term algoritmo ELSE algoritmo . END
-
-    END             shift and go to state 281
+    DO              shift and go to state 281
 
 
 state 274
 
-    (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN . IDLOCAL END
+    (57) sentenifelse -> IF variables comparador term algoritmo ELSE algoritmo . END
 
-    IDLOCAL         shift and go to state 282
+    END             shift and go to state 282
 
 
 state 275
+
+    (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN . IDLOCAL END
+
+    IDLOCAL         shift and go to state 283
+
+
+state 276
 
     (134) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo END .
 
     $end            reduce using rule 134 (funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo END .)
 
 
-state 276
+state 277
 
     (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN . variables END
     (58) variables -> . IDLOCAL
@@ -9769,25 +9864,25 @@ state 276
     IDGLOBAL        shift and go to state 103
     IDENTIFIER      shift and go to state 104
 
-    variables                      shift and go to state 283
+    variables                      shift and go to state 284
 
-state 277
+state 278
 
     (145) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo END .
 
     $end            reduce using rule 145 (funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo END .)
 
 
-state 278
+state 279
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo . RETURN variables END
     (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo . END
 
-    RETURN          shift and go to state 284
-    END             shift and go to state 285
+    RETURN          shift and go to state 285
+    END             shift and go to state 286
 
 
-state 279
+state 280
 
     (104) arreglo -> ARRAY POINT NEW LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .
 
@@ -9821,7 +9916,7 @@ state 279
     RPARENTHESIS    reduce using rule 104 (arreglo -> ARRAY POINT NEW LPARENTHESIS factor COMMA arraycontent RPARENTHESIS .)
 
 
-state 280
+state 281
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO . forcontent BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO . forcontent END
@@ -9886,7 +9981,7 @@ state 280
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -9908,7 +10003,7 @@ state 280
     (97) cadena -> . STRING LPARENTHESIS string RPARENTHESIS
     (94) string -> . STRINGV
 
-    IDLOCAL         shift and go to state 286
+    IDLOCAL         shift and go to state 287
     IDINSTANCE      shift and go to state 42
     IDCLASS         shift and go to state 43
     IDGLOBAL        shift and go to state 44
@@ -9931,27 +10026,27 @@ state 280
     STRINGV         shift and go to state 31
 
     factor                         shift and go to state 34
-    forcontent                     shift and go to state 287
-    forcontentvalue                shift and go to state 288
-    expression                     shift and go to state 289
-    algoritmo                      shift and go to state 290
+    forcontent                     shift and go to state 288
+    forcontentvalue                shift and go to state 289
+    expression                     shift and go to state 290
+    algoritmo                      shift and go to state 291
     term                           shift and go to state 108
-    variables                      shift and go to state 291
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    variables                      shift and go to state 292
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
 
-state 281
+state 282
 
     (57) sentenifelse -> IF variables comparador term algoritmo ELSE algoritmo END .
 
@@ -9983,21 +10078,21 @@ state 281
     BREAK           reduce using rule 57 (sentenifelse -> IF variables comparador term algoritmo ELSE algoritmo END .)
 
 
-state 282
-
-    (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL . END
-
-    END             shift and go to state 292
-
-
 state 283
 
-    (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN variables . END
+    (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL . END
 
     END             shift and go to state 293
 
 
 state 284
+
+    (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN variables . END
+
+    END             shift and go to state 294
+
+
+state 285
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN . variables END
     (58) variables -> . IDLOCAL
@@ -10012,19 +10107,20 @@ state 284
     IDGLOBAL        shift and go to state 103
     IDENTIFIER      shift and go to state 104
 
-    variables                      shift and go to state 294
+    variables                      shift and go to state 295
 
-state 285
+state 286
 
     (147) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo END .
 
     $end            reduce using rule 147 (funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo END .)
 
 
-state 286
+state 287
 
     (58) variables -> IDLOCAL .
     (63) assigns -> IDLOCAL . ASSIGN expression
+    (71) assigns -> IDLOCAL . ASSIGN reglaSemanticaComparaciones
 
   ! shift/reduce conflict for ASSIGN resolved as shift
     PLUS            reduce using rule 58 (variables -> IDLOCAL .)
@@ -10057,21 +10153,21 @@ state 286
     MOD             reduce using rule 58 (variables -> IDLOCAL .)
     MULT            reduce using rule 58 (variables -> IDLOCAL .)
     EXP             reduce using rule 58 (variables -> IDLOCAL .)
-    ASSIGN          shift and go to state 223
+    ASSIGN          shift and go to state 224
 
   ! ASSIGN          [ reduce using rule 58 (variables -> IDLOCAL .) ]
 
 
-state 287
+state 288
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent . BREAK IF forcontentvalue END
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent . END
 
-    BREAK           shift and go to state 295
-    END             shift and go to state 296
+    BREAK           shift and go to state 296
+    END             shift and go to state 297
 
 
-state 288
+state 289
 
     (129) forcontent -> forcontentvalue .
     (130) forcontent -> forcontentvalue . forcontent
@@ -10136,7 +10232,7 @@ state 288
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -10160,7 +10256,7 @@ state 288
 
     BREAK           reduce using rule 129 (forcontent -> forcontentvalue .)
     END             reduce using rule 129 (forcontent -> forcontentvalue .)
-    IDLOCAL         shift and go to state 286
+    IDLOCAL         shift and go to state 287
     IDINSTANCE      shift and go to state 42
     IDCLASS         shift and go to state 43
     IDGLOBAL        shift and go to state 44
@@ -10182,28 +10278,28 @@ state 288
     STRING          shift and go to state 32
     STRINGV         shift and go to state 31
 
-    forcontentvalue                shift and go to state 288
-    forcontent                     shift and go to state 297
-    expression                     shift and go to state 289
-    algoritmo                      shift and go to state 290
+    forcontentvalue                shift and go to state 289
+    forcontent                     shift and go to state 298
+    expression                     shift and go to state 290
+    algoritmo                      shift and go to state 291
     term                           shift and go to state 108
-    variables                      shift and go to state 291
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
+    variables                      shift and go to state 292
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
     factor                         shift and go to state 34
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
 
-state 289
+state 290
 
     (131) forcontentvalue -> expression .
     (76) expression -> expression . PLUS term
@@ -10295,7 +10391,7 @@ state 289
   ! MINUS           [ reduce using rule 38 (algoritmo -> expression .) ]
 
 
-state 290
+state 291
 
     (132) forcontentvalue -> algoritmo .
 
@@ -10324,7 +10420,7 @@ state 290
     END             reduce using rule 132 (forcontentvalue -> algoritmo .)
 
 
-state 291
+state 292
 
     (79) expression -> variables . PLUS expression
     (81) expression -> variables . MINUS expression
@@ -10333,7 +10429,6 @@ state 291
     (68) assigns -> variables . ASSIGN variables
     (69) assigns -> variables . ASSIGN boolean
     (70) assigns -> variables . ASSIGN asignar
-    (71) assigns -> variables . ASSIGN reglaSemanticaComparaciones
     (72) assigns -> variables . ASSIGNPLUS expression
     (73) assigns -> variables . ASSIGNPLUS variables
     (74) assigns -> variables . ASSIGNMIN expression
@@ -10392,7 +10487,7 @@ state 291
     MOD             reduce using rule 84 (term -> variables .)
     MULT            reduce using rule 84 (term -> variables .)
     EXP             reduce using rule 84 (term -> variables .)
-    ASSIGN          shift and go to state 219
+    ASSIGN          shift and go to state 220
     ASSIGNPLUS      shift and go to state 71
     ASSIGNMIN       shift and go to state 72
 
@@ -10423,35 +10518,35 @@ state 291
   ! END             [ reduce using rule 84 (term -> variables .) ]
 
 
-state 292
+state 293
 
     (133) funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END .
 
     $end            reduce using rule 133 (funcion1 -> DEF IDLOCAL LPARENTHESIS fcontenido RPARENTHESIS algoritmo RETURN IDLOCAL END .)
 
 
-state 293
+state 294
 
     (144) funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN variables END .
 
     $end            reduce using rule 144 (funcion2 -> DEF IDLOCAL LPARENTHESIS valuedefect RPARENTHESIS algoritmo RETURN variables END .)
 
 
-state 294
+state 295
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN variables . END
 
-    END             shift and go to state 298
-
-
-state 295
-
-    (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK . IF forcontentvalue END
-
-    IF              shift and go to state 299
+    END             shift and go to state 299
 
 
 state 296
+
+    (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK . IF forcontentvalue END
+
+    IF              shift and go to state 300
+
+
+state 297
 
     (128) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent END .
 
@@ -10483,7 +10578,7 @@ state 296
     BREAK           reduce using rule 128 (estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent END .)
 
 
-state 297
+state 298
 
     (130) forcontent -> forcontentvalue forcontent .
 
@@ -10491,14 +10586,14 @@ state 297
     END             reduce using rule 130 (forcontent -> forcontentvalue forcontent .)
 
 
-state 298
+state 299
 
     (146) funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN variables END .
 
     $end            reduce using rule 146 (funcion3 -> DEF IDLOCAL LPARENTHESIS MULT IDLOCAL RPARENTHESIS algoritmo RETURN variables END .)
 
 
-state 299
+state 300
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK IF . forcontentvalue END
     (131) forcontentvalue -> . expression
@@ -10560,7 +10655,7 @@ state 299
     (68) assigns -> . variables ASSIGN variables
     (69) assigns -> . variables ASSIGN boolean
     (70) assigns -> . variables ASSIGN asignar
-    (71) assigns -> . variables ASSIGN reglaSemanticaComparaciones
+    (71) assigns -> . IDLOCAL ASSIGN reglaSemanticaComparaciones
     (72) assigns -> . variables ASSIGNPLUS expression
     (73) assigns -> . variables ASSIGNPLUS variables
     (74) assigns -> . variables ASSIGNMIN expression
@@ -10582,7 +10677,7 @@ state 299
     (97) cadena -> . STRING LPARENTHESIS string RPARENTHESIS
     (94) string -> . STRINGV
 
-    IDLOCAL         shift and go to state 286
+    IDLOCAL         shift and go to state 287
     IDINSTANCE      shift and go to state 42
     IDCLASS         shift and go to state 43
     IDGLOBAL        shift and go to state 44
@@ -10605,33 +10700,33 @@ state 299
     STRINGV         shift and go to state 31
 
     factor                         shift and go to state 34
-    forcontentvalue                shift and go to state 300
-    expression                     shift and go to state 289
-    algoritmo                      shift and go to state 290
+    forcontentvalue                shift and go to state 301
+    expression                     shift and go to state 290
+    algoritmo                      shift and go to state 291
     term                           shift and go to state 108
-    variables                      shift and go to state 291
-    metodocadena                   shift and go to state 184
-    arreglo                        shift and go to state 185
-    metodosarreglo                 shift and go to state 186
-    hash                           shift and go to state 187
-    estructurasControl             shift and go to state 188
-    boolean                        shift and go to state 189
-    assigns                        shift and go to state 190
-    sentenIF                       shift and go to state 191
-    sentenifp                      shift and go to state 192
-    sentenifelse                   shift and go to state 193
-    sentenWHILE                    shift and go to state 194
-    cadena                         shift and go to state 195
-    string                         shift and go to state 196
+    variables                      shift and go to state 292
+    metodocadena                   shift and go to state 185
+    arreglo                        shift and go to state 186
+    metodosarreglo                 shift and go to state 187
+    hash                           shift and go to state 188
+    estructurasControl             shift and go to state 189
+    boolean                        shift and go to state 190
+    assigns                        shift and go to state 191
+    sentenIF                       shift and go to state 192
+    sentenifp                      shift and go to state 193
+    sentenifelse                   shift and go to state 194
+    sentenWHILE                    shift and go to state 195
+    cadena                         shift and go to state 196
+    string                         shift and go to state 197
 
-state 300
+state 301
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK IF forcontentvalue . END
 
-    END             shift and go to state 301
+    END             shift and go to state 302
 
 
-state 301
+state 302
 
     (127) estructurasControl -> FOR IDLOCAL IN factor POINT POINT factor DO forcontent BREAK IF forcontentvalue END .
 
@@ -10691,83 +10786,85 @@ WARNING: shift/reduce conflict for EXP in state 132 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 133 resolved as shift
 WARNING: shift/reduce conflict for PLUS in state 133 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 133 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 139 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 139 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 138 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 138 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 138 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 139 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 140 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 140 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 140 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 141 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 141 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 141 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 142 resolved as shift
-WARNING: shift/reduce conflict for ANDS in state 143 resolved as shift
-WARNING: shift/reduce conflict for ORS in state 143 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 144 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 144 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 147 resolved as shift
-WARNING: shift/reduce conflict for ANDS in state 149 resolved as shift
-WARNING: shift/reduce conflict for ORS in state 149 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 161 resolved as shift
+WARNING: shift/reduce conflict for ANDS in state 142 resolved as shift
+WARNING: shift/reduce conflict for ORS in state 142 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 143 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 143 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 146 resolved as shift
+WARNING: shift/reduce conflict for ANDS in state 148 resolved as shift
+WARNING: shift/reduce conflict for ORS in state 148 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 160 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 162 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 162 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 163 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 164 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 165 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 180 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 180 resolved as shift
-WARNING: shift/reduce conflict for LSQBRACKET in state 185 resolved as shift
-WARNING: shift/reduce conflict for ASSIGN in state 197 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 166 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 181 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 181 resolved as shift
+WARNING: shift/reduce conflict for LSQBRACKET in state 186 resolved as shift
 WARNING: shift/reduce conflict for ASSIGN in state 198 resolved as shift
 WARNING: shift/reduce conflict for ASSIGN in state 199 resolved as shift
 WARNING: shift/reduce conflict for ASSIGN in state 200 resolved as shift
 WARNING: shift/reduce conflict for ASSIGN in state 201 resolved as shift
-WARNING: shift/reduce conflict for ARRAY in state 218 resolved as shift
-WARNING: shift/reduce conflict for LSQBRACKET in state 218 resolved as shift
-WARNING: shift/reduce conflict for LBRACKET in state 218 resolved as shift
-WARNING: shift/reduce conflict for HASH in state 218 resolved as shift
-WARNING: shift/reduce conflict for FOR in state 218 resolved as shift
-WARNING: shift/reduce conflict for TRUE in state 218 resolved as shift
-WARNING: shift/reduce conflict for FALSE in state 218 resolved as shift
-WARNING: shift/reduce conflict for NIL in state 218 resolved as shift
-WARNING: shift/reduce conflict for IDLOCAL in state 218 resolved as shift
-WARNING: shift/reduce conflict for IDINSTANCE in state 218 resolved as shift
-WARNING: shift/reduce conflict for IDCLASS in state 218 resolved as shift
-WARNING: shift/reduce conflict for IDGLOBAL in state 218 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 218 resolved as shift
-WARNING: shift/reduce conflict for IF in state 218 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 218 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 218 resolved as shift
-WARNING: shift/reduce conflict for STRINGV in state 218 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 218 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 218 resolved as shift
-WARNING: shift/reduce conflict for NUML in state 218 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 218 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 220 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 220 resolved as shift
-WARNING: shift/reduce conflict for ARRAY in state 220 resolved as shift
-WARNING: shift/reduce conflict for LSQBRACKET in state 220 resolved as shift
-WARNING: shift/reduce conflict for LBRACKET in state 220 resolved as shift
-WARNING: shift/reduce conflict for HASH in state 220 resolved as shift
-WARNING: shift/reduce conflict for FOR in state 220 resolved as shift
-WARNING: shift/reduce conflict for TRUE in state 220 resolved as shift
-WARNING: shift/reduce conflict for FALSE in state 220 resolved as shift
-WARNING: shift/reduce conflict for NIL in state 220 resolved as shift
-WARNING: shift/reduce conflict for IDLOCAL in state 220 resolved as shift
-WARNING: shift/reduce conflict for IDINSTANCE in state 220 resolved as shift
-WARNING: shift/reduce conflict for IDCLASS in state 220 resolved as shift
-WARNING: shift/reduce conflict for IDGLOBAL in state 220 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 220 resolved as shift
-WARNING: shift/reduce conflict for IF in state 220 resolved as shift
-WARNING: shift/reduce conflict for WHILE in state 220 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 220 resolved as shift
-WARNING: shift/reduce conflict for STRINGV in state 220 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 220 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 220 resolved as shift
-WARNING: shift/reduce conflict for NUML in state 220 resolved as shift
-WARNING: shift/reduce conflict for ASSIGN in state 286 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 289 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 289 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 291 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 291 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 291 resolved as shift
+WARNING: shift/reduce conflict for ASSIGN in state 202 resolved as shift
+WARNING: shift/reduce conflict for ARRAY in state 219 resolved as shift
+WARNING: shift/reduce conflict for LSQBRACKET in state 219 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 219 resolved as shift
+WARNING: shift/reduce conflict for HASH in state 219 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 219 resolved as shift
+WARNING: shift/reduce conflict for TRUE in state 219 resolved as shift
+WARNING: shift/reduce conflict for FALSE in state 219 resolved as shift
+WARNING: shift/reduce conflict for NIL in state 219 resolved as shift
+WARNING: shift/reduce conflict for IDLOCAL in state 219 resolved as shift
+WARNING: shift/reduce conflict for IDINSTANCE in state 219 resolved as shift
+WARNING: shift/reduce conflict for IDCLASS in state 219 resolved as shift
+WARNING: shift/reduce conflict for IDGLOBAL in state 219 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 219 resolved as shift
+WARNING: shift/reduce conflict for IF in state 219 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 219 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 219 resolved as shift
+WARNING: shift/reduce conflict for STRINGV in state 219 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 219 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 219 resolved as shift
+WARNING: shift/reduce conflict for NUML in state 219 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 219 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 221 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 221 resolved as shift
+WARNING: shift/reduce conflict for ARRAY in state 221 resolved as shift
+WARNING: shift/reduce conflict for LSQBRACKET in state 221 resolved as shift
+WARNING: shift/reduce conflict for LBRACKET in state 221 resolved as shift
+WARNING: shift/reduce conflict for HASH in state 221 resolved as shift
+WARNING: shift/reduce conflict for FOR in state 221 resolved as shift
+WARNING: shift/reduce conflict for TRUE in state 221 resolved as shift
+WARNING: shift/reduce conflict for FALSE in state 221 resolved as shift
+WARNING: shift/reduce conflict for NIL in state 221 resolved as shift
+WARNING: shift/reduce conflict for IDLOCAL in state 221 resolved as shift
+WARNING: shift/reduce conflict for IDINSTANCE in state 221 resolved as shift
+WARNING: shift/reduce conflict for IDCLASS in state 221 resolved as shift
+WARNING: shift/reduce conflict for IDGLOBAL in state 221 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 221 resolved as shift
+WARNING: shift/reduce conflict for IF in state 221 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 221 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 221 resolved as shift
+WARNING: shift/reduce conflict for STRINGV in state 221 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 221 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 221 resolved as shift
+WARNING: shift/reduce conflict for NUML in state 221 resolved as shift
+WARNING: shift/reduce conflict for ASSIGN in state 287 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 290 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 290 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 292 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 292 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 292 resolved as shift
 WARNING: reduce/reduce conflict in state 13 resolved using rule (asignar -> variables)
 WARNING: rejected rule (term -> variables) in state 13
 WARNING: reduce/reduce conflict in state 13 resolved using rule (term -> variables)
@@ -10786,32 +10883,31 @@ WARNING: reduce/reduce conflict in state 133 resolved using rule (term -> variab
 WARNING: rejected rule (value2 -> variables) in state 133
 WARNING: reduce/reduce conflict in state 135 resolved using rule (asignar -> boolean)
 WARNING: rejected rule (assigns -> variables ASSIGN boolean) in state 135
-WARNING: reduce/reduce conflict in state 137 resolved using rule (asignar -> reglaSemanticaComparaciones)
-WARNING: rejected rule (assigns -> variables ASSIGN reglaSemanticaComparaciones) in state 137
-WARNING: reduce/reduce conflict in state 139 resolved using rule (assigns -> variables ASSIGNPLUS variables)
-WARNING: rejected rule (term -> variables) in state 139
-WARNING: reduce/reduce conflict in state 141 resolved using rule (assigns -> variables ASSIGNMIN variables)
-WARNING: rejected rule (term -> variables) in state 141
-WARNING: reduce/reduce conflict in state 144 resolved using rule (term -> variables)
-WARNING: rejected rule (value2 -> variables) in state 144
-WARNING: reduce/reduce conflict in state 146 resolved using rule (expression -> term)
-WARNING: rejected rule (value2 -> term) in state 146
-WARNING: reduce/reduce conflict in state 180 resolved using rule (algoritmo -> variables)
-WARNING: rejected rule (term -> variables) in state 180
-WARNING: reduce/reduce conflict in state 257 resolved using rule (factor -> NUMBER)
-WARNING: rejected rule (factor -> MINUS NUMBER) in state 257
-WARNING: reduce/reduce conflict in state 258 resolved using rule (factor -> FLOAT)
-WARNING: rejected rule (factor -> MINUS FLOAT) in state 258
-WARNING: reduce/reduce conflict in state 262 resolved using rule (fcontenido -> variables COMMA fcontenido)
-WARNING: rejected rule (valuedefect -> variables COMMA fcontenido) in state 262
-WARNING: reduce/reduce conflict in state 289 resolved using rule (algoritmo -> expression)
-WARNING: rejected rule (forcontentvalue -> expression) in state 289
-WARNING: reduce/reduce conflict in state 291 resolved using rule (algoritmo -> variables)
-WARNING: rejected rule (term -> variables) in state 291
+WARNING: reduce/reduce conflict in state 138 resolved using rule (assigns -> variables ASSIGNPLUS variables)
+WARNING: rejected rule (term -> variables) in state 138
+WARNING: reduce/reduce conflict in state 140 resolved using rule (assigns -> variables ASSIGNMIN variables)
+WARNING: rejected rule (term -> variables) in state 140
+WARNING: reduce/reduce conflict in state 143 resolved using rule (term -> variables)
+WARNING: rejected rule (value2 -> variables) in state 143
+WARNING: reduce/reduce conflict in state 145 resolved using rule (expression -> term)
+WARNING: rejected rule (value2 -> term) in state 145
+WARNING: reduce/reduce conflict in state 162 resolved using rule (term -> variables)
+WARNING: rejected rule (value2 -> variables) in state 162
+WARNING: reduce/reduce conflict in state 181 resolved using rule (algoritmo -> variables)
+WARNING: rejected rule (term -> variables) in state 181
+WARNING: reduce/reduce conflict in state 258 resolved using rule (factor -> NUMBER)
+WARNING: rejected rule (factor -> MINUS NUMBER) in state 258
+WARNING: reduce/reduce conflict in state 259 resolved using rule (factor -> FLOAT)
+WARNING: rejected rule (factor -> MINUS FLOAT) in state 259
+WARNING: reduce/reduce conflict in state 263 resolved using rule (fcontenido -> variables COMMA fcontenido)
+WARNING: rejected rule (valuedefect -> variables COMMA fcontenido) in state 263
+WARNING: reduce/reduce conflict in state 290 resolved using rule (algoritmo -> expression)
+WARNING: rejected rule (forcontentvalue -> expression) in state 290
+WARNING: reduce/reduce conflict in state 292 resolved using rule (algoritmo -> variables)
+WARNING: rejected rule (term -> variables) in state 292
 WARNING: Rule (value2 -> variables) is never reduced
 WARNING: Rule (value2 -> term) is never reduced
 WARNING: Rule (assigns -> variables ASSIGN variables) is never reduced
 WARNING: Rule (assigns -> variables ASSIGN boolean) is never reduced
-WARNING: Rule (assigns -> variables ASSIGN reglaSemanticaComparaciones) is never reduced
 WARNING: Rule (valuedefect -> variables COMMA fcontenido) is never reduced
 WARNING: Rule (forcontentvalue -> expression) is never reduced

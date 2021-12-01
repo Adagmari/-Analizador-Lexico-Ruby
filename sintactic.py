@@ -154,7 +154,7 @@ def p_assigns(p):
                     | variables ASSIGN variables
                     | variables ASSIGN boolean
                     | variables ASSIGN asignar
-                    | variables ASSIGN reglaSemanticaComparaciones
+                    | IDLOCAL ASSIGN reglaSemanticaComparaciones
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 
@@ -448,6 +448,7 @@ def p_reglaSemanticaComparaciones(t):
                 | reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
                 | reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     '''
+
 
 #sandy}
 
