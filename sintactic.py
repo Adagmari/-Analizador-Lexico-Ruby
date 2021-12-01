@@ -21,7 +21,8 @@ def p_asignar(p):
                 | boolean 
                 | variables
                 | reglaSemanticaComparaciones
-                | metodocadenaSemantica '''
+                | metodocadenaSemantica 
+                | reglaSemanticaOperaciones'''
     p[0] = p[1]
 
 
@@ -276,12 +277,14 @@ def p_cadena_forma3(p):
 
 def p_metodocadena_empty(p):
     '''metodocadena : cadena POINT EMPTY INTERROGATIVE
-                    | string POINT EMPTY INTERROGATIVE'''
+                    | string POINT EMPTY INTERROGATIVE
+                    | variables POINT EMPTY INTERROGATIVE'''
     p[0] = p[1] + p[2] + p[3] + p[4]
 
 def p_metodocadena_length(p):
     '''metodocadena : cadena POINT LENGTH
-                    | string POINT LENGTH'''
+                    | string POINT LENGTH
+                    | variables POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3]
 
 #ARREGLOS
@@ -511,8 +514,32 @@ def p_metodocadenaSemantica_length(p):
         p[0]=0
     
 #Diana Ramírez}
+#Jeremy Ramirez{
+def p_numerico(s):
+    ''' vnumerico : FLOAT 
+                    | NUMBER  
+    '''
+    s[0]= s[1]
+def p_reglaSemanticaOperaciones(s):
+    ''' reglaSemanticaOperaciones : vnumerico PLUS vnumerico
+                                  | vnumerico MINUS vnumerico
+                                  | vnumerico DIVISION vnumerico  
+                                  | vnumerico MULT vnumerico  
+                                  | vnumerico EXP vnumerico  
+        
+    '''
+    if s[2]=='+':
+        s[0]= s[1]+ s[3]
+    elif s[2]== '-':
+        s[0]= s[1]- s[3]
+    elif s[2]== '/':
+        s[0]= s[1] / s[3]
+    elif s[2]== '*':
+        s[0]= s[1] * s[3]
+    elif s[2]== '**':
+        s[0]= s[1] ** s[3]
 
-
+#}
 #LECTURA DE DATOS
 def p_lectura(p):
     '''ogets : GETS'''
