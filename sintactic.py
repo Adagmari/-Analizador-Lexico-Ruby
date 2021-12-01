@@ -471,10 +471,8 @@ def p_reglaSemanticaComparaciones(t):
         t[0] = t[1] > t[3]
     elif t[2] == '!=':
         t[0] = t[1] != t[3]
-    elif t[2] == '&&':
-        t[0] = t[1] and t[3]
-    elif t[0] == '||':
-        t[0] = t[1] or t[3]
+    else:
+        t[0] = 'no hay resultado'
     
 
 

@@ -26,7 +26,17 @@ puts "Esta es la última cadena".length
 80-0.5
 12-2.3
 
-
+#Sandy
+a>3
+a<3
+a===b
+a===3
+a= a>3
+a= a===b
+a= a!=0
+a= a===3
+a!=0
+a!=a
 
                     
 
