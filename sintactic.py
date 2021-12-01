@@ -155,6 +155,9 @@ def p_assigns(p):
                     | variables ASSIGN boolean
                     | variables ASSIGN asignar
                     | IDLOCAL ASSIGN reglaSemanticaComparaciones
+                    | IDINSTANCE ASSIGN reglaSemanticaComparaciones
+                    | IDCLASS ASSIGN reglaSemanticaComparaciones
+                    | IDGLOBAL ASSIGN reglaSemanticaComparaciones
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 

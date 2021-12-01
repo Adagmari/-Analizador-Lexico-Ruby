@@ -138,7 +138,7 @@ t_BSLASH = r'\\'
 t_COMIS = r'\''
 t_COMID = r'\"'
 t_INTERROGATIVE = r'\?'
-t_ARROBA = r'\@'
+#t_ARROBA = r'\@'
 
 def t_STRINGV(t):
     r'((\'[\w\W\s]?[^\']*\')|(\"[\w\W\s]?[^\"]*\"))'
@@ -149,11 +149,11 @@ def t_STRINGV(t):
 #SANDY{
 
 def t_IDINSTANCE(t):
-    r'^[@][a-zA-Z0-9_]*$'
+    r'^@[a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, 'IDINSTANCE')
     return t
 def t_IDCLASS(t):
-    r'^[@@][a-zA-Z0-9_]+$'
+    r'^@@[a-zA-Z0-9_]+'
     t.type = reserved.get(t.value, 'IDCLASS')
     return t
 def t_IDGLOBAL(t):
