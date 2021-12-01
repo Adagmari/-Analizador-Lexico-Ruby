@@ -467,17 +467,6 @@ def p_reglaSemanticaComparaciones(t):
                 | reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
                 | reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     '''
-
-    if t[2] == '===':
-        t[0] = t[1] == t[3]
-    elif t[2] == '<':
-        t[0] = t[1] < t[3]
-    elif t[2] == '>':
-        t[0] = t[1] > t[3]
-    elif t[2] == '!=':
-        t[0] = t[1] != t[3]
-    else:
-        t[0] = 'no hay resultado'
     
 
 
