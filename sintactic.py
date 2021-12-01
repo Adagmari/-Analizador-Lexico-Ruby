@@ -21,7 +21,8 @@ def p_asignar(p):
                 | boolean 
                 | variables
                 | reglaSemanticaComparaciones
-                | metodocadenaSemantica '''
+                | metodocadenaSemantica 
+                | reglaSemanticaOperaciones'''
     p[0] = p[1]
 
 
@@ -497,8 +498,32 @@ def p_metodocadenaSemantica_length(p):
         p[0]=0
     
 #Diana Ramírez}
+#JeremyRRamirez{
+def p_numerico(s):
+    ''' vnumerico : FLOAT 
+                    | NUMBER  
+    '''
+    s[0]= s[1]
+def p_reglaSemanticaOperaciones(s):
+    ''' reglaSemanticaOperaciones : vnumerico PLUS vnumerico
+                                  | vnumerico MINUS vnumerico
+                                  | vnumerico DIVISION vnumerico  
+                                  | vnumerico MULT vnumerico  
+                                  | vnumerico EXP vnumerico  
+        
+    '''
+    if s[2]=='+':
+        s[0]= s[1]+ s[3]
+    elif s[2]== '-':
+        s[0]= s[1]- s[3]
+    elif s[2]== '/':
+        s[0]= s[1] / s[3]
+    elif s[2]== '*':
+        s[0]= s[1] * s[3]
+    elif s[2]== '**':
+        s[0]= s[1] ** s[3]
 
-
+#}
 #LECTURA DE DATOS
 def p_lectura(p):
     '''ogets : GETS'''
