@@ -142,7 +142,8 @@ def p_variables(p):
                 | IDINSTANCE
                 | IDCLASS
                 | IDGLOBAL
-                | IDENTIFIER'''
+                | IDENTIFIER
+                | CONSTANTE'''
    p[0] = p[1]
 
 #ASIGNACIONES
@@ -153,20 +154,24 @@ def p_assigns(p):
                     | IDCLASS ASSIGN expression
                     | IDGLOBAL ASSIGN expression
                     | IDENTIFIER ASSIGN expression
+                    | CONSTANTE ASSIGN expression
                     | IDLOCAL ASSIGN variables
                     | IDINSTANCE ASSIGN variables
                     | IDCLASS ASSIGN variables
                     | IDGLOBAL ASSIGN variables
                     | IDENTIFIER ASSIGN variables
+                    | CONSTANTE ASSIGN variables
                     | IDLOCAL ASSIGN asignar
                     | IDINSTANCE ASSIGN asignar
                     | IDCLASS ASSIGN asignar
                     | IDGLOBAL ASSIGN asignar
                     | IDENTIFIER ASSIGN asignar
+                    | CONSTANTE ASSIGN asignar
                     | IDLOCAL ASSIGN reglaSemanticaComparaciones
                     | IDINSTANCE ASSIGN reglaSemanticaComparaciones
                     | IDCLASS ASSIGN reglaSemanticaComparaciones
                     | IDGLOBAL ASSIGN reglaSemanticaComparaciones
+                    | CONSTANTE ASSIGN reglaSemanticaComparaciones
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 

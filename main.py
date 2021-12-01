@@ -88,7 +88,8 @@ tokens = [
     'BSLASH',
     'NUML',
     'INTERROGATIVE',
-    'ARROBA'
+    'ARROBA',
+    'CONSTANTE'
     
 
     
@@ -145,7 +146,10 @@ def t_STRINGV(t):
     t.value= str(t.value)
     return t
 #Diana Ramírez}
-
+def t_CONSTANTE(t):
+    r"[A-Z][a-zA-Z0-9_]*"
+    t.type = reserved.get(t.value, 'CONSTANTE')  # Check for reserved words
+    return t
 #SANDY{
 
 
