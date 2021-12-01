@@ -20,7 +20,8 @@ def p_asignar(p):
                 | metodohash
                 | boolean 
                 | variables
-                | reglaSemanticaComparaciones '''
+                | reglaSemanticaComparaciones
+                | metodocadenaSemantica '''
     p[0] = p[1]
 
 
@@ -151,9 +152,16 @@ def p_assigns(p):
                     | IDCLASS ASSIGN expression
                     | IDGLOBAL ASSIGN expression
                     | IDENTIFIER ASSIGN expression
-                    | variables ASSIGN variables
-                    | variables ASSIGN boolean
-                    | variables ASSIGN asignar
+                    | IDLOCAL ASSIGN variables
+                    | IDINSTANCE ASSIGN variables
+                    | IDCLASS ASSIGN variables
+                    | IDGLOBAL ASSIGN variables
+                    | IDENTIFIER ASSIGN variables
+                    | IDLOCAL ASSIGN asignar
+                    | IDINSTANCE ASSIGN asignar
+                    | IDCLASS ASSIGN asignar
+                    | IDGLOBAL ASSIGN asignar
+                    | IDENTIFIER ASSIGN asignar
                     | IDLOCAL ASSIGN reglaSemanticaComparaciones
                     | IDINSTANCE ASSIGN reglaSemanticaComparaciones
                     | IDCLASS ASSIGN reglaSemanticaComparaciones
@@ -455,7 +463,40 @@ def p_reglaSemanticaComparaciones(t):
 
 #sandy}
 
-
+#Diana Ramírez{
+def p_metodocadenaSemantica_empty(p):
+    '''metodocadenaSemantica : PUTS cadena POINT EMPTY INTERROGATIVE
+                        | PUTS string POINT EMPTY INTERROGATIVE'''
+    x=p[2].find('"')
+    y=p[2].rfind('"')
+    if(x==-1 & y==-1):
+        x=p[2].find("'")
+        y=p[2].rfind("'")
+    if(x!=-1 & y!=-1):
+        z=p[2][x+1:y]
+        if(len(z)>0):
+            p[0]=False
+        else:
+            p[0]=True
+    else:
+        p[0]=True
+    
+    
+def p_metodocadenaSemantica_length(p):
+    '''metodocadena : PUTS cadena POINT LENGTH
+                    | PUTS string POINT LENGTH'''
+    x=p[2].find('"')
+    y=p[2].rfind('"')
+    if(x==-1 & y==-1):
+        x=p[2].find("'")
+        y=p[2].rfind("'")
+    if(x!=-1 & y!=-1):
+        z=p[2][x+1:y]
+        p[0] = len(z)
+    else:
+        p[0]=0
+    
+#Diana Ramírez}
 
 
 #LECTURA DE DATOS
