@@ -19,7 +19,8 @@ def p_asignar(p):
                 | hash
                 | metodohash
                 | boolean 
-                | variables'''
+                | variables
+                | reglaSemanticaComparaciones '''
     p[0] = p[1]
 
 
@@ -153,6 +154,7 @@ def p_assigns(p):
                     | variables ASSIGN variables
                     | variables ASSIGN boolean
                     | variables ASSIGN asignar
+                    | variables ASSIGN reglaSemanticaComparaciones
                 '''
     p[0] = p[1] + p[2] + str(p[3])
 
@@ -425,6 +427,32 @@ def p_funcion3(p):
     p[0]
 #def sumar(*hola) 1 + 2 end
 #sandy}
+
+
+
+#sandy{
+def p_value2(p):
+    ''' value2 : variables
+        | boolean
+        | term
+        | expression
+        | cadena
+    '''
+def p_reglaSemanticaComparaciones(t):
+    ''' reglaSemanticaComparaciones : value2 COMPARE value2
+                | value2 LESS value2
+                | value2 GREATER value2
+                | value2 GREQUAL value2
+                | value2 LSEQUAL value2
+                | value2 NOTEQUAL value2
+                | reglaSemanticaComparaciones ANDS reglaSemanticaComparaciones
+                | reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
+    '''
+
+#sandy}
+
+
+
 
 #LECTURA DE DATOS
 def p_lectura(p):
