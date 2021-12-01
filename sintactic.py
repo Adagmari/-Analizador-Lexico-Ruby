@@ -277,12 +277,14 @@ def p_cadena_forma3(p):
 
 def p_metodocadena_empty(p):
     '''metodocadena : cadena POINT EMPTY INTERROGATIVE
-                    | string POINT EMPTY INTERROGATIVE'''
+                    | string POINT EMPTY INTERROGATIVE
+                    | variables POINT EMPTY INTERROGATIVE'''
     p[0] = p[1] + p[2] + p[3] + p[4]
 
 def p_metodocadena_length(p):
     '''metodocadena : cadena POINT LENGTH
-                    | string POINT LENGTH'''
+                    | string POINT LENGTH
+                    | variables POINT LENGTH'''
     p[0] = p[1] + p[2] + p[3]
 
 #ARREGLOS
