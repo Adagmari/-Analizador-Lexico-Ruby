@@ -468,6 +468,20 @@ def p_reglaSemanticaComparaciones(t):
                 | reglaSemanticaComparaciones ORS reglaSemanticaComparaciones
     '''
 
+    if t[2] == '===':
+        t[0] = t[1] == t[3]
+    elif t[2] == '<':
+        t[0] = t[1] < t[3]
+    elif t[2] == '>':
+        t[0] = t[1] > t[3]
+    elif t[2] == '!=':
+        t[0] = t[1] != t[3]
+    elif t[2] == '&&':
+        t[0] = t[1] and t[3]
+    elif t[0] == '||':
+        t[0] = t[1] or t[3]
+    
+
 
 #sandy}
 
